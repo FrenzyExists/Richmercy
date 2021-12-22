@@ -1,0 +1,616 @@
+/*========================================================*
+______ _____ _____ _   ____  ______________ _______   __
+| ___ |_   _/  __ | | | |  \/  |  ___| ___ /  __ \ \ / /
+| |_/ / | | | /  \| |_| | .  . | |__ | |_/ | /  \/\ V /
+|    /  | | | |   |  _  | |\/| |  __||    /| |     \ /
+| |\ \ _| |_| \__/| | | | |  | | |___| |\ \| \__/\ | |
+\_| \_|\___/ \____\_| |_\_|  |_\____/\_| \_|\____/ \_/
+
+
+Description: Simple ð¦ Firefox theme based on Cascade and
+             random css files found on Discord
+
+Author:     Detective Pikachu
+
+I suck at css... but trust me, this works
+0x85F7D4007015493ED0359C9007266038F8F7B1F96988F19A610103874CC95286
+*=======================================================*/
+
+
+/***
+ *     ______  ______  __   __  ______ __  ______
+ *    /\  ___\/\  __ \/\ "-.\ \/\  ___/\ \/\  ___\
+ *    \ \ \___\ \ \/\ \ \ \-.  \ \  __\ \ \ \ \__ \
+ *     \ \_____\ \_____\ \_\\"\_\ \_\  \ \_\ \_____\
+ *      \/_____/\/_____/\/_/ \/_/\/_/   \/_/\/_____/
+ *
+ */
+
+:root {
+    /*---+---+---+---+---+---+
+     | C | O | L | O | R | S |
+     +---+---+---+---+---+---*/
+    --gui00: #20202A;
+    --gui01: #2C2E3E;
+    --gui02: #A7B7D6;
+    --gui03: #44495E;
+    --gui04: #C6D0E9;
+    --gui05: #63718B;
+    --gui06: #313449;
+    --gui07: #1A1A24;
+    --gui08: #EBB9B9;
+    --gui09: #E8CCA7;
+    --gui0A: #E6DFB8;
+    --gui0B: #B1DBA4;
+    --gui0C: #B8DEEB;
+    --gui0D: #CDDBF9;
+    --gui0E: #F6BBE7;
+    --gui0F: #EAC1C1;
+
+    --bordy: 2px;
+
+
+
+    /***
+     *     ______  __   ________  ______  ______  __  _____   ______  ______
+     *    /\  __ \/\ \ / /\  ___\/\  == \/\  == \/\ \/\  __-./\  ___\/\  ___\
+     *    \ \ \/\ \ \ \'/\ \  __\\ \  __<\ \  __<\ \ \ \ \/\ \ \  __\\ \___  \
+     *     \ \_____\ \__| \ \_____\ \_\ \_\ \_\ \_\ \_\ \____-\ \_____\/\_____\
+     *      \/_____/\/_/   \/_____/\/_/ /_/\/_/ /_/\/_/\/____/ \/_____/\/_____/
+     *
+     */
+
+    /* Colors */
+
+    --toolbar-bgcolor: var(--gui00) !important;
+    --toolbar-color: var(--gui0C) !important;
+    --tabs-navbar-shadow-size: 0px !important;
+
+
+    /* Override toolbar background */
+    --toolbar-field-background-color: var(--gui00) !important;
+    --toolbar-field-focus-background-color: var(--gui01) !important;
+
+    --toolbar-non-lwt-bgcolor: var(--toolbar-bgcolor) !important;
+    --toolbar-non-lwt-textcolor: var(--toolbar-color) !important;
+    --toolbar-field-focus-border-color: var(--lwt-toolbar-field-color) !important;
+
+    /* in case you want that border for some reason */
+    --toolbar-field-focus-border-color: var(--gui01) !important;
+
+
+    /*change the default blue accent color in many different elements.*/
+    --lwt-accent-color: var(--gui0C) !important;
+
+    /* Override Toolbar Text Color     */
+    --toolbar-non-lwt-textcolor: var(--gui05) !important;
+
+    /* button_background_active */
+    --lwt-toolbarbutton-active-background: blue !important;
+
+     /* Override default colors */
+    --yellow-90: var(--gui0A) !important;
+    --red-90: var(--gui08) !important;
+    --grey-90: var(--gui02) !important;
+
+    /* Override button margin */
+    --tab-block-margin: 4px !important;
+
+    /* Panel Border (set to same color as bg to obscure) */
+    --arrowpanel-border-color: var(--gui07) !important;
+
+    /* Bottom border color of Tabline */
+
+    --tabs-border-color: var(--gui01) !important;
+
+
+    --toolbarbutton-hover-background: var(--gui01) !important;
+    --toolbarbutton-active-background: var(--gui07) !important;
+    --backbutton-background: blue !important;
+
+    --toolbarbutton-border-radius: var(--bordy) !important;
+
+    /* Tabline color (classic hehe) */
+    --tab-line-color: var(--gui03) !important;
+
+
+
+
+}
+
+
+/***
+ *     __    __  ______  __   __  __  __
+ *    /\ "-./  \/\  ___\/\ "-.\ \/\ \/\ \
+ *    \ \ \-./\ \ \  __\\ \ \-.  \ \ \_\ \
+ *     \ \_\ \ \_\ \_____\ \_\\"\_\ \_____\
+ *      \/_/  \/_/\/_____/\/_/ \/_/\/_____/
+ *
+ */
+
+/*** Tighten up drop-down/context/popup menu spacing ***/
+menupopup > menuitem, menupopup > menu {
+  padding-block: 6px !important;
+}
+:root {
+  --arrowpanel-menuitem-padding: 5px 20px !important;
+}
+
+
+/***
+ *     __     __  __  __   __  _____   ______  __     __
+ *    /\ \  _ \ \/\ \/\ "-.\ \/\  __-./\  __ \/\ \  _ \ \
+ *    \ \ \/ ".\ \ \ \ \ \-.  \ \ \/\ \ \ \/\ \ \ \/ ".\ \
+ *     \ \__/".~\_\ \_\ \_\\"\_\ \____-\ \_____\ \__/".~\_\
+ *      \/_/   \/_/\/_/\/_/ \/_/\/____/ \/_____/\/_/   \/_/
+ *
+ */
+
+window,
+#main-window,
+#toolbar-menubar,
+#TabsToolbar,
+#PersonalToolbar,
+#navigator-toolbox,
+#sidebar-box,
+#nav-bar {
+    -moz-appearance: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: var(--gui00) !important;
+}
+
+
+/***
+ *     __   __  ______  __   ________  ______  ______
+ *    /\ "-.\ \/\  __ \/\ \ / /\  == \/\  __ \/\  == \
+ *    \ \ \-.  \ \  __ \ \ \'/\ \  __<\ \  __ \ \  __<
+ *     \ \_\\"\_\ \_\ \_\ \__| \ \_____\ \_\ \_\ \_\ \_\
+ *      \/_/ \/_/\/_/\/_/\/_/   \/_____/\/_/\/_/\/_/ /_/
+ *
+ */
+
+
+#tabbrowser-arrowscrollbox {
+    margin: 2px 16px 2px 16px;
+}
+
+titlebar-spacer {
+    display: none !important;
+}
+
+toolbox#navigator-toolbox {
+    border-bottom: solid var(--dividers) var(--gui07) !important;
+}
+
+/* Removes the browser icon */
+.private-browsing-indicator {
+    display: none !important;
+}
+`
+.tabbrowser-tab::after {
+    border: none !important;
+}
+
+/* Selected tab bg color */
+tab[selected="true"] > .tab-stack > .tab-background {
+    background: var(--gui07) !important;
+}
+
+/* Over tab bg color */
+tab:not([selected="true"]) > .tab-stack:hover > .tab-background {
+    background: var(--gui01) !important;
+}
+
+/* A bit of spacing */
+toolbar .toolbarbutton-1 {
+    margin-left: 3px !important;
+    margin-right: 3px !important;
+}
+
+
+
+/* bruh */
+.tab-stack .tab-icon-image,
+.tab-stack .tab-label-container {
+    transform: translateX(0px);
+    transition: all 200ms ease-out !important;
+}
+
+/* animations or something */
+tab:not([pinned="true"]) .tab-stack:hover .tab-icon-image {
+    transform: translateX(-25px) !important;
+}
+
+.tab-stack:hover .tab-label-container {
+    transform: translateX(-23px) !important;
+}
+
+
+
+
+/* containers */
+tab:not([selected="true"]).identity-color-blue > .tab-stack,
+tab:not([selected="true"]).identity-color-orange > .tab-stack,
+tab:not([selected="true"]).identity-color-green > .tab-stack,
+tab:not([selected="true"]).identity-color-pink > .tab-stack{
+    border-radius: 0 0 7px 7px !important;
+}
+
+tab[selected="true"].identity-color-blue > .tab-stack .tab-label-container,
+tab[selected="true"].identity-color-orange > .tab-stack .tab-label-container,
+tab[selected="true"].identity-color-green > .tab-stack .tab-label-container,
+tab[selected="true"].identity-color-pink > .tab-stack .tab-label-container{
+   color: #000 !important;
+}
+
+/* blue */
+tab[selected="true"].identity-color-blue > .tab-stack > .tab-background{
+   background: linear-gradient(to right, #3182CE , #0BC5EA) !important;
+}
+
+tab:not([selected="true"]).identity-color-blue > .tab-stack > .tab-background{
+    border-top: solid 4px #63B3ED !important;
+}
+
+
+
+
+
+
+
+
+
+
+/* Some transition thingy */
+
+
+
+#tabbrowser-arrowscrollbox {
+    margin: 7px 14px 7px 14px;
+}
+
+.tabbrowser-tab::after {
+    border: none !important;
+}
+
+.tab-background .tab-line,
+.tab-background .tab-bottom-line {
+    display: none;
+}
+
+tab[selected="true"] > .tab-stack > .tab-background {
+    background: var(--tl-tab-background-gradient, var(--arrowpanel-dimmed-further)) !important;
+}
+
+tab:not([selected="true"]) > .tab-stack:hover > .tab-background {
+    background: var(--arrowpanel-background) !important;
+}
+
+.tab-stack {
+    border-radius: 7px;
+    margin-right: 5px;
+    overflow: hidden;
+}
+
+.tab-stack .tab-icon-image,
+.tab-stack .tab-label-container {
+    transform: translateX(0px);
+    transition: all var(--tl-animation-duration) var(--ease-out) !important;
+}
+
+.tab-stack .tab-icon-image {
+    transition-duration: calc(var(--tl-animation-duration) * 2) !important;
+}
+
+tab:not([pinned="true"]) .tab-stack:hover .tab-icon-image {
+    transform: translateX(-25px) !important;
+}
+
+.tab-stack:hover .tab-label-container {
+    transform: translateX(-23px) !important;
+}
+
+
+.tab-stack .tab-close-button {
+    border-radius: 50%;
+    margin-left: -20px !important;
+    background: blue;
+    fill: red !important;
+    transform: translateX(30px) !important;
+/*     transition: all 200ms var(--ease-out) !important; */
+    transition: all 200ms ease-out !important;
+}
+
+.tab-stack:hover .tab-close-button {
+    transform: translateX(0px) !important;
+}
+
+#tabbrowser-tabs[closebuttons="activetab"] > #tabbrowser-arrowscrollbox >
+.tabbrowser-tab > .tab-stack > .tab-content > .tab-close-button:not([selected="true"]){
+    display: block !important;
+}
+
+/*  */
+
+
+
+
+
+/*  */
+
+#customization-footer button,
+#editBookmarkPanelBottomButtons button {
+    -moz-appearance: none !important;
+    border: none !important;
+    padding: 7px !important;
+    color: green !important;
+    background: var(--arrowpanel-background) !important;
+    border-radius: 5px !important;
+    margin-left: 10px !important;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+    transition: transform 300ms ease-in-out !important;
+}
+
+#editBookmarkPanelBottomButtons button,
+#editBMPanel_foldersExpander button {
+    background: var(--lwt-accent-color) !important;
+}
+button#editBookmarkPanelDoneButton {
+    color: var(--lwt-accent-color) !important;
+    background-color: var(--lwt-toolbarbutton-icon-fill-attention) !important;
+}
+
+button:hover {
+    transform: translateY(-2px) !important;
+}
+
+#editBookmarkPanel input {
+    -moz-appearance: none !important;
+    border-radius: 5px;
+    padding: 7px;
+    background: var(--lwt-accent-color) !important;
+    background-color: var(--lwt-accent-color) !important;
+    border-color: var(--arrowpanel-dimmed-further) !important;
+}
+/*  */
+
+
+#tabbrowser-arrowscrollbox {
+    margin: 7px 14px 7px 14px;
+}
+
+.tabbrowser-tab::after {
+    border: none !important;
+}
+
+.tab-background .tab-line,
+.tab-background .tab-bottom-line {
+    display: none;
+}
+
+tab[selected="true"] > .tab-stack > .tab-background {
+    background: var(--tl-tab-background-gradient, var(--arrowpanel-dimmed-further)) !important;
+}
+
+tab:not([selected="true"]) > .tab-stack:hover > .tab-background {
+    background: var(--arrowpanel-background) !important;
+}
+
+.tab-stack {
+    border-radius: 7px;
+    margin-right: 5px;
+    overflow: hidden;
+}
+
+.tab-stack .tab-icon-image,
+.tab-stack .tab-label-container {
+    transform: translateX(0px);
+    transition: all var(--tl-animation-duration) var(--ease-out) !important;
+}
+
+.tab-stack .tab-icon-image {
+    transition-duration: calc(var(--tl-animation-duration) * 2) !important;
+}
+
+tab:not([pinned="true"]) .tab-stack:hover .tab-icon-image {
+    transform: translateX(-25px) !important;
+}
+
+.tab-stack:hover .tab-label-container {
+    transform: translateX(-23px) !important;
+}
+
+/* containers */
+tab:not([selected="true"]).identity-color-blue > .tab-stack,
+tab:not([selected="true"]).identity-color-orange > .tab-stack,
+tab:not([selected="true"]).identity-color-green > .tab-stack,
+tab:not([selected="true"]).identity-color-pink > .tab-stack{
+    border-radius: 0 0 7px 7px !important;
+}
+
+tab[selected="true"].identity-color-blue > .tab-stack .tab-label-container,
+tab[selected="true"].identity-color-orange > .tab-stack .tab-label-container,
+tab[selected="true"].identity-color-green > .tab-stack .tab-label-container,
+tab[selected="true"].identity-color-pink > .tab-stack .tab-label-container{
+   color: #000 !important;
+}
+
+/* blue */
+tab[selected="true"].identity-color-blue > .tab-stack > .tab-background{
+   background: linear-gradient(to right, #3182CE , #0BC5EA) !important;
+}
+
+tab:not([selected="true"]).identity-color-blue > .tab-stack > .tab-background{
+    border-top: solid 4px #63B3ED !important;
+}
+
+/* orange */
+tab[selected="true"].identity-color-orange > .tab-stack > .tab-background{
+   background: linear-gradient(to right, #DD6B20 , #F56565) !important;
+}
+
+tab:not([selected="true"]).identity-color-orange > .tab-stack > .tab-background{
+    border-top: solid 4px #F6AD55 !important;
+}
+
+/* green */
+tab[selected="true"].identity-color-green > .tab-stack > .tab-background{
+   background: linear-gradient(to right, #38A169 , #38B2AC) !important;
+}
+
+tab:not([selected="true"]).identity-color-green > .tab-stack > .tab-background{
+    border-top: solid 4px #68D391 !important;
+}
+
+/* pink */
+tab[selected="true"].identity-color-pink > .tab-stack > .tab-background{
+   background: linear-gradient(to right, #D53F8C , #9F7AEA) !important;
+}
+
+tab:not([selected="true"]).identity-color-pink > .tab-stack > .tab-background{
+    border-top: solid 4px #F687B3 !important;
+}
+
+
+.tab-stack .tab-close-button {
+    border-radius: 50%;
+    margin-left: -20px !important;
+    background: var(--lwt-text-color);
+    fill: var(--lwt-accent-color) !important;
+    transform: translateX(30px) !important;
+    transition: all var(--tl-animation-duration) var(--ease-out) !important;
+}
+
+.tab-stack:hover .tab-close-button {
+    transform: translateX(0px) !important;
+}
+
+#tabbrowser-tabs[closebuttons="activetab"] > #tabbrowser-arrowscrollbox >
+.tabbrowser-tab > .tab-stack > .tab-content > .tab-close-button:not([selected="true"]){
+    display: block !important;
+}
+
+
+
+
+
+
+/***
+ *     ______ ______  ______  ______
+ *    /\__  _/\  __ \/\  == \/\  ___\
+ *    \/_/\ \\ \  __ \ \  __<\ \___  \
+ *       \ \_\\ \_\ \_\ \_____\/\_____\
+ *        \/_/ \/_/\/_/\/_____/\/_____/
+ *
+ */
+
+/* remove tab shadow */
+.tabbrowser-tab
+    >.tab-stack
+    > .tab-background {
+        box-shadow: none !important;
+}
+
+/* No gap */
+.tabbrowser-tab {
+    padding-inline: 0 !important;
+}
+
+
+tab-content[pinned] {
+    padding-inline: 10px !important;
+}
+
+/* No top line for pinned */
+.tabbrowser-tab:is([pinned][selected]) > .tab-stack > .tab-background::before {
+    height: 0px;
+}
+
+.tab-background{
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Top Line a la classic Firefox */
+.tab-background[selected]::before,
+.tabbrowser-tab:hover > stack > .tab-background::before{
+  display: -moz-box;
+  height: 3px;
+  content: "";
+}
+.tab-stack:hover > .tab-background::before {
+  background-color: var(--gui06) !important;;
+}
+.tab-stack > .tab-background[selected]::before {
+  background-color: highlight;
+  background-image: linear-gradient(var(--tab-line-color),var(--tab-line-color));
+}
+
+
+
+
+/***
+ *     __  __  ______  __      ______  ______  ______
+ *    /\ \/\ \/\  == \/\ \    /\  == \/\  __ \/\  == \
+ *    \ \ \_\ \ \  __<\ \ \___\ \  __<\ \  __ \ \  __<
+ *     \ \_____\ \_\ \_\ \_____\ \_____\ \_\ \_\ \_\ \_\
+ *      \/_____/\/_/ /_/\/_____/\/_____/\/_/\/_/\/_/ /_/
+ *
+ */
+
+/* remove border below whole nav */
+#navigator-toolbox {
+    border-bottom: none !important;
+}
+
+
+#urlbar,
+#urlbar * {
+    box-shadow: none !important;
+}
+
+
+
+
+#urlbar-background {
+    border: none !important;
+}
+
+
+
+/***
+ *     ______  __  __  ______ ______ ______  __   __  ______
+ *    /\  == \/\ \/\ \/\__  _/\__  _/\  __ \/\ "-.\ \/\  ___\
+ *    \ \  __<\ \ \_\ \/_/\ \\/_/\ \\ \ \/\ \ \ \-.  \ \___  \
+ *     \ \_____\ \_____\ \ \_\  \ \_\\ \_____\ \_\\"\_\/\_____\
+ *      \/_____/\/_____/  \/_/   \/_/ \/_____/\/_/ \/_/\/_____/
+ *
+ */
+
+/* Disable some icons */
+#tracking-protection-icon-container,
+#urlbar-zoom-button,
+#forward-button{
+    display: none !important;
+}
+
+#back-button,
+#PanelUI-button {
+    display: -moz-inline-box !important;
+}
+
+/* Bigger Back Button */
+#back-button > .toolbarbutton-icon {
+    padding: 4px !important;
+    width: 40px !important;
+}
+/* Bigger Reload Button */
+#reload-button > .toolbarbutton-icon {
+    padding: 6px !important;
+    width: 40px !important;
+}
+
+/* Bigger library button */
+
+
