@@ -13,7 +13,6 @@ Description: Simple ð¦ Firefox theme based on Cascade and
 Author:     Detective Pikachu
 
 I suck at css... but trust me, this works
-0x85F7D4007015493ED0359C9007266038F8F7B1F96988F19A610103874CC95286
 *=======================================================*/
 
 
@@ -114,6 +113,8 @@ I suck at css... but trust me, this works
     --tab-line-color: var(--gui03) !important;
 
 
+    /* URL colour in URL bar suggestions */
+    --urlbar-popup-url-color: var(--gui0D) !important;
 
 
 }
@@ -226,273 +227,37 @@ tab:not([pinned="true"]) .tab-stack:hover .tab-icon-image {
     transform: translateX(-23px) !important;
 }
 
-
-
-
-/* containers */
-tab:not([selected="true"]).identity-color-blue > .tab-stack,
-tab:not([selected="true"]).identity-color-orange > .tab-stack,
-tab:not([selected="true"]).identity-color-green > .tab-stack,
-tab:not([selected="true"]).identity-color-pink > .tab-stack{
-    border-radius: 0 0 7px 7px !important;
-}
-
-tab[selected="true"].identity-color-blue > .tab-stack .tab-label-container,
-tab[selected="true"].identity-color-orange > .tab-stack .tab-label-container,
-tab[selected="true"].identity-color-green > .tab-stack .tab-label-container,
-tab[selected="true"].identity-color-pink > .tab-stack .tab-label-container{
-   color: #000 !important;
-}
-
-/* blue */
-tab[selected="true"].identity-color-blue > .tab-stack > .tab-background{
-   background: linear-gradient(to right, #3182CE , #0BC5EA) !important;
-}
-
-tab:not([selected="true"]).identity-color-blue > .tab-stack > .tab-background{
-    border-top: solid 4px #63B3ED !important;
-}
-
-
-
-
-
-
-
-
-
-
-/* Some transition thingy */
-
-
-
-#tabbrowser-arrowscrollbox {
-    margin: 7px 14px 7px 14px;
-}
-
-.tabbrowser-tab::after {
-    border: none !important;
-}
-
 .tab-background .tab-line,
 .tab-background .tab-bottom-line {
     display: none;
 }
 
-tab[selected="true"] > .tab-stack > .tab-background {
-    background: var(--tl-tab-background-gradient, var(--arrowpanel-dimmed-further)) !important;
-}
-
-tab:not([selected="true"]) > .tab-stack:hover > .tab-background {
-    background: var(--arrowpanel-background) !important;
-}
-
+/* Fix overflow issue */
 .tab-stack {
-    border-radius: 7px;
-    margin-right: 5px;
     overflow: hidden;
 }
 
-.tab-stack .tab-icon-image,
-.tab-stack .tab-label-container {
-    transform: translateX(0px);
-    transition: all var(--tl-animation-duration) var(--ease-out) !important;
-}
-
 .tab-stack .tab-icon-image {
-    transition-duration: calc(var(--tl-animation-duration) * 2) !important;
+    transition-duration: calc(200ms * 2) !important;
 }
 
-tab:not([pinned="true"]) .tab-stack:hover .tab-icon-image {
-    transform: translateX(-25px) !important;
-}
-
-.tab-stack:hover .tab-label-container {
-    transform: translateX(-23px) !important;
-}
-
-
+/* close button  */
 .tab-stack .tab-close-button {
     border-radius: 50%;
     margin-left: -20px !important;
-    background: blue;
-    fill: red !important;
+    background: transparent;
+    fill: var(--gui08) !important;
     transform: translateX(30px) !important;
 /*     transition: all 200ms var(--ease-out) !important; */
     transition: all 200ms ease-out !important;
 }
-
 .tab-stack:hover .tab-close-button {
     transform: translateX(0px) !important;
 }
-
 #tabbrowser-tabs[closebuttons="activetab"] > #tabbrowser-arrowscrollbox >
 .tabbrowser-tab > .tab-stack > .tab-content > .tab-close-button:not([selected="true"]){
     display: block !important;
 }
-
-/*  */
-
-
-
-
-
-/*  */
-
-#customization-footer button,
-#editBookmarkPanelBottomButtons button {
-    -moz-appearance: none !important;
-    border: none !important;
-    padding: 7px !important;
-    color: green !important;
-    background: var(--arrowpanel-background) !important;
-    border-radius: 5px !important;
-    margin-left: 10px !important;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
-    transition: transform 300ms ease-in-out !important;
-}
-
-#editBookmarkPanelBottomButtons button,
-#editBMPanel_foldersExpander button {
-    background: var(--lwt-accent-color) !important;
-}
-button#editBookmarkPanelDoneButton {
-    color: var(--lwt-accent-color) !important;
-    background-color: var(--lwt-toolbarbutton-icon-fill-attention) !important;
-}
-
-button:hover {
-    transform: translateY(-2px) !important;
-}
-
-#editBookmarkPanel input {
-    -moz-appearance: none !important;
-    border-radius: 5px;
-    padding: 7px;
-    background: var(--lwt-accent-color) !important;
-    background-color: var(--lwt-accent-color) !important;
-    border-color: var(--arrowpanel-dimmed-further) !important;
-}
-/*  */
-
-
-#tabbrowser-arrowscrollbox {
-    margin: 7px 14px 7px 14px;
-}
-
-.tabbrowser-tab::after {
-    border: none !important;
-}
-
-.tab-background .tab-line,
-.tab-background .tab-bottom-line {
-    display: none;
-}
-
-tab[selected="true"] > .tab-stack > .tab-background {
-    background: var(--tl-tab-background-gradient, var(--arrowpanel-dimmed-further)) !important;
-}
-
-tab:not([selected="true"]) > .tab-stack:hover > .tab-background {
-    background: var(--arrowpanel-background) !important;
-}
-
-.tab-stack {
-    border-radius: 7px;
-    margin-right: 5px;
-    overflow: hidden;
-}
-
-.tab-stack .tab-icon-image,
-.tab-stack .tab-label-container {
-    transform: translateX(0px);
-    transition: all var(--tl-animation-duration) var(--ease-out) !important;
-}
-
-.tab-stack .tab-icon-image {
-    transition-duration: calc(var(--tl-animation-duration) * 2) !important;
-}
-
-tab:not([pinned="true"]) .tab-stack:hover .tab-icon-image {
-    transform: translateX(-25px) !important;
-}
-
-.tab-stack:hover .tab-label-container {
-    transform: translateX(-23px) !important;
-}
-
-/* containers */
-tab:not([selected="true"]).identity-color-blue > .tab-stack,
-tab:not([selected="true"]).identity-color-orange > .tab-stack,
-tab:not([selected="true"]).identity-color-green > .tab-stack,
-tab:not([selected="true"]).identity-color-pink > .tab-stack{
-    border-radius: 0 0 7px 7px !important;
-}
-
-tab[selected="true"].identity-color-blue > .tab-stack .tab-label-container,
-tab[selected="true"].identity-color-orange > .tab-stack .tab-label-container,
-tab[selected="true"].identity-color-green > .tab-stack .tab-label-container,
-tab[selected="true"].identity-color-pink > .tab-stack .tab-label-container{
-   color: #000 !important;
-}
-
-/* blue */
-tab[selected="true"].identity-color-blue > .tab-stack > .tab-background{
-   background: linear-gradient(to right, #3182CE , #0BC5EA) !important;
-}
-
-tab:not([selected="true"]).identity-color-blue > .tab-stack > .tab-background{
-    border-top: solid 4px #63B3ED !important;
-}
-
-/* orange */
-tab[selected="true"].identity-color-orange > .tab-stack > .tab-background{
-   background: linear-gradient(to right, #DD6B20 , #F56565) !important;
-}
-
-tab:not([selected="true"]).identity-color-orange > .tab-stack > .tab-background{
-    border-top: solid 4px #F6AD55 !important;
-}
-
-/* green */
-tab[selected="true"].identity-color-green > .tab-stack > .tab-background{
-   background: linear-gradient(to right, #38A169 , #38B2AC) !important;
-}
-
-tab:not([selected="true"]).identity-color-green > .tab-stack > .tab-background{
-    border-top: solid 4px #68D391 !important;
-}
-
-/* pink */
-tab[selected="true"].identity-color-pink > .tab-stack > .tab-background{
-   background: linear-gradient(to right, #D53F8C , #9F7AEA) !important;
-}
-
-tab:not([selected="true"]).identity-color-pink > .tab-stack > .tab-background{
-    border-top: solid 4px #F687B3 !important;
-}
-
-
-.tab-stack .tab-close-button {
-    border-radius: 50%;
-    margin-left: -20px !important;
-    background: var(--lwt-text-color);
-    fill: var(--lwt-accent-color) !important;
-    transform: translateX(30px) !important;
-    transition: all var(--tl-animation-duration) var(--ease-out) !important;
-}
-
-.tab-stack:hover .tab-close-button {
-    transform: translateX(0px) !important;
-}
-
-#tabbrowser-tabs[closebuttons="activetab"] > #tabbrowser-arrowscrollbox >
-.tabbrowser-tab > .tab-stack > .tab-content > .tab-close-button:not([selected="true"]){
-    display: block !important;
-}
-
-
-
 
 
 
@@ -547,8 +312,31 @@ tab-content[pinned] {
   background-image: linear-gradient(var(--tab-line-color),var(--tab-line-color));
 }
 
-
-
+/* Container Tabs */
+.identity-color-blue {
+    --identity-tab-color: var(--gui0C) !important;
+    --identity-icon-color: var(--gui0C) !important;
+}
+.identity-color-green {
+    --identity-tab-color: var(--gui0B) !important;
+    --identity-icon-color: var(--gui0B) !important;
+}
+.identity-color-yellow {
+    --identity-tab-color: var(--gui0A) !important;
+    --identity-icon-color: var(--gui0A) !important;
+}
+.identity-color-red {
+    --identity-tab-color: var(--gui08) !important;
+    --identity-icon-color: var(--gui08) !important;
+}
+.identity-color-purple {
+    --identity-tab-color: var(--gui0E) !important;
+    --identity-icon-color: var(--gui0F) !important;
+}
+.identity-color-orange {
+    --identity-tab-color: var(--gui09) !important;
+    --identity-icon-color: var(--gui09) !important;
+}
 
 /***
  *     __  __  ______  __      ______  ______  ______
@@ -611,6 +399,18 @@ tab-content[pinned] {
     width: 40px !important;
 }
 
-/* Bigger library button */
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
