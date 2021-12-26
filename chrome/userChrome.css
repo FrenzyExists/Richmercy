@@ -95,8 +95,6 @@ I suck at css... but trust me, this works
     /* Override button margin */
     --tab-block-margin: 4px !important;
 
-    /* Panel Border (set to same color as bg to obscure) */
-    --arrowpanel-border-color: var(--gui07) !important;
 
     /* Bottom border color of Tabline */
 
@@ -116,6 +114,34 @@ I suck at css... but trust me, this works
     /* URL colour in URL bar suggestions */
     --urlbar-popup-url-color: var(--gui0D) !important;
 
+    /* Toolbar Padding */
+    --toolbarbutton-inner-padding: 14px !important;
+    --toolbarbutton-outer-padding: 0px !important;
+
+    --toolbar-bgcolor: var(--gui00) !important;
+    --lwt-toolbar-field-focus: var(--gui00) !important;
+    --tabs-border-color: var(--gui00) !important;
+
+    /* Panel */
+    --arrowpanel-border-color: var(--gui07) !important;
+    --arrowpanel-border-radius: 3px !important;
+    --arrowpanel-background: var(--gui07) !important;
+    --arrowpanel-color: var(--gui05) !important;
+    --arrowpanel-dimmed: var(--gui07) !important;
+
+
+    --newtab-background-color: var(--gui07) !important;
+
+    --sidebar-background-color: var(--gui07) !important;
+    --sidebar-text-color: var(--gui05) !important;
+    --sidebar-border-color: var(--gui07) !important;
+
+    --autocomplete-popup-highlight-background:  var(--gui05) !important;
+    --autocomplete-popup-highlight-color:       var(--gui05) !important;
+    --autocomplete-popup-hover-background:      var(--gui05) !important;
+
+
+    --uc-urlbar-width: clamp(250px, 50vw, 600px);
 
 }
 
@@ -210,7 +236,6 @@ toolbar .toolbarbutton-1 {
 }
 
 
-
 /* bruh */
 .tab-stack .tab-icon-image,
 .tab-stack .tab-label-container {
@@ -258,6 +283,21 @@ tab:not([pinned="true"]) .tab-stack:hover .tab-icon-image {
 .tabbrowser-tab > .tab-stack > .tab-content > .tab-close-button:not([selected="true"]){
     display: block !important;
 }
+
+
+@media (min-width: 1000px) {
+
+
+    /* move tabs bar over */
+    #TabsToolbar { margin-left: var(--uc-urlbar-width) !important; }
+
+
+    /* move entire nav bar  */
+    #nav-bar { margin: calc((var(--urlbar-min-height) * -1) - 8px) calc(100vw - var(--uc-urlbar-width)) 0 0 !important; }
+
+
+}
+
 
 
 
@@ -376,41 +416,33 @@ tab-content[pinned] {
  *
  */
 
-/* Disable some icons */
-#tracking-protection-icon-container,
-#urlbar-zoom-button,
-#forward-button{
-    display: none !important;
-}
 
+
+/* Less buttons, use keybinds instead */
 #back-button,
 #PanelUI-button {
     display: -moz-inline-box !important;
 }
 
-/* Bigger Back Button */
-#back-button > .toolbarbutton-icon {
-    padding: 4px !important;
-    width: 40px !important;
-}
-/* Bigger Reload Button */
-#reload-button > .toolbarbutton-icon {
-    padding: 6px !important;
-    width: 40px !important;
+#forward-button,
+#stop-button,
+#reload-button,
+#star-button,
+#urlbar-zoom-button {
+    display: none !important;
 }
 
 
+#reader-mode-button{ display: none !important; }
 
+/* tracking protection shield icon */
+#tracking-protection-icon-container { display: none !important; }
 
+/* #identity-box { display: none !important } /* hides encryption AND permission items */
+#identity-permission-box { display: none !important; } /* only hides permission items */
 
+/* e.g. playing indicator (secondary - not icon) */
+.tab-secondary-label { display: none !important; }
 
-
-
-
-
-
-
-
-
-
-
+#pageActionButton { display: none !important; }
+#page-action-buttons { display: none !important; }
