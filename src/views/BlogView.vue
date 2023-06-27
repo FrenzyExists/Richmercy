@@ -1,5 +1,5 @@
 <template>
-  <div class="projects">
+  <div class="blogs">
     <ByLetter routerName="projectByLetter" />
 
     <div class="p-10 justify-center">
@@ -19,8 +19,8 @@
     <FeatureBlocks :articles="filteredArticles" />
   </div>
 </template>
-
-
+  
+  
 <script lang="js">
 import ByLetter from '@/components/ByLetter.vue';
 import FeatureBlocks from '@/components/FeatureBlocks.vue';
@@ -29,7 +29,7 @@ import { ref, computed } from 'vue'
 function getArticleInfo() {
   try {
     let a = []
-    const entries = Object.entries(import.meta.globEager("../markdown/project/*.md"));
+    const entries = Object.entries(import.meta.globEager("../markdown/blog/*.md"));
     for (const [path, m] of entries) {
       a.push({ ...m.frontmatter, 'path': path.replace(/\/markdown|\.md/g, "") })
     }
@@ -64,7 +64,7 @@ export default {
   }
 }
 </script>
-
+  
 <style>
 .search-bar {
   box-shadow: 0 0 0 1px rgb(14 41 84 / 10%), 0 2px 4px 1px rgba(14, 41, 84, .18);

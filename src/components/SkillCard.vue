@@ -1,29 +1,30 @@
 <template>
     <div class="ul flex justify-evenly p-0">
-        <article class="booking-card   rounded-3xl overflow-hidden transition text-center mb-7 relative bg-zinc-900 shadow-lg">
+        <article
+            class="booking-card before:absolute before:top-0 before:bottom-0 before:left-0 before:right-0 rounded-3xl overflow-hidden transition text-center mb-7 relative shadow-lg">
             <div class="mb-4 relative container after:bg-gradient-to-r from-orange-400 to-red-500">
                 <font-awesome-icon class="object-cover w-full text-[14rem] pl-8" :icon="`${skillIcon}`" />
             </div>
             <div class="book-container">
                 <div class="content relative opacity-0 flex text-center items-center justify-center h-0">
-                    <button class="btn bg-none uppercase text-slate-100 font-bold cursor-pointer text-base">Show More</button>
+                    <button class="btn transition-[0.3s] bg-none uppercase text-slate-100 font-bold cursor-pointer text-base">Show
+                        More</button>
                 </div>
             </div>
-
             <div class="informations-container">
                 <h2 class="title  relative font-bold text-lg mb-3 pb-3 ">{{ skillName }}</h2>
                 <p class="sub-title">{{ skillDescription }}</p>
                 <div class="opacity-0 more-information">
                     <div class="box mb-1 mt-3 p-3 text-sm font-bold bg-slate-100 rounded-xl">
                         <ul v-if="typeof skillProjectList !== 'undefined'">
-                            <li class="decoration-[none] relative text-base after:bg-gradient-to-r from-orange-400 to-red-500" v-for="i in skillProjectList">{{ i }}</li>
+                            <li class="decoration-[none] relative text-base after:bg-gradient-to-r from-orange-400 to-red-500"
+                                v-for="i in skillProjectList">{{ i }}</li>
                         </ul>
                         <p class="text-orange-800 leading-7 font-medium text-lg" v-else>Can't think of anything lol</p>
                     </div>
                 </div>
             </div>
         </article>
-
     </div>
 </template>
 
@@ -70,21 +71,14 @@ export default {
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.18);
 }
 
-.ul .booking-card {
+.booking-card {
     flex: 0 0 290px;
-    /* border-radius: 20px;  */
+    background-color: var(--color-background-soft);
 }
 
 .booking-card::before {
     content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
     background: rgb(167 90 34 / 2%);
-    transition: 0.3s;
-    /* border-radius: 20px; */
 }
 
 .content {
@@ -115,7 +109,6 @@ export default {
 .btn {
     border: 3px solid white;
     padding: 10px 15px;
-    transition: 0.3s;
 }
 
 .btn:hover {
@@ -140,7 +133,7 @@ export default {
     height: 3px;
     width: 50px;
     margin: auto;
-    background: #b34c35;
+    background: var(--color-accent);
 }
 
 .more-information {

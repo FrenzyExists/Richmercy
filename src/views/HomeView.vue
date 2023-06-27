@@ -6,7 +6,7 @@
     <!-- Skills -->
     <section class="grid">
       <div
-        class="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:ml-11 xl:mr-11 lg:ml-9 lg:mr-9 md:gap-2">
+        class="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:ml-11 xl:mr-11 lg:ml-9 lg:mr-9 md:gap-2 xl:gap-20 2xl:grid-cols-5">
         <SkillCard v-for="i in skills" :key="i.name" :skillName=i.name :skillDescription=i.description :skillProjectList="i.projects"
           :skillIcon=i.icon />
       </div>

@@ -3,55 +3,115 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Whyte';
+  src: local('Whyte'), 
+    url(../fonts/Whyte-Inktrap-Regular.otf);
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Whyte';
+  src: local('Whyte'), 
+    url(../fonts/Whyte-Inktrap-Light.otf);
+  font-style: normal;
+  font-weight: lighter;
+}
+
+
+html {
+  scroll-padding-top: 2rem;
+}
 
 :root {
+  
+  --bg-dark:          #2b5ba8;
+  --bg-dark-2:        #1B6B93;
+  --bg-dark-3:        #0E2954;
+  --divider-dark:     #E57C23;
+  --divider-acc-dark: #E8AA42;
+  --text-dark:        #F8F1F1;
+  --text-dark-2:      #DDE6ED;
+  --text-dark-3:      #9DB2BF;
+
+  --bg-light:         #79E0EE;
+  --bg-light-2:       #64bac5;
+  --bg-light-3:       #F1F6F9;
+  --divider-light:    #98EECC;
+  --divider-acc-light:#D0F5BE;
+  --text-light:       #577D86;
+
+
   --vt-c-white: #ffffff;
   --vt-c-white-soft: #f8f8f8;
   --vt-c-white-mute: #f2f2f2;
+  --vt-t-s-white: #393e4b;
 
   --vt-c-black: #181818;
   --vt-c-black-soft: #222222;
   --vt-c-black-mute: #282828;
+  --vt-t-s-black: #cad2e6;
 
-  --vt-c-indigo: #2c3e50;
+  --vt-c-indigo: #4b6c8d;
 
   --vt-c-divider-light-1: rgba(60, 60, 60, 0.29);
   --vt-c-divider-light-2: rgba(60, 60, 60, 0.12);
   --vt-c-divider-dark-1: rgba(84, 84, 84, 0.65);
   --vt-c-divider-dark-2: rgba(84, 84, 84, 0.48);
 
-  --vt-c-text-light-1: var(--vt-c-indigo);
+  --vt-c-text-light-1: rgb(255, 228, 230) ;
   --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
   --vt-c-text-dark-1: var(--vt-c-white);
   --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
 }
 
-:root {
-  --color-background: var(--vt-c-white);
-  --color-background-soft: var(--vt-c-white-soft);
-  --color-background-mute: var(--vt-c-white-mute);
+
+
+
+[data-theme="light"] {
+  --color-background: var(--bg-light);
+  --color-accent: var(--divider-light);
+  --color-text: var(--text-light);
+  --color-text-accent: var(--text-dark-2);
+  --color-background-soft: var(--bg-light-3);
+  --color-background-mute: var(--bg-light-2);
+
+  /* --color-background-soft: var(--vt-c-white-soft); */
+  /* --color-background-mute: var(--vt-c-white-mute); */
+  --color-theme-switcher: var(--vt-t-s-white);
 
   --color-border: var(--vt-c-divider-light-2);
   --color-border-hover: var(--vt-c-divider-light-1);
 
   --color-heading: var(--vt-c-text-light-1);
-  --color-text: var(--vt-c-text-light-1);
 
   --section-gap: 160px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-background: var(--vt-c-black);
-    --color-background-soft: var(--vt-c-black-soft);
-    --color-background-mute: var(--vt-c-black-mute);
 
-    --color-border: var(--vt-c-divider-dark-2);
-    --color-border-hover: var(--vt-c-divider-dark-1);
 
-    --color-heading: var(--vt-c-text-dark-1);
-    --color-text: var(--vt-c-text-dark-2);
-  }
+[data-theme="dark"] {
+  
+  --color-background: var(--bg-dark);
+  --color-background-soft: var(--bg-dark-3);
+  --color-background-mute: var(--bg-dark-2);
+  --color-accent: var(--divider-dark);
+  --color-accent-soft: var(--divider-acc-dark);
+  --color-text: var(--text-dark);
+  --color-text-accent: var(--text-dark-2);
+  --color-text-hover: var(--text-dark-3);
+  --color-shadow: rgb(209, 213, 219, 0.1);
+  --color-shadow-soft: #7a7e803d;
+
+
+
+  --color-border: var(--vt-c-divider-dark-2);
+  --color-border-hover: var(--vt-c-divider-dark-1);
+
+  --color-heading: var(--vt-c-text-dark-1);
+  
+
+  --color-theme-switcher: var(--vt-t-s-black);
 }
 
 body {
@@ -65,9 +125,11 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-feature-settings:  "kern";
+  font-kerning: normal; 
+  word-break: break-word;
+  box-sizing: border-box;
 }
-
-
 
 
 /* Float */
@@ -88,3 +150,25 @@ body {
   -webkit-transform: translateY(-8px);
   transform: translateY(-8px);
 }
+
+/* width */
+::-webkit-scrollbar {
+  width: 0.55rem
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--color-background-soft);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-border-hover);
+}
+
+

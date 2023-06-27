@@ -3,6 +3,7 @@ title: SparcV8 Hardware Design
 repoURL: https://github.com/FrenzyExists/Computer-Architecture-Project-SPARC
 status: 'Developing'
 readTime: '10min'
+description: "My first time getting into hardware design and probably one of the most challenging and time-consumming college projects I've ever got"
 ---
 
 My first time getting into hardware design and probably one of the most challenging and time-consumming college projects I've ever got, probably will be only beaten by the CAPSTONE project I'll get on next semester.

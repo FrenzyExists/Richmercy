@@ -1,5 +1,5 @@
 <template>
-    <nav class="bg-gray-800">
+    <nav class="nav">
         <div class="flex px-2 sm:px-6 lg:px-8 shadow-xl">
 
             <div class="items-center mx-auto  justify-center">
@@ -8,7 +8,7 @@
                     <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
                         <!-- Mobile menu button-->
                         <div @click="isOpen = !isOpen"
-                            class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:text-cyan-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                            class="nav-text-icon inline-flex items-center justify-center rounded-md p-2 focus:outline-none text-lg">
                             <font-awesome-icon icon="fa-solid fa-burger" />
                         </div>
                     </div>
@@ -17,14 +17,14 @@
                         <div class="hidden sm:ml-6 sm:flex ">
                             <div class="flex flex-shrink-0 items-center">
                                 <span class="text-yellow text-4xl mr-3">
-                                    <font-awesome-icon icon="fa-solid fa-bolt" class="block h-7 w-auto text-yellow-200" />
+                                    <font-awesome-icon icon="fa-solid fa-bolt" class="block h-7 w-auto" />
                                 </span>
-                                <h1 class="text-2xl mr-3 text-gray-100 pr-12">Garcia's</h1>
+                                <h1 class="nav-text nav-heading font-semibold tracking-wide text-2xl mr-3 pr-12 select-none">Garcia's</h1>
                             </div>
                             <div class="flex space-x-9">
-                                <RouterLink v-for="item in routeArray" :key="item.name" :to="item.path" :class="[
-                                    'text-gray-300 hover:text-sky-200',
-                                    'px-1 py-2 rounded-md text-sm font-medium'
+                                <RouterLink v-for="item in FilteredRoutes" :key="item.name" :to="item.path" :class="[
+                                    'nav-text',
+                                    'px-1 py-2 rounded-md text-sm font-medium select-none'
                                 ]" :aria-current="item.current ? 'page' : undefined">
                                     {{ item.name }}
                                 </RouterLink>
@@ -36,10 +36,11 @@
             <ToggleTheme />
         </div>
 
+        <!-- Navbar items for Mobile -->
         <div v-show="isOpen" class="sm:hidden">
             <div class="space-y-1 px-2 pt-2 pb-3">
-                <RouterLink v-for="item in routeArray" :key="item.name" :to="item.path"
-                    :class="[item.current ? 'bg-gray-900 text-white' : 'text-gray-300  hover:text-white', 'block px-3 py-2 rounded-md text-base font-medium']"
+                <RouterLink v-for="item in FilteredRoutes" :key="item.name" :to="item.path"
+                    :class="[item.current ? 'bg-gray-900 text-white select-none' : 'text-gray-300  hover:text-white', 'block px-3 py-2 rounded-md text-base font-medium select-none']"
                     :aria-current="item.current ? 'page' : undefined">
                     {{ item.name }}
                 </RouterLink>
@@ -60,16 +61,40 @@ export default {
     name: "Navbar",
     data() {
         return {
-            isOpen: false
+            isOpen: false,
+            FilteredRoutes
         };
     },
     components: { ToggleTheme }
 };
+const FilteredRoutes = routeArray.filter( (obj) => {return typeof obj.visibleToNav === 'undefined' || obj.visibleToNav})
 </script>
 
 <style scoped>
 .router-link-active { 
-    background-color: rgb(209, 213, 219, 0.1); 
-    color: rgb(186 230 253);
+    background-color: var(--color-shadow); 
+    color: var(--color-accent-soft) !important;
+}
+.nav {
+    background-color: var(--color-background-soft);
+}
+.nav .fa-bolt {
+    color: var(--color-accent)
+}
+.nav-text, .nav-text-icon {
+    color: var(--color-text);
+}
+.nav-text-icon{
+    transition: ease-in-out 0.2s;
+}
+.nav-text-icon:hover {
+    color: var(--color-accent);
+    
+}
+.nav-text:hover {
+    color: var(--color-accent-soft);
+}
+.nav-heading:hover {
+    color: var(--color-text);
 }
 </style>

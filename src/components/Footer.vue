@@ -1,35 +1,67 @@
 <template>
-    <footer class="flex justify-between items-center w-full text-center">
-        <span>Copyright 2023 - Garcia's</span>
-
-        <a href="index.html" class="footer-logo text-orange-600">Pikachu is Wack</a>
-    </footer>
+  <div class="relative mt-16 bg-color-acc ">
+    <svg class="absolute top-0 w-full h-6 -mt-5 sm:-mt-10 sm:h-16 text-color-acc" preserveAspectRatio="none"
+      viewBox="0 0 1440 54">
+      <path fill="currentColor"
+        d="M0 22L120 16.7C240 11 480 1.00001 720 0.700012C960 1.00001 1200 11 1320 16.7L1440 22V54H1320C1200 54 960 54 720 54C480 54 240 54 120 54H0V22Z">
+      </path>
+    </svg>
+    <div class=" mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
+      <div class="mb-5">
+        <nav class="pt-7 flex flex-wrap justify-center -my-4">
+          <RouterLink v-for="route in otherRoutes" :key="route.name" :to="route.path" class="mx-5 my-2 text-base leading-6 text-color-text hover:text-color-bg">
+              {{ route.name }}
+          </RouterLink>
+        </nav>
+        <div class="flex justify-center mt-8 space-x-6">
+          <a v-for="social in socials" :key="social.icon" :href="social.url">
+            <font-awesome-icon class="w-7 h-7 hover:text-color-bg text-color-bg-soft" :icon="social.icon" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
-<style>
+<script>
+import { RouterLink } from 'vue-router'
 
-footer {
-  height: 50px;
-  flex-shrink: 0;
+const socials = [
+  {
+    icon: 'fa-brands fa-whatsapp',
+    url: 'https://wa.me/1XXXXXXXXXX'
+  }, {
+    icon: 'fa-brands fa-twitter',
+    url: ''
+  }, {
+    icon: 'fa-brands fa-github',
+    url: 'https://github.com/FrenzyExists'
+  }
+];
+
+const otherRoutes = [
+  {
+    path: '/contact',
+    name: 'Contact'
+  }, {
+    path: '/cheats',
+    name: 'Cheatsheets'
+  }, {
+    path: '/trinkets',
+    name: 'Fun Toys'
+  }
+];
+
+export default {
+  data() {
+    return {
+      socials,
+      otherRoutes
+    }
+  },
+  components: {
+    RouterLink
+  }
 }
 
-
-footer{
-    max-width: 950px;
-    margin: 70px auto 0px auto;
-    padding: 20px;
-    border-top: 1px solid #d8d8d8;
-}
-footer span{
-    color: #424141;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-size: 0.9rem;
-}
-footer .footer-logo{
-    font-weight: 500;
-    letter-spacing: 3px;
-    font-size: 1.3rem;
-}
-
-</style>
+</script>
