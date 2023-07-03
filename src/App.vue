@@ -1,5 +1,5 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterView } from 'vue-router'
 import { Transition, defineAsyncComponent } from 'vue';
 </script>
 
@@ -13,7 +13,7 @@ import { Transition, defineAsyncComponent } from 'vue';
         <component :is="Component" :key="$route.path"></component>
       </transition>
     </RouterView>
-    <Footer />
+    <Footer v-if="$route.path != '/'"/>
   </div>
 </template>
 

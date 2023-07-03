@@ -13,7 +13,7 @@ export default defineConfig({
       include: [/\.vue$/, /\.md$/], // <--
     }),
     Markdown({
-      wrapperClasses: 'prose prose-p:text-yellow-300 max-w-prose mx-auto lg:text-lg lg:py-12 relative flex min-h-screen flex-col justify-center overflow-hidden py-8 '
+      wrapperClasses: 'min-h-screen py-12 lg:py-12 md:py-12 px-6 about prose max-w-prose prose-p:text-base mx-auto font-whyte font-light '
     }),
     Pages({
       // pagesDir: 'src/pages',

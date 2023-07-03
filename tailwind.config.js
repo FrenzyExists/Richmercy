@@ -6,6 +6,28 @@ module.exports = {
   ],
   theme: {
     extend: {
+      typography: {
+        DEFAULT: {
+          css: {
+              '--tw-prose-body': 'var(--color-text)',
+            h2: {
+              color: 'var(--color-accent-soft)',
+              fontSize: '2.25rem',
+            },
+            h3: {
+              color: 'var(--color-accent)',
+              fontSize: '1.75rem '
+            }
+          }
+        },
+        sm: {
+          css: {
+            padding: '20rem'
+          }
+        }
+      },
+
+
       fontFamily: {
         whyte: ['Whyte']
       },

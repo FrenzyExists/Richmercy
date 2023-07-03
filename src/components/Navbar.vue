@@ -1,8 +1,8 @@
 <template>
-    <nav class="nav">
+    <nav class="nav bg-color-bg-soft trans">
         <div class="flex px-2 sm:px-6 lg:px-8 shadow-xl">
 
-            <div class="items-center mx-auto  justify-center">
+            <div class="items-center mx-auto justify-center">
 
                 <div class="relative flex h-16 items-center">
                     <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -74,9 +74,6 @@ const FilteredRoutes = routeArray.filter( (obj) => {return typeof obj.visibleToN
 .router-link-active { 
     background-color: var(--color-shadow); 
     color: var(--color-accent-soft) !important;
-}
-.nav {
-    background-color: var(--color-background-soft);
 }
 .nav .fa-bolt {
     color: var(--color-accent)

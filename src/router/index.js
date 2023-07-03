@@ -31,13 +31,13 @@ const routeArray = [
   {
     path: "/projects/:letter",
     name: "projectByLetter",
-    component: () => import('../views/ByListView.vue'),
+    component: () => import('../views/ByListProjectView.vue'),
     visibleToNav: false
   },
   {
     path: "/blog/:letter",
     name: "blogByLetter",
-    component: () => import('../views/ByListView.vue'),
+    component: () => import('../views/ByListBlogView.vue'),
     visibleToNav: false
   },
   {
@@ -53,6 +53,5 @@ const router = createRouter({
   routes: routeArray
 })
 
-export { routeArray }
-export {markdownRoutes}
+export { routeArray, markdownRoutes }
 export default router

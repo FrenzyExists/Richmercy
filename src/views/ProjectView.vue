@@ -1,6 +1,6 @@
 <template>
   <div class="projects">
-    <ByLetter routerName="projectByLetter" />
+    <ByLetter routerName="projectByLetter" :existingArticles="articles" />
 
     <div class="p-10 justify-center">
       <div
@@ -13,9 +13,6 @@
           placeholder="Search something..." v-model="query" />
       </div>
     </div>
-
-
-
     <FeatureBlocks :articles="filteredArticles" />
   </div>
 </template>

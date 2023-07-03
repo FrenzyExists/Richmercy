@@ -8,14 +8,14 @@
     </svg>
     <div class=" mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
       <div class="mb-5">
-        <nav class="pt-7 flex flex-wrap justify-center -my-4">
-          <RouterLink v-for="route in otherRoutes" :key="route.name" :to="route.path" class="mx-5 my-2 text-base leading-6 text-color-text hover:text-color-bg">
+        <nav class="pt-7 flex flex-wrap justify-center -my-4 font-whyte font-semibold">
+          <RouterLink v-for="route in otherRoutes" :key="route.name" :to="route.path" class="mx-5 my-2 text-lg tracking-wider leading-7 text-color-text hover:text-color-bg-soft hover:transition duration-300 hover:ease-in-out">
               {{ route.name }}
           </RouterLink>
         </nav>
         <div class="flex justify-center mt-8 space-x-6">
           <a v-for="social in socials" :key="social.icon" :href="social.url">
-            <font-awesome-icon class="w-7 h-7 hover:text-color-bg text-color-bg-soft" :icon="social.icon" />
+            <font-awesome-icon class="hover:transition duration-300 hover:ease-in-out drop-shadow-sm w-8 h-7 hover:text-color-bg text-color-bg-soft" :icon="social.icon" />
           </a>
         </div>
       </div>

@@ -3,6 +3,14 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  box-sizing: border-box;
+}
+*:before, *:after {
+  content: "";
+  position: absolute;
+}
+
 @font-face {
   font-family: 'Whyte';
   src: local('Whyte'), 
@@ -63,6 +71,7 @@ html {
   --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
   --vt-c-text-dark-1: var(--vt-c-white);
   --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
+
 }
 
 
@@ -75,9 +84,8 @@ html {
   --color-text-accent: var(--text-dark-2);
   --color-background-soft: var(--bg-light-3);
   --color-background-mute: var(--bg-light-2);
-
-  /* --color-background-soft: var(--vt-c-white-soft); */
-  /* --color-background-mute: var(--vt-c-white-mute); */
+  --shadow-boi: #bbc0c3;
+  
   --color-theme-switcher: var(--vt-t-s-white);
 
   --color-border: var(--vt-c-divider-light-2);
@@ -86,6 +94,7 @@ html {
   --color-heading: var(--vt-c-text-light-1);
 
   --section-gap: 160px;
+
 }
 
 
@@ -102,8 +111,7 @@ html {
   --color-text-hover: var(--text-dark-3);
   --color-shadow: rgb(209, 213, 219, 0.1);
   --color-shadow-soft: #7a7e803d;
-
-
+  --shadow-boi: #091D3D;
 
   --color-border: var(--vt-c-divider-dark-2);
   --color-border-hover: var(--vt-c-divider-dark-1);
@@ -112,6 +120,20 @@ html {
   
 
   --color-theme-switcher: var(--vt-t-s-black);
+}
+
+.shadow-hero {
+  -webkit-filter: drop-shadow(6px 4px 0px var(--shadow-boi));
+  filter: drop-shadow(6px 4px 0px var(--shadow-boi));
+}
+
+.shadow-cloud {
+  -webkit-filter: drop-shadow(0px -14px 0px var(--shadow-boi));
+  filter: drop-shadow(0px -14px 0px var(--shadow-boi));
+}
+
+.trans {
+  transition: ease-in 150ms;
 }
 
 body {
