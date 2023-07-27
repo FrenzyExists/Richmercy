@@ -26,6 +26,33 @@
   font-weight: lighter;
 }
 
+@font-face {
+  font-family: 'Montserrat Alternate';
+  src: url(../fonts/Montserrat_Alternates/MontserratAlternates-Medium.ttf);
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat Alternate';
+  src: url(../fonts/Montserrat_Alternates/MontserratAlternates-MediumItalic.ttf);
+  font-style: italic;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat Alternate';
+  src: url(../fonts/Montserrat_Alternates/MontserratAlternates-BoldItalic.ttf);
+  font-style: italic;
+  font-weight: bold;
+}
+
+@layer utilities {
+  .trapecard {
+    clip-path: polygon(0 0, 100% 0, 100% 78%, 0 100%);
+  }
+}
+
 
 html {
   scroll-padding-top: 2rem;
@@ -74,9 +101,6 @@ html {
 
 }
 
-
-
-
 [data-theme="light"] {
   --color-background: var(--bg-light);
   --color-accent: var(--divider-light);
@@ -85,6 +109,8 @@ html {
   --color-background-soft: var(--bg-light-3);
   --color-background-mute: var(--bg-light-2);
   --shadow-boi: #bbc0c3;
+
+  --vc-pgn-active-color: var(--text-dark-2);
   
   --color-theme-switcher: var(--vt-t-s-white);
 
@@ -111,7 +137,8 @@ html {
   --color-text-hover: var(--text-dark-3);
   --color-shadow: rgb(209, 213, 219, 0.1);
   --color-shadow-soft: #7a7e803d;
-  --shadow-boi: #091D3D;
+  --shadow-boi: #091d3d83;
+  --vc-pgn-active-color: var(--divider-dark);
 
   --color-border: var(--vt-c-divider-dark-2);
   --color-border-hover: var(--vt-c-divider-dark-1);
@@ -192,5 +219,3 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-border-hover);
 }
-
-
