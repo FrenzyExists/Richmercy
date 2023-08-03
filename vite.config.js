@@ -13,7 +13,10 @@ export default defineConfig({
       include: [/\.vue$/, /\.md$/], // <--
     }),
     Markdown({
-      wrapperClasses: 'min-h-screen py-12 lg:py-12 md:py-12 px-6 about prose max-w-prose prose-p:text-base mx-auto font-whyte font-light '
+      // md:after:absolute md:after:h-full md:after:-z-10 md:after:w-1/12 md:after:top-0 md:after:right-0 md:before:bg-color-bg-banner md:before:absolute md:before:h-full md:before:-z-10 md:before:w-1/12 md:before:top-0 md:before:right-0
+      wrapperClasses: 'min-h-screen py-12 lg:py-12 md:py-12 px-6 about prose max-w-prose prose-p:text-base mx-auto text-lg font-montserrat-alternate font-light article after:absolute',
+      builders: []
+      
     }),
     Pages({
       // pagesDir: 'src/pages',

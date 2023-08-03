@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 const app = createApp(App)
 
-import { faBurger, faLaptopCode, faBolt, faSun, faMoon, faMicrochip, faLayerGroup, faCubes, faDatabase, faGears, faSearch } from '@fortawesome/free-solid-svg-icons'
+import { faBurger, faLaptopCode, faBolt, faSun, faMoon, faMicrochip, faLayerGroup, faCubes, faDatabase, faGears, faSearch, faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import {faGithub, faTwitter, faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
 // app.directive('markdown', markdown)
@@ -30,7 +30,7 @@ app.directive('markdown', {
 )
 
 /* add icons to the library */
-library.add(faBurger, faLaptopCode, faBolt, faSun, faMoon, faMicrochip, faLayerGroup, faCubes, faDatabase, faGears, faSearch, faGithub, faWhatsapp, faTwitter)
+library.add(faBurger, faLaptopCode, faBolt, faSun, faMoon, faMicrochip, faLayerGroup, faCubes, faDatabase, faGears, faSearch, faGithub, faWhatsapp, faTwitter, faChevronRight)
 app.component('font-awesome-icon', FontAwesomeIcon)
 app.use(router)
 

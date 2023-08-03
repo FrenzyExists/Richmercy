@@ -1,5 +1,5 @@
 <template class="">
-  <div class="relative overflow-y-hidden h-full overflow-x-hidden">
+  <div class="items-end relative flex overflow-y-hidden h-full overflow-x-hidden">
 
     <FC1 />
     <FC2 />
@@ -7,16 +7,23 @@
 
     <Paperplane />
     <Balloon />
-
+    <div class="absolute top-[30rem] left-[3rem]">
+      <button
+        class="whitespace-normal fixed z-40 focus:outline-none flex select-none items-center gap-3 rounded-lg bg-color-text py-3.5 px-7 text-center align-middle text-sm font-bold uppercase text-color-bg-soft font-montserrat-alternate shadow-md shadow-blue-gray-500/10 transition-all hover:shadow-lg hover:shadow-blue-gray-500/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+        type="button" data-ripple-dark="true">
+        <img src="https://www.material-tailwind.com/icons/metamask.svg" alt="metamask" class="h-6 w-6" />
+        look more...
+      </button>
+    </div>
 
     <Cloud1 />
     <Cloud2 />
     <Cloud3 />
 
-    <div class="info current-info absolute top-[18rem] left-10">
-      <h1 class="text name uppercase font-extrabold text-5xl shadow-hero">Sup! I'm Angel</h1>
+    <div class="info current-info absolute top-[18rem] select-none left-10">
+      <h1 class="text name uppercase font-montserrat-alternate font-extrabold text-5xl shadow-hero">Sup! I'm Angel</h1>
       <!-- This part will be using Typed.js, or something like that idk -->
-      <h4 class="text text-3xl whatami font-medium lowercase font-whyte shadow-hero">Tinkerer</h4>
+      <h4 class="text text-3xl tracking-[0.65rem] pb-3 whatami before:h-5 before:-mt-2 before:top-[34%] before:w-24 before:absolute after:absolute after:top-20 after:w-60 after:ml-[-5.7rem] after:-mt-4 after:h-1 before:left-[-20%] after:left-[-20%] after:bg-color-text before:bg-color-text font-montserrat-alternate font-medium lowercase shadow-hero">Tinkerer</h4>
     </div>
 
   </div>
@@ -27,8 +34,8 @@ import { defineAsyncComponent } from 'vue';
 
 export default {
   components: {
-    Cloud1: defineAsyncComponent( () => import('../assets/Cloud1.vue')),
-    Paperplane: defineAsyncComponent( () => import('../assets/Paperplane.vue')),
+    Cloud1: defineAsyncComponent(() => import('../assets/Cloud1.vue')),
+    Paperplane: defineAsyncComponent(() => import('../assets/Paperplane.vue')),
     FC1: defineAsyncComponent(() => import('../assets/FlyingCloud1.vue')),
     FC2: defineAsyncComponent(() => import('../assets/FlyingCloud2.vue')),
     FC3: defineAsyncComponent(() => import('../assets/FlyingCloud3.vue')),
@@ -38,7 +45,6 @@ export default {
   }
 }
 </script>
-
 
 <style>
 :root {
@@ -105,34 +111,14 @@ export default {
   font-weight: 600;
   margin-left: var(--mg-left);
   margin-bottom: calc(var(--mg-left) / 2);
-  padding-bottom: .8rem;
-  letter-spacing: .65rem;
   margin-top: 3rem;
   margin-left: 9rem
 }
 
 .info .whatami::before {
-  top: 1rem;
-  width: 6.25rem;
   margin-left: calc(-1.90 * var(--mg-left));
-  height: 1.2rem;
-  margin-top: -.5rem;
-  top: 34%
 }
 
-.info .whatami::before,
-.info .whatami::after {
-  position: absolute;
-  background: #fff;
-  left: -20%
-}
-
-.info .whatami::after {
-  top: 5rem;
-  width: 15rem;
-  height: 4px;
-  margin-left: -5.7rem
-}
 
 .text {
   animation-name: fadeInUp

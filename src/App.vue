@@ -4,7 +4,7 @@ import { Transition, defineAsyncComponent } from 'vue';
 </script>
 
 <template>
-  <div class="flex flex-col h-screen">
+  <div class="flex flex-col h-screen main-app">
     <header>
       <Navbar />
     </header>
@@ -13,7 +13,7 @@ import { Transition, defineAsyncComponent } from 'vue';
         <component :is="Component" :key="$route.path"></component>
       </transition>
     </RouterView>
-    <Footer v-if="$route.path != '/'"/>
+    <Footer v-if="$route.path != '/' && $route.path != '/projects' && $route.path != '/blog'"/>
   </div>
 </template>
 

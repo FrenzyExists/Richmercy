@@ -1,6 +1,6 @@
 <template>
-    <nav class="nav bg-color-bg-soft trans">
-        <div class="flex px-2 sm:px-6 lg:px-8 shadow-xl">
+    <nav class="nav bg-color-bg-nav trans">
+        <div class="relative z-20 flex px-2 sm:px-6 lg:px-8 shadow-xl">
 
             <div class="items-center mx-auto justify-center">
 
@@ -14,7 +14,7 @@
                     </div>
                     <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
 
-                        <div class="hidden sm:ml-6 sm:flex ">
+                        <div class="hidden sm:ml-6 sm:flex font-montserrat-alternate">
                             <div class="flex flex-shrink-0 items-center">
                                 <span class="text-yellow text-4xl mr-3">
                                     <font-awesome-icon icon="fa-solid fa-bolt" class="block h-7 w-auto" />

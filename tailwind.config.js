@@ -29,9 +29,18 @@ module.exports = {
 
 
       fontFamily: {
-        whyte: ['Whyte']
+        'montserrat-alternate': ['Montserrat Alternate']
       },
       colors: {
+        'color-about-me': 'var(--color-about-me)',
+        'color-green': 'var(--color-green)',
+        'color-red': 'var(--color-red)',
+        'color-bg-tag-container': 'var(--color-background-tag-container)',
+        'color-bg-tag': 'var(--color-background-tag)',
+        'color-bg-searchbar': 'var(--color-background-searchbar)',
+        'color-bg-article': 'var(--color-background-article)',
+        'color-bg-banner': 'var(--color-background-banner)',
+        'color-bg-nav': 'var(--color-background-nav)' ,
         'color-bg': 'var(--color-background)',
         'color-acc': 'var(--color-accent)',
         'color-acc-soft': 'var(--color-accent-soft)',

@@ -1,19 +1,12 @@
 <template>
-  <div class="projects">
+  <div class="bg-color-bg-soft lg:mx-36 md:mx-14">
     <ByLetter routerName="projectByLetter" :existingArticles="articles" />
 
     <div class="p-10 justify-center">
-      <div
-        class="search-bar relative flex items-center w-full h-12 rounded focus-within:shadow-lg bg-white overflow-hidden">
-        <div class="grid place-items-center h-full w-12 text-gray-300">
-          <font-awesome-icon icon="fa-solid fa-search" class="block h-6 w-6" />
-        </div>
-
-        <input class="peer h-full w-full outline-none text-sm text-gray-700 pr-2" type="search" id=""
-          placeholder="Search something..." v-model="query" />
-      </div>
+      <Searchbar :query.sync="query" @update:query="handleUpdateQuery" />
     </div>
     <FeatureBlocks :articles="filteredArticles" />
+    <!-- <vue-utterances repo="khalby786/vue-utterances" theme="gruvbox-dark" issue-term="pathname" /> -->
   </div>
 </template>
 
@@ -21,6 +14,8 @@
 <script lang="js">
 import ByLetter from '@/components/ByLetter.vue';
 import FeatureBlocks from '@/components/FeatureBlocks.vue';
+import Searchbar from '@/components/Searchbar.vue';
+// import VueUtterances from '@/components/Comments.vue'
 import { ref, computed } from 'vue'
 
 function getArticleInfo() {
@@ -40,7 +35,9 @@ function getArticleInfo() {
 export default {
   components: {
     ByLetter,
-    FeatureBlocks
+    FeatureBlocks,
+    Searchbar
+    // VueUtterances
   },
   setup() {
     const query = ref('')
@@ -53,21 +50,16 @@ export default {
       )
     });
 
+    function handleUpdateQuery(newValue) {
+      query.value = newValue;
+    }
+
     return {
       query,
       articles,
-      filteredArticles
+      filteredArticles,
+      handleUpdateQuery
     }
   }
 }
 </script>
-
-<style>
-.search-bar {
-  box-shadow: 0 0 0 1px rgb(14 41 84 / 10%), 0 2px 4px 1px rgba(14, 41, 84, .18);
-  border-bottom: 1px solid transparent;
-  border-top: 1px solid transparent;
-  border-right: none;
-  border-left: 1px solid transparent;
-}
-</style>

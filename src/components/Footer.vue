@@ -1,5 +1,5 @@
 <template>
-  <div class="relative mt-16 bg-color-acc ">
+  <div class="relative bg-color-acc ">
     <svg class="absolute top-0 w-full h-6 -mt-5 sm:-mt-10 sm:h-16 text-color-acc" preserveAspectRatio="none"
       viewBox="0 0 1440 54">
       <path fill="currentColor"
