@@ -44,7 +44,7 @@
               </div>
               <!-- Name error message -->
               <div class="input-errors" v-for="(error, index) of v$.form.name.$errors" :key="index">
-                <div class="error-msg">{{ error.$message }}</div>
+                <div class="error-msg text-color-red">{{ error.$message }}</div>
               </div>
             </div>
             <div class="my-6">
@@ -59,7 +59,7 @@
               </div>
               <!-- Name error message -->
               <div class="input-errors" v-for="(error, index) of v$.form.email.$errors" :key="index">
-                <div class="error-msg">{{ error.$message }}</div>
+                <div class="error-msg text-color-red">{{ error.$message }}</div>
               </div>
             </div>
 
@@ -70,22 +70,23 @@
                   placeholder=" " data-minlength="10" v-model="v$.form.textMessage.$model" name="messageText"
                   id="messageText"></textarea>
                 <label
-                  class="!font-bold uppercase after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-blue-gray-500 transition-all after:absolute after:-bottom-0 after:block after:w-full after:scale-x-0 after:border-b-2 after:border-color-acc-soft after:transition-transform after:duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.25] peer-placeholder-shown:text-blue-gray-500 peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-color-acc-soft peer-focus:after:scale-x-100 peer-focus:after:border-color-acc-soft peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
+                  class="!font-bold h-[98%] uppercase after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-blue-gray-500 transition-all after:absolute after:-bottom-0 after:block after:w-full after:scale-x-0 after:border-b-2 after:border-color-acc-soft after:transition-transform after:duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.25] peer-placeholder-shown:text-blue-gray-500 peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-color-acc-soft peer-focus:after:scale-x-100 peer-focus:after:border-color-acc-soft peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
                   Hi! I'm Contacting you because...
                 </label>
               </div>
               <!-- Text Message error message -->
               <div class="input-errors" v-for="(error, index) of v$.form.textMessage.$errors" :key="index">
-                <div class="error-msg">{{ error.$message }}</div>
+                <div class="error-msg text-color-red">{{ error.$message }}</div>
               </div>
             </div>
 
             <div class="flex justify-around sm:flex-row flex-col">
               <button type="submit" id="submit" name="submit"
-                class="rounded-full my-4 sm:my-0 hover:transition duration-300 hover:ease-in-out hover:bg-color-acc hover:text-color-text-acc text-lg p-3 font-bold border-color-acc border-4 text-color-acc-soft bg-color-text-acc min-w-[10rem] ">SEND
-                MESSAGE</button>
-              <button type="reset" id="submit" name="reset"
-                class="rounded-full my-4 sm:my-0 hover:transition duration-300 hover:ease-in-out hover:bg-color-acc hover:text-color-text-acc text-lg p-3 font-bold border-color-acc border-4 text-color-acc-soft bg-color-text-acc min-w-[10rem] ">RESET</button>
+                class="rounded-full drop-shadow-md my-4 sm:my-0 font-bold text-lg hover:transition duration-300 hover:ease-in-out hover:bg-color-acc-soft hover:text-color-bg-soft text-color-acc-soft bg-color-bg-soft p-4 min-w-[10rem]
+                ">SEND MESSAGE</button>
+                <button type="reset" id="submit" name="reset"
+                class="rounded-full drop-shadow-md my-4 sm:my-0 font-bold text-lg hover:transition duration-300 hover:ease-in-out hover:bg-color-acc-soft hover:text-color-bg-soft text-color-acc-soft bg-color-bg-soft p-4 min-w-[10rem]
+                ">RESET</button>
             </div>
           </form>
           <br>
@@ -139,15 +140,3 @@ export default {
   },
 }
 </script>
-
-<style>
-.form-control {
-  border: 2px solid rgba(0, 0, 0, 0.27);
-  width: 100%;
-  max-width: 100%;
-  height: 3em;
-  padding: 1em;
-  margin: 0.5em 0 2em 0;
-  font-weight: bold;
-}
-</style>
