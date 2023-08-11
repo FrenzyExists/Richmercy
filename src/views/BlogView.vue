@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-color-bg-soft lg:mx-36 md:mx-14">
+  <div class="bg-color-bg-soft overflow-hidden lg:mx-36 md:mx-14 pb-10 md:pb-12 pt-16 md:pt-0">
     <ByLetter routerName="blogByLetter" :existingArticles="articles" />
 
     <div class="p-10 justify-center">
@@ -10,10 +10,7 @@
 </template>
 
 <script lang="js">
-import ByLetter from '@/components/ByLetter.vue';
-import FeatureBlocks from '@/components/FeatureBlocks.vue';
-import Searchbar from '@/components/Searchbar.vue';
-import { ref, computed } from 'vue';
+import { ref, computed, defineAsyncComponent } from 'vue';
 
 function getArticleInfo() {
   try {
@@ -31,9 +28,9 @@ function getArticleInfo() {
 
 export default {
   components: {
-    ByLetter,
-    FeatureBlocks,
-    Searchbar
+    ByLetter: defineAsyncComponent(() => import('@/components/ByLetter.vue')),
+    FeatureBlocks: defineAsyncComponent(() => import('@/components/FeatureBlocks.vue')),
+    Searchbar: defineAsyncComponent(() => import('@/components/Searchbar.vue'))
   },
   setup() {
     const query = ref('');
@@ -46,11 +43,8 @@ export default {
     });
 
     function handleUpdateQuery(newValue) {
-      // console.log(`Received update:query event with value ${newValue}`);
       query.value = newValue;
-    }
-
-    return {
+    } return {
       query,
       articles,
       filteredArticles,

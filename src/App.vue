@@ -4,7 +4,7 @@ import { Transition, defineAsyncComponent } from 'vue';
 </script>
 
 <template>
-  <div class="flex flex-col h-screen main-app">
+  <div class="flex flex-col h-screen main-app md:pt-16 ">
     <header>
       <Navbar />
     </header>
@@ -13,7 +13,8 @@ import { Transition, defineAsyncComponent } from 'vue';
         <component :is="Component" :key="$route.path"></component>
       </transition>
     </RouterView>
-    <Footer v-if="$route.path != '/' && $route.path != '/projects' && $route.path != '/blog'"/>
+    <!-- $route.path != '/' && $route.path != '/projects/' -->
+    <Footer v-if="showFooter" />
   </div>
 </template>
 
@@ -22,6 +23,13 @@ export default {
   components: {
     Navbar: defineAsyncComponent(() => import('./components/Navbar.vue')),
     Footer: defineAsyncComponent(() => import('./components/Footer.vue'))
+  },
+  computed: {
+    showFooter() {
+      const routePath = this.$route.path;
+      const re = new RegExp("^/(projects|blog)(/)?([a-z])?$");
+      return routePath !== '/' && !re.test(routePath);
+    }
   }
 }
 </script>

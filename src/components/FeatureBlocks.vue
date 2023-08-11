@@ -61,7 +61,7 @@ export default {
 }
 .tag-btn:hover {
   transform: scale(1.2);
-  background: linear-gradient(to right, #4270E8, #4270E8);
+  background: linear-gradient(to right, var(--color-background), var(--color-background));
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

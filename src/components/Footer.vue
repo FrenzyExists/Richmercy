@@ -8,7 +8,7 @@
     </svg>
     <div class=" mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
       <div class="mb-5">
-        <nav class="pt-7 flex flex-wrap justify-center -my-4 font-whyte font-semibold">
+        <nav class="pt-7 flex flex-wrap justify-center -my-4 font-montserrat-alternate font-semibold">
           <RouterLink v-for="route in otherRoutes" :key="route.name" :to="route.path" class="mx-5 my-2 text-lg tracking-wider leading-7 text-color-text hover:text-color-bg-soft hover:transition duration-300 hover:ease-in-out">
               {{ route.name }}
           </RouterLink>
@@ -53,6 +53,7 @@ const otherRoutes = [
 ];
 
 export default {
+  name: "Footer",
   data() {
     return {
       socials,

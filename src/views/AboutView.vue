@@ -1,12 +1,11 @@
 <template>
   <div class="relative xl:mx-36 lg:mx-0 flex min-h-screen flex-col justify-center overflow-hidden md:py-8 lg:py-12">
-    <!-- bg-[url(../assets/grid.svg)] bg-top [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0.2S))] -->
-    <div
-      class="absolute bg-color-about-me inset-0">
+    <div class="absolute bg-color-about-me inset-0">
     </div>
     <div
       class="mb-0 md:mb-24 relative w-full bg-color-bg-article md:rounded-3xl px-6 py-12 shadow-xl shadow-slate-700/10 ring-1 ring-gray-900/5 md:mx-auto md:max-w-3xl lg:max-w-4xl lg:pb-28 lg:pt-16">
-      <div class="prose mx-auto mt-8 lg:prose-lg prose-p:text-color-text-acc prose-h1:text-color-acc-soft font-montserrat-alternate">
+      <div
+        class="prose mx-auto mt-8 lg:prose-lg prose-p:text-color-text-acc prose-h1:text-color-acc-soft font-montserrat-alternate">
         <h1>Who Am I?</h1>
         <p>My real name is Angel Garcia, but prefer to go by Pikachu on the internet, its less formal. I started formally
           learning programming at my 3rd year of college in Java. Since then I've been tinkering from time to time in
@@ -70,7 +69,7 @@
                   placeholder=" " data-minlength="10" v-model="v$.form.textMessage.$model" name="messageText"
                   id="messageText"></textarea>
                 <label
-                  class="!font-bold h-[98%] uppercase after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-blue-gray-500 transition-all after:absolute after:-bottom-0 after:block after:w-full after:scale-x-0 after:border-b-2 after:border-color-acc-soft after:transition-transform after:duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.25] peer-placeholder-shown:text-blue-gray-500 peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-color-acc-soft peer-focus:after:scale-x-100 peer-focus:after:border-color-acc-soft peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
+                  class="!font-bold h-[98%] uppercase after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex w-full select-none text-[11px] font-normal leading-tight text-blue-gray-500 transition-all after:absolute after:-bottom-0 after:block after:w-full after:scale-x-0 after:border-b-2 after:border-color-acc-soft after:transition-transform after:duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.25] peer-placeholder-shown:text-blue-gray-500 peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-color-acc-soft peer-focus:after:scale-x-100 peer-focus:after:border-color-acc-soft peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
                   Hi! I'm Contacting you because...
                 </label>
               </div>
@@ -81,11 +80,9 @@
             </div>
 
             <div class="flex justify-around sm:flex-row flex-col">
-              <button type="submit" id="submit" name="submit"
-                class="rounded-full drop-shadow-md my-4 sm:my-0 font-bold text-lg hover:transition duration-300 hover:ease-in-out hover:bg-color-acc-soft hover:text-color-bg-soft text-color-acc-soft bg-color-bg-soft p-4 min-w-[10rem]
-                ">SEND MESSAGE</button>
-                <button type="reset" id="submit" name="reset"
-                class="rounded-full drop-shadow-md my-4 sm:my-0 font-bold text-lg hover:transition duration-300 hover:ease-in-out hover:bg-color-acc-soft hover:text-color-bg-soft text-color-acc-soft bg-color-bg-soft p-4 min-w-[10rem]
+              <button type="submit" id="submit" name="submit" class="rounded-full drop-shadow-md my-4 sm:my-0 font-bold text-lg hover:transition duration-300 hover:ease-in-out hover:bg-color-acc-soft hover:text-color-bg-soft text-color-acc-soft bg-color-bg-soft p-4 min-w-[10rem]
+                " @click="sendEmail">SEND MESSAGE</button>
+              <button type="reset" id="submit" name="reset" class="rounded-full drop-shadow-md my-4 sm:my-0 font-bold text-lg hover:transition duration-300 hover:ease-in-out hover:bg-color-acc-soft hover:text-color-bg-soft text-color-acc-soft bg-color-bg-soft p-4 min-w-[10rem]
                 ">RESET</button>
             </div>
           </form>
@@ -113,7 +110,27 @@ export default {
   setup() {
     return { v$: useVuelidate() }
   },
-
+  mounted() {
+    let smtpjs = document.createElement("script");
+    smtpjs.async = true;
+    smtpjs.setAttribute("src", "https://smtpjs.com/v3/smtp.js")
+    document.head.appendChild(smtpjs)
+  },
+  methods: {
+    sendEmail() {
+      console.log("attempting message")
+      Email.send({
+        SecureToken: 'f36dced5-ba7c-4311-a801-ba89cc2d958c',
+        To: 'frenzyexists@gmail.com',
+        From: this.v$.form.email.$model,
+        Subject: this.v$.form.name.$model + ' - Customer',
+        Body: this.v$.form.textMessage.$model
+      }).then(
+        // TODO: Create a better alert component
+        message => alert(message)
+      );
+    }
+  },
   data() {
     return {
       form: {
