@@ -6,14 +6,11 @@ import { Transition, defineAsyncComponent } from 'vue';
 <template>
   <div class="flex flex-col h-screen main-app md:pt-16 ">
     <header>
-      <Navbar />
+      <Navbar :FilteredRoutes="[{name: 'about', path: '/about'}, {name: 'blog', path: '/blog'}]"/>
     </header>
-    <RouterView v-slot="{ Component }" class="flex-final">
-      <transition name="fade" mode="out-in">
+    <RouterView v-slot="{ Component }" >
         <component :is="Component" :key="$route.path"></component>
-      </transition>
     </RouterView>
-    <!-- $route.path != '/' && $route.path != '/projects/' -->
     <Footer v-if="showFooter" />
   </div>
 </template>

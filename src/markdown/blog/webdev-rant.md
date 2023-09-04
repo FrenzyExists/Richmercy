@@ -1,7 +1,15 @@
 ---
-title: "Why the heck webdev is so much of a wild west"
-description: "Webdev is too messy, its what happens when you give a very loose lang to a couple of lads, and its chaos"
+title: "Web Design with vue: A Rant"
+description: "I have a grudge and I'm about to implode, be warned"
+status: 'Rant'
+readTime: '3min'
+date: 'July 6th, 2023'
+tags: ['Webdev']
 ---
+
+
+
+Web development! Javascript! Bloody rewrites!
 
 Things to do
 

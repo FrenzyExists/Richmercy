@@ -1,11 +1,11 @@
 <template>
-  <div class="bg-color-bg-soft overflow-hidden lg:mx-36 md:mx-14 pb-10 md:pb-12 pt-16 md:pt-0">
-    <ByLetter routerName="blogByLetter" :existingArticles="articles" />
+  <div class="flex-final dark:bg-dark-bg-soft bg-bg-soft overflow-hidden lg:mx-36 md:mx-14 pb-10 md:pb-12 pt-16 md:pt-0">
+    <by-letter routerName="blogByLetter" :existingArticles="articles" />
 
     <div class="p-10 justify-center">
-      <Searchbar :query.sync="query" @update:query="handleUpdateQuery" />
+      <searchbar :query.sync="query" @update:query="handleUpdateQuery" />
     </div>
-    <FeatureBlocks :articles="filteredArticles" />
+    <articleblock :articles="filteredArticles" />
   </div>
 </template>
 
@@ -28,9 +28,9 @@ function getArticleInfo() {
 
 export default {
   components: {
-    ByLetter: defineAsyncComponent(() => import('@/components/ByLetter.vue')),
-    FeatureBlocks: defineAsyncComponent(() => import('@/components/FeatureBlocks.vue')),
-    Searchbar: defineAsyncComponent(() => import('@/components/Searchbar.vue'))
+    'by-letter': defineAsyncComponent(() => import('@/components/byletter.vue')),
+    articleblock: defineAsyncComponent(() => import('@/components/articleblock.vue')),
+    searchbar: defineAsyncComponent(() => import('@/components/Searchbar.vue'))
   },
   setup() {
     const query = ref('');

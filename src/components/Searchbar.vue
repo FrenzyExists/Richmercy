@@ -1,10 +1,10 @@
 <template>
-  <div class="search-bar relative flex items-center w-full h-12 rounded bg-color-bg-searchbar overflow-hidden">
-    <div class="grid place-items-center h-full w-12 text-color-bg-banner">
+  <div class="search-bar relative flex items-center w-full h-12 rounded dark:bg-dark-bg-mute bg-bg-mute overflow-hidden">
+    <div class="grid place-items-center h-full w-12 dark:text-dark-bg-hard text-bg-hard ">
       <font-awesome-icon icon="fa-solid fa-search" class="block h-6 w-6" />
     </div>
     <input
-      class="font-montserrat-alternate caret-color-acc peer h-full w-full bg-color-bg-searchbar outline-none text-sm text-gray-700 pr-2"
+      class="font-montserrat-alternate caret-acc dark:caret-dark-acc focus:ring-0 border-none bg-bg-mute dark:bg-dark-bg-mute h-full w-full outline-none text-sm text-text dark:text-dark-text dark:placeholder-dark-text placeholder-text placeholder:opacity-50 pr-2 font-semibold"
       type="search"
       id=""
       placeholder="Search something..."
@@ -18,11 +18,11 @@
 import { ref } from 'vue';
 
 export default {
+  name: 'searchbar',
   setup(props, { emit }) {
     const query = ref('');
 
     function emitUpdateQuery() {
-      // console.log(`Emitting update:query event with value ${query.value}`);
       emit('update:query', query.value);
     }
     return { query, emitUpdateQuery };
@@ -35,6 +35,5 @@ export default {
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.3);
-  transition: 0.2s;
 }
 </style>

@@ -5,42 +5,27 @@
   <meta charset="UTF-8">
   <link rel="icon" href="/logo.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Garcia's Humble Corner</title>
+  <meta name="description" content="My personal Blog and Portfolio. Also a blue hellscape">
+  <meta property="og:title"
+    content="Detective Pikachu's Hell: The most cringeworthy website for those who code &amp; develop." />
+  <meta property="og:description" content="My personal Blog and Portfolio. Also a blue hellscape" />
+  <meta property="og:type" content="website" />
+  <!-- change image plz -->
+  <meta property="og:image"
+    content="https://stp-v4-cdn.lottiefiles.com/cdn-cgi/image/width=1200,quality=80,format=auto/t_T_Wh_OP_1_Y_Rph_K4_Rl_HC_Zj_LR_Ie_I5qk_Y6_Wbb2h_A_Hio_NX_0164244cad.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:site_name" content="Detective Pikachu's Personal Portfolio" />
+  <meta name="twitter:site" content="@Not__Pikachu" />
+  <meta name="twitter:title" content="Yep, that's me, a college student in engineering with scraps n sticks." />
+  <meta name="twitter:description"
+    content="Send Emotional support" />
+  <title>Detective Pikachu's Hell: The most cringeworthy website for those who code &amp; develop.</title>
 </head>
 
-<body>
+<body class="dark:bg-dark-bg-mute bg-bg-mute selection:bg-bg-soft dark:selection:bg-dark-bg-softer">
   <div id="app"></div>
-  <script>
-    // Add dark / light detection that runs before Vue.js load. Borrowed from overreacted.io
-    (function () {
-      window.__onThemeChange = function () { };
-      function setTheme(newTheme) {
-        window.__theme = newTheme;
-        preferredTheme = newTheme;
-        document.body.setAttribute('data-theme', newTheme);
-        window.__onThemeChange(newTheme);
-      }
-
-      var preferredTheme;
-      try {
-        preferredTheme = localStorage.getItem('theme');
-      } catch (err) { }
-
-      window.__setPreferredTheme = function (newTheme) {
-        setTheme(newTheme);
-        try {
-          localStorage.setItem('theme', newTheme);
-        } catch (err) { }
-      }
-
-      var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
-      darkQuery.addListener(function (e) {
-        window.__setPreferredTheme(e.matches ? 'dark' : 'light')
-      });
-
-      setTheme(preferredTheme || (darkQuery.matches ? 'dark' : 'light'));
-    })();
-  </script>
   <script type="module" src="/src/main.js"></script>
 </body>
 
