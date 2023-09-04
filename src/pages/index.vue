@@ -33,7 +33,7 @@
             </div>
             <!-- image and lower clouds -->
             <div class="grid mld:col-span-4">
-              <div class="max-h-96 flex items-center justify-center h-full w-full floating">
+              <div class="max-h-96 flex items-center justify-center h-full w-full relative animate-float">
                 <balloon />
               </div>
             </div>
@@ -258,17 +258,6 @@
   }
 }
 
-@media (max-width: 767px) {
-
-  p,
-  a,
-  li,
-  div {
-    font-size: 16px;
-    font-size: 1rem;
-  }
-}
-
 @media (max-width: 991px) {
 
   p,
@@ -306,16 +295,6 @@
   }
 }
 
-@media (max-width: 767px) {
-
-  p,
-  a,
-  li,
-  div {
-    font-size: 16px;
-    font-size: 1rem;
-  }
-}
 
 @media (max-width: 991px) {
 
@@ -407,32 +386,6 @@
   }
 }
 
-
-
-
-
-
-
-
-.floating {
-  position: relative;
-  animation: float 3.35s ease-in-out infinite;
-}
-
-@keyframes float {
-  0% {
-    transform: translateY(10px);
-  }
-
-  50% {
-    transform: translateY(-10px);
-  }
-
-  100% {
-    transform: translateY(10px);
-  }
-}
-
 </style>
 
 <script>
@@ -497,7 +450,7 @@ export default {
           name: 'react',
           url: 'fa-brands fa-react'
         }, {
-          name: 'bash scripting',
+          name: 'bash/sh',
           url: 'fa-solid fa-terminal'
         }
       ],

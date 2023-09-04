@@ -5,7 +5,6 @@ import Vue from '@vitejs/plugin-vue'
 import Pages from 'vite-plugin-pages'
 import Markdown from 'vite-plugin-md'
 import WebfontDownload from 'vite-plugin-webfont-dl'
-import meta from '@yankeeinlondon/meta-builder'
 import Layouts from 'vite-plugin-vue-layouts'
 import code from '@yankeeinlondon/code-builder'
 import path from 'node:path'
@@ -18,15 +17,10 @@ export default defineConfig({
       include: [/\.vue$/, /\.md$/], // <--
     }),
     Markdown({
-      // md:after:absolute md:after:h-full md:after:-z-10 md:after:w-1/12 md:after:top-0 md:after:right-0 md:before:bg-color-bg-banner md:before:absolute md:before:h-full md:before:-z-10 md:before:w-1/12 md:before:top-0 md:before:right-0
-      
-      // wrapperClasses: 'min-h-screen py-12 lg:py-12 md:py-12 px-6 about prose max-w-prose prose-p:text-base mx-auto text-lg font-montserrat-alternate font-light article after:absolute',
       builders: [
         code({
           theme: 'base',
         }),
-        meta({
-        })
       ],
       headEnabled: true,
       exposeExcerpt: true,

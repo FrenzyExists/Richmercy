@@ -11,7 +11,6 @@ import { Transition, defineAsyncComponent } from 'vue';
     <RouterView v-slot="{ Component }" >
         <component :is="Component" :key="$route.path"></component>
     </RouterView>
-    <Footer v-if="showFooter" />
   </div>
 </template>
 
@@ -19,15 +18,7 @@ import { Transition, defineAsyncComponent } from 'vue';
 export default {
   components: {
     Navbar: defineAsyncComponent(() => import('./components/Navbar.vue')),
-    Footer: defineAsyncComponent(() => import('./components/Footer.vue'))
   },
-  computed: {
-    showFooter() {
-      const routePath = this.$route.path;
-      const re = new RegExp("^/(projects|blog)(/)?([a-z])?$");
-      return routePath !== '/' && !re.test(routePath);
-    }
-  }
 }
 </script>
 

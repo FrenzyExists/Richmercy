@@ -89,12 +89,14 @@
       </div>
     </div>
   </div>
+  <foot/>
 </template>
 
 <script>
 import useVuelidate from '@vuelidate/core'
 import { required, email, minLength } from '@vuelidate/validators'
 import { useHead } from '@unhead/vue';
+import { defineAsyncComponent } from 'vue'
 
 export function validName(name) {
   let validNamePattern = new RegExp("^[a-zA-Z]+(?:[-'\\s][a-zA-Z]+)*$");
@@ -112,6 +114,9 @@ export default {
     return {
       v$: useVuelidate(),
     }
+  },
+  components: {
+    foot: defineAsyncComponent(() => import('@/components/foot.vue')),
   },
   mounted() {
     let smtpjs = document.createElement("script");

@@ -30,7 +30,7 @@ export const theme = {
           '--tw-prose-td-borders': theme('colors.pink[200]'),
           '--tw-prose-invert-body': theme('colors.dark-text'),
           '--tw-prose-invert-headings': theme('colors.dark-acc'),
-          '--tw-prose-invert-lead': theme('colors.pink[300]'),
+          '--tw-prose-invert-lead': theme('colors.dark-text-soft'),
           '--tw-prose-invert-links': theme('colors.white'),
           '--tw-prose-invert-bold': theme('colors.white'),
           '--tw-prose-invert-counters': theme('colors.pink[400]'),
@@ -102,10 +102,17 @@ export const theme = {
     'mld': '640px',
     ...defaultTheme.screens
   },
+  keyframes: {
+    float: {
+      '0%, 100%': { transform: 'translateY(10px)' },
+      '50%': { transform: 'translateY(-10px)' }
+    }
+  },
   animation: {
-    'based-spin': 'spin 1.7s cubic-bezier(1, -0.54, 0, 1.67) infinite'
+    'based-spin': 'spin 1.7s cubic-bezier(1, -0.54, 0, 1.67) infinite',
+    'float': 'float 3.35s ease-in-out infinite;'
+  },
   
-  }
 };
 export const plugins = [
   require('@tailwindcss/typography'),
