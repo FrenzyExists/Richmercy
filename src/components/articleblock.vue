@@ -37,7 +37,7 @@
     },
     setup(props) {
       const moreTag = ref('...');
-      console.log(props.articles);
+      // console.log(props.articles);
     }
   }
   </script>

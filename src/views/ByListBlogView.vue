@@ -1,36 +1,65 @@
 <template>
+  <navbar :FilteredRoutes="[{ name: 'about', path: '/about' }, { name: 'blog', path: '/blog' }]" />
   <div class="flex-final dark:bg-dark-bg-soft bg-bg-soft overflow-hidden lg:mx-36 md:mx-14 pb-10 md:pb-12 pt-16 md:pt-0">
     <div class="flex font-bold justify-between text-acc-soft dark:text-dark-acc-soft w-full flex-row px-10 pt-4">
       <h2 class="text-xl">On Letter</h2>
       <h2 class="text-2xl">{{ $route.params.letter }}</h2>
     </div>
     <div class="pb-10 justify-center">
-      <ByLetter routerName="blogByLetter" :existingArticles="articles" />
+      <by-letter routerName="blogByLetter" :existingArticles="articles" />
     </div>
-    <FeatureBlocks :articles="filteredArticles" />
+    <div class="px-10 pb-10 justify-center">
+      <searchbar :query.sync="query" @update:query="handleUpdateQuery" />
+    </div>
+    <article-block :articles="filterArticlesBySearch" />
   </div>
 </template>
   
 <script lang="js">
-import { defineAsyncComponent } from 'vue';
+import { ref, computed, defineAsyncComponent } from 'vue';
+import { useHead } from '@unhead/vue';
 export default {
   components: {
-    ByLetter: defineAsyncComponent(() => import('@/components/byletter.vue')),
-    FeatureBlocks: defineAsyncComponent(() => import('@/components/articleblock.vue'))
+    'by-letter': defineAsyncComponent(() => import('@/components/byletter.vue')),
+    'article-block': defineAsyncComponent(() => import('@/components/articleblock.vue')),
+    'searchbar': defineAsyncComponent(() => import('@/components/Searchbar.vue')),
+    'navbar': defineAsyncComponent(() => import('@/components/navbar.vue'))
   },
   beforeCreate() {
-    let articles = []
     for (const [path, m] of Object.entries(import.meta.globEager("../markdown/blog/*.md"))) {
-      articles.push({ ...m.frontmatter, 'path': path.replace(/\/markdown|\.md/g, "") })
+      this.articles.push({ ...m, 'path': path.replace(/\/markdown|\.md/g, "") })
     }
-    this.articles = articles;
-  },
-  data() {
-    const filteredArticles = this.articles.filter(
+
+    this.filteredArticlesByLetter.value = this.articles.filter(
       ({ title }) => [title]
         .some(val => val.toLowerCase()[0].includes(this.$route.params.letter.toLocaleLowerCase()))
-    )
-    return { filteredArticles }
+    );
+
+  },
+  setup() {
+    useHead({
+      title: 'Big Brain Writting But with Letters',
+    });
+    const query = ref('');
+    const articles = ref([])
+    const filteredArticlesByLetter = ref([])
+
+    const filterArticlesBySearch = computed(() => {
+      return filteredArticlesByLetter.value.value.filter(({ title }) =>
+        [title].some(val => val.toLowerCase().includes(query.value.toLocaleLowerCase()))
+      );
+    });
+
+    function handleUpdateQuery(newValue) {
+      query.value = newValue;
+    }
+    return {
+      query,
+      filterArticlesBySearch,
+      articles,
+      filteredArticlesByLetter,
+      handleUpdateQuery
+    }
   }
 }
 </script>

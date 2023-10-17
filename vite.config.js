@@ -1,12 +1,11 @@
 import { fileURLToPath, URL } from 'node:url'
-
 import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
 import Pages from 'vite-plugin-pages'
-import Markdown from 'vite-plugin-md'
+import Markdown from 'vite-plugin-vue-markdown'
+import Prism from 'markdown-it-prism'
 import WebfontDownload from 'vite-plugin-webfont-dl'
 import Layouts from 'vite-plugin-vue-layouts'
-import code from '@yankeeinlondon/code-builder'
 import path from 'node:path'
 import { resolve } from 'path'
 
@@ -16,21 +15,20 @@ export default defineConfig({
     Vue({
       include: [/\.vue$/, /\.md$/], // <--
     }),
+    Pages({
+      // pagesDir: 'src/pages',
+      dirs: ['src/markdown', { dir: resolve(__dirname, './src/pages'), baseRoute: '' }],
+      extensions: ['vue', 'md'],
+      routeStyle: "nuxt",
+    }),
     Markdown({
-      builders: [
-        code({
-          theme: 'base',
-        }),
-      ],
+      builders: [],
       headEnabled: true,
       exposeExcerpt: true,
       exposeFrontmatter: true,
-    }),
-    Pages({
-      // pagesDir: 'src/pages',
-      dirs: ['src/markdown', { dir: resolve(__dirname, './src/pages'), baseRoute: '' },],
-      extensions: ['vue', 'md'],
-      routeStyle: "nuxt",
+      markdownItSetup(md) {
+        md.use(Prism);
+      },
     }),
     Layouts(),
     WebfontDownload([

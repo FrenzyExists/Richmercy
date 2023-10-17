@@ -7,7 +7,7 @@
       class="dark:bg-dark-bg-hard bg-bg-hard mb-0 md:mb-24 relative w-full md:rounded-3xl px-6 py-12 shadow-xl shadow-slate-700/10 ring-1 ring-gray-900/5 md:mx-auto md:max-w-3xl lg:max-w-4xl lg:pb-28 lg:pt-16">
       <div class="prose prose-toy-story dark:prose-invert font-montserrat-alternate mx-auto">
         <h1>Who Am I?</h1>
-        <p>Hi! My name is Angel, but is very likely you know me as <italic>Pikachu</italic> I'm a Computer Engineering
+        <p>Hi! My name is Angel, but is very likely you know me as <span class="italic">Pikachu</span> I'm a Computer Engineering
           student at the University of Puerto Rico in Mayaguez. I've always been fascinated by the way computers and
           circuits work and how they can be used to solve complex problems. My passion for programming started since my
           days in middle school when playing Flash games like Smash Flash 2. Youtube had lots of tutorials on Game Maker
@@ -165,3 +165,8 @@ export default {
   },
 }
 </script>
+
+<route lang="yaml">
+  meta:
+      layout: fetching
+</route>

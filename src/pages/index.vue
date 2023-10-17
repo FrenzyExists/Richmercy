@@ -1,15 +1,12 @@
 <template>
   <div class="w-full dark:bg-dark-bg bg-bg m-auto font-montserrat-alternate ">
-    
     <div class="xl:max-w-7xl lg:max-w-5xl lg:p-6 mld:max-w-3xl mld:p-4 m-auto xs:w-full xs:p-4">
-      <div class="xl:py-32 lg:py-32 mld:py-10 xs:py-10">
-
-
+      <div class="xl:py-20 lg:py-28 mld:py-10 xs:py-10">
+        <!-- Hero -->
         <div class="xl:py-20 lg:py-20 mld:py-10 xs:py-10">
           <div class="grid mld:grid-cols-10 xs:grid-cols-1">
             <!-- text -->
             <div class="col-span-6">
-
               <!-- Some catchy intro sillicon valley bots use or whatever -->
               <div>
                 <h5 class="text-2xl uppercase text-text-soft dark:text-dark-text-soft">Hey There!</h5>
@@ -39,11 +36,10 @@
             </div>
           </div>
         </div>
-
         <!-- Companies -->
         <div class="text-center xl:py-20 lg:py-20 mld:py-10">
           <p
-            class="2xl:mb-4 xl:mb-2 lg:mb-2 mld:mb-1 xs:mb-1 text-lg 2xl:text-xl font-medium text-bg-super-hard-trans dark:text-dark-bg-super-hard-trans">
+            class="sm:text-lg lg:text-xl 2xl:mb-4 xl:mb-2 lg:mb-2 mld:mb-1 xs:mb-1 text-lg 2xl:text-xl font-medium text-bg-super-hard-trans dark:text-dark-bg-super-hard-trans">
             The companies and asociations with who I've collaborated with can voice their experience</p>
           <!-- company logos n frendz -->
           <div class="m-auto max-w-3xl">
@@ -56,21 +52,20 @@
         <!-- A catchy phrase -->
         <div class="text-center xl:py-20 lg:py-20 mld:py-10 xs:py-10 ">
           <div class="text-center m-auto max-w-4xl">
-            <!-- skill-name font-bold italic text-sm relative pt-3 after:absolute after:bottom-0 after:left-0 after:right-0 after:m-auto after:bg-acc after:h-[3px] after:w-[50px] mb-3 pb-3" -->
             <h2
               class="font-semibold italic dark:text-dark-bg-super-soft-trans text-bg-super-soft-trans  lg:text-5xl mld:text-5xl xs:text-4xl text-3xl after:absolute after:bottom-0 after:left-0 after:right-0 after:m-auto dark:after:bg-dark-acc after:bg-acc after:h-1 after:w-32 relative mb-16 pb-9">
               Building the future one line of code at a time
             </h2>
-            <p class="text-text dark:text-dark-text">As a full stack developer, I have experience working with both
+            <p class="sm:text-lg lg:text-xl text-text dark:text-dark-text">As a full stack developer, I have experience working with both
               front-end and back-end technologies. I'm
               also passionate about tinkering with hardware and exploring new technologies. Whether you're looking to
               build a new website or develop an innovative hardware solution, I'm here to help you bring your ideas to
               life.</p>
           </div>
         </div>
-        <!-- Some Projects of Interest -->
 
-        <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 my-12">
+        <!-- Some Projects of Interest -->
+        <!-- <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 my-12">
           <div class="mx-auto grid max-w-md grid-cols-1 gap-8 lg:max-w-5xl lg:grid-cols-3 lg:gap-8">
             <div v-for="i in [1, 2, 3]"
               class="flex flex-col rounded-3xl bg-bg-soft dark:bg-dark-bg-soft shadow-xl ring-1 ring-blue/10">
@@ -105,85 +100,84 @@
                   </ul>
                   <div class="relative -bottom-11 left-12 mt-8">
                     <a href="/login"
-                      class="inline-block w-full rounded-lg dark:hover:ring-dark-bg-soft dark:hover:text-dark-bg-soft dark:bg-dark-bg-soft dark:text-dark-acc-soft dark:hover:bg-dark-acc-soft hover:ring-bg-soft bg-bg-soft hover:bg-acc-soft hover:text-bg-soft text-acc-soft px-4 py-4 text-center text-sm font-semibold leading-5 hover:ring"
+                      class="inline-block w-full rounded-lg dark:hover:ring-dark-bg-soft dark:hover:text-dark-bg-soft dark:bg-dark-bg-mute dark:text-dark-acc-soft dark:hover:bg-dark-acc-soft hover:ring-bg-soft bg-bg-soft hover:bg-acc-soft hover:text-bg-soft text-acc-soft px-4 py-4 text-center text-sm font-semibold leading-5 hover:ring"
                       aria-describedby="tier-team">Learn More...</a>
                   </div>
                 </div>
               </div>
             </div>
-
           </div>
-        </div>
+        </div> -->
+      </div>
+    </div>
 
-        <!-- Education and Experience -->
-        <div class="bg-bg-soft dark:bg-dark-bg-soft py-20 lg:py-16 mld:py-10  layout-2col resume has-column-divider">
-          <!-- container -->
-          <div class="max-w-screen-xl w-full lg:max-w-4xl md:max-w-2xl sm:max-w-xl mx-auto px-2">
-            <!-- row columns -->
-            <div class="flex flex-wrap ">
-              <!-- col  col-12 col-sm-6 -->
-              <div class="first:border-r-2 dark:first:border-dark-acc-soft first:border-acc-soft flex flex-grow max-w-full basis-0 sm:max-w-[50%]">
-                <div class="col__text">
-                  <h3 class="text-3xl font-bold mb-8 text-text-soft dark:text-dark-text-soft">Education</h3>
-                  <!-- Put this in some kind of list to shorten the HTML or something idk -->
-                  <div v-for="edu in education">
-                    <h5 class="text-xl lg:text-lg md:text-base sm:text-base font-bold text-text dark:text-dark-text">
-                      {{ edu.title }}</h5>
-                    <p class="text-text-soft dark:text-dark-text-soft mb-6 font-normal ">{{ edu.desc }}</p>
-                  </div>
-                </div>
+    <!-- Education and Experience -->
+    <!-- <div
+      class="xs:p-4 mld:p-4 bg-bg-soft dark:bg-dark-bg-soft py-20 lg:py-16 mld:py-10  layout-2col resume has-column-divider">
+      
+      <div class="max-w-screen-xl w-full lg:max-w-4xl md:max-w-2xl sm:max-w-xl mx-auto px-2">
+        
+        <div class="flex flex-wrap ">
+          
+          <div
+            class="pr-2 first:border-r-2 dark:first:border-dark-acc-soft first:border-acc-soft flex flex-grow max-w-full sm:max-w-[50%]">
+            <div>
+              <h3 class="text-3xl font-bold mb-8 text-text-soft dark:text-dark-text-soft">Education</h3>
+              <div v-for="edu in education">
+                <h5 class="text-xl lg:text-lg md:text-base sm:text-base font-bold text-text dark:text-dark-text">
+                  {{ edu.title }}</h5>
+                <p class="text-text-soft dark:text-dark-text-soft mb-6 font-normal ">{{ edu.desc }}</p>
               </div>
-              <div class="pl-[3.5%] flex max-w-half max-w-[50%] relative  col  col-12 col-sm-6">
-                <div class="col__text">
-                  <h3 class="text-3xl font-bold mb-8 text-text-soft dark:text-dark-text-soft">Experience</h3>
-                  <div v-for="ex in experience">
-                    <h5 class="text-xl lg:text-lg md:text-base sm:text-base font-bold text-text dark:text-dark-text">
-                      {{ ex.title }}</h5>
-                    <p class="text-text-soft dark:text-dark-text-soft mb-6 font-normal ">{{ ex.desc }}</p>
-                  </div>
-                </div>
+            </div>
+          </div>
+          <div class="pl-[3.5%] flex max-w-half max-w-[50%] relative  col  col-12 col-sm-6">
+            <div>
+              <h3 class="text-3xl font-bold mb-8 text-text-soft dark:text-dark-text-soft">Experience</h3>
+              <div v-for="ex in experience">
+                <h5 class="text-xl lg:text-lg md:text-base sm:text-base font-bold text-text dark:text-dark-text">
+                  {{ ex.title }}</h5>
+                <p class="text-text-soft dark:text-dark-text-soft mb-6 font-normal ">{{ ex.desc }}</p>
               </div>
             </div>
           </div>
         </div>
-
-        <div>
-
-          <div class="my-10">
-            <!-- Technologies and tools I've used in the past -->
-            <section class="wrap-section ">
-              <div class="container">
-                <div class="mb-8 text-center max-w-3xl m-auto text-text dark:text-dark-text">
-                  <h3 class="mb-3 text-3xl md:mb-4 md:text-4xl">Some of the Technologies I've worked with</h3>
-                  <div class="font-light text-base">
-                    <p>I've done UI/UX design, software development, data analysis and hardware design.</p>
-                  </div>
-                </div>
-                <div class="flex flex-wrap box-border flex-row">
-                  <div v-for="item in tech" class=" mb-8 box-border px-4 lg:basis-1/4 md:basis-1/3  basis-1/2">
-                    <!-- px-3 py-5 h-full items-center flex justify-center border border-blue dark:border-dark-blue rounded-lg mld:flex-row mld:px-4 mld:py-9 -->
-                    <div class="stack__content border border-bg-super-soft dark:border-dark-bg-super-soft rounded-lg flex flex-col justify-center items-center justify-self-center h-full py-5 px-2 sm:flex-col md:flex-row ">
-                      <div class="stack__img">
-                        <font-awesome-icon :icon="item.url"
-                          class="text-bg-super-hard-trans dark:text-dark-bg-super-hard-trans w-16 h-16" />
-                      </div>
-                      <span class="font-medium text-base text-text dark:text-dark-text md:text-2xl">{{ item.name }}</span>
-                    </div>
-                  </div>
-                </div>
-                
-                
-              </div>
-            </section>
-
-          </div>
-
-        </div>
       </div>
+    </div> -->
 
+
+    <div class="xl:max-w-7xl lg:max-w-5xl lg:p-6 mld:max-w-3xl mld:p-4 m-auto xs:w-full xs:p-4">
+      <div class="xl:py-32 lg:py-32 mld:py-10 xs:py-10">
+        <!-- Technologies and tools I've used in the past -->
+        <section class=" wrap-section my-10">
+          <div class="w-full mx-auto px-4 container">
+            <div class="mb-8 text-center max-w-3xl m-auto text-text dark:text-dark-text">
+              <h3 class="mb-3 text-3xl md:mb-4 md:text-4xl">Some of the Technologies I've worked with</h3>
+              <div class="font-light text-base">
+                <p>I've done UI/UX design, software development, data analysis and hardware design.</p>
+              </div>
+            </div>
+            <div class="flex flex-wrap box-border flex-row">
+              <div v-for="item in tech" class=" mb-8 box-border px-4 lg:basis-1/4 md:basis-1/3  basis-1/2">
+                <div
+                  class="stack__content border border-bg-super-soft dark:border-dark-bg-super-soft rounded-lg flex flex-col justify-center items-center justify-self-center h-full py-5 px-2 sm:flex-col md:flex-row ">
+                  <div class="stack__img">
+                    <font-awesome-icon :icon="item.url"
+                      class="text-bg-super-hard-trans dark:text-dark-bg-super-hard-trans w-16 h-16" />
+                  </div>
+                  <span class="font-medium text-base text-text dark:text-dark-text md:text-2xl">{{ item.name }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+
+      </div>
     </div>
+    <subscribe />
   </div>
-  <!-- This would go in the layout, find a way to customize the footer by scrapping info from here -->
+
   <foot />
 </template>
 
@@ -192,7 +186,6 @@
 
 .container {
   max-width: 1140px !important;
-  width: 100%;
 }
 
 @media (min-width: 992px) {
@@ -213,15 +206,6 @@
   }
 }
 
-.container {
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-
 @media (min-width: 576px) {
   .col-sm-6 {
     -webkit-box-flex: 0;
@@ -231,129 +215,6 @@
   }
 }
 
-.col-12 {
-  -webkit-box-flex: 0;
-  -ms-flex: 0 0 100%;
-  flex: 0 0 100%;
-  max-width: 100%;
-}
-
-.col {
-  -ms-flex-preferred-size: 0;
-  flex-basis: 0;
-  -webkit-box-flex: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  max-width: 100%;
-}
-
-@media (max-width: 575px) {
-
-  p,
-  a,
-  li,
-  div {
-    font-size: 15px;
-    font-size: 0.9375rem;
-  }
-}
-
-@media (max-width: 991px) {
-
-  p,
-  a,
-  li,
-  div {
-    font-size: 18px;
-    font-size: 1.125rem;
-  }
-}
-
-
-
-.container {
-  max-width: 1140px !important;
-  width: 100%;
-}
-
-.container {
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-@media (max-width: 575px) {
-
-  p,
-  a,
-  li,
-  div {
-    font-size: 15px;
-    font-size: 0.9375rem;
-  }
-}
-
-
-@media (max-width: 991px) {
-
-  p,
-  a,
-  li,
-  div {
-    font-size: 18px;
-    font-size: 1.125rem;
-  }
-}
-
-.row {
-  margin-left: 0;
-  margin-right: 0;
-}
-
-.row {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
-}
-
-@media (max-width: 575px) {
-
-  p,
-  a,
-  li,
-  div {
-    font-size: 15px;
-    font-size: 0.9375rem;
-  }
-}
-
-@media (max-width: 767px) {
-
-  p,
-  a,
-  li,
-  div {
-    font-size: 16px;
-    font-size: 1rem;
-  }
-}
-
-@media (max-width: 991px) {
-
-  p,
-  a,
-  li,
-  div {
-    font-size: 18px;
-    font-size: 1.125rem;
-  }
-}
 
 
 
@@ -375,17 +236,11 @@
   }
 }
 
-
 @media only screen and (min-width: 576px) {
   .stack__content {
     padding: 2.5rem .9375rem;
-    /* -webkit-box-orient: horizontal; */
-    /* -webkit-box-direction: normal; */
-    /* -ms-flex-direction: row; */
-    /* flex-direction: row; */
   }
 }
-
 </style>
 
 <script>
@@ -425,6 +280,15 @@ export default {
         {
           title: "Research",
           desc: "Info bout that"
+        }, {
+          title: "CAS Technical Advisor",
+          desc: "My role in that field"
+        }, {
+          title: "CAS Assistant Webmaster",
+          desc: "What I worked on"
+        }, {
+          title: "Undergrad Research with TI",
+          desc: "The app that was being developed"
         }
       ],
       tech: [
@@ -470,15 +334,15 @@ export default {
   },
   components: {
     ti: defineAsyncComponent(() => import('@/components/ti.vue')),
-    sirkosky: defineAsyncComponent(() => import('@/components/sirkosky.vue')),
-    balloon: defineAsyncComponent(() => import('@/components/balloon.vue')),
-    foot: defineAsyncComponent(() => import('@/components/foot.vue')),
+    'sirkosky': defineAsyncComponent(() => import('@/components/sirkosky.vue')),
+    'balloon': defineAsyncComponent(() => import('@/components/balloon.vue')),
+    'foot': defineAsyncComponent(() => import('@/components/foot.vue')),
+    'subscribe': defineAsyncComponent(() => import('@/components/subscribe.vue')),
   }
 }
 </script>
 
 <route lang="yaml">
-    name : TESTING
     meta:
         layout: fetching
 </route>

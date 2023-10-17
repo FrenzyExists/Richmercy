@@ -1,182 +1,277 @@
 <template>
-    <div class="ul flex justify-evenly p-0">
-        <article
-            class="booking-card before:absolute before:top-0 before:bottom-0 before:left-0 before:right-0 rounded-3xl overflow-hidden transition text-center mb-7 relative shadow-lg">
-            <div class="mb-4 relative container after:bg-gradient-to-r from-orange-400 to-red-500">
-                <font-awesome-icon class="object-cover w-full text-[14rem] pl-8" :icon="`${skillIcon}`" />
-            </div>
-            <div class="book-container">
-                <div class="content relative opacity-0 flex text-center items-center justify-center h-0">
-                    <button class="btn transition-[0.3s] bg-none uppercase text-slate-100 font-bold cursor-pointer text-base">Show
-                        More</button>
-                </div>
-            </div>
-            <div class="informations-container">
-                <h2 class="title  relative font-bold text-lg mb-3 pb-3 ">{{ skillName }}</h2>
-                <p class="sub-title">{{ skillDescription }}</p>
-                <div class="opacity-0 more-information">
-                    <div class="box mb-1 mt-3 p-3 text-sm font-bold bg-slate-100 rounded-xl">
-                        <ul v-if="typeof skillProjectList !== 'undefined'">
-                            <li class="decoration-[none] relative text-base after:bg-gradient-to-r from-orange-400 to-red-500"
-                                v-for="i in skillProjectList">{{ i }}</li>
-                        </ul>
-                        <p class="text-orange-800 leading-7 font-medium text-lg" v-else>Can't think of anything lol</p>
-                    </div>
-                </div>
-            </div>
-        </article>
-    </div>
+  <div class="flex justify-evenly w-full">
+    <article
+      class="skillcard-contents group before:absolute bg-[#081F44] rounded-xl overflow-hidden shadow-md mb-3 w-full">
+      <div class="relative">
+        <font-awesome-icon class=" absolute left-1/4 object-cover w-full text-[9rem] text-color-bg-soft pt-4"
+          :icon="`${skillIcon}`" />
+      </div>
+      <div class="relative z-10">
+        <button
+          class="show-more transition-[0.3s] rounded-md italic font-montserrat-alternate cursor-pointer text-sm hover:text-[#11294F] hover:bg-color-acc border-solid border-2 border-color-acc bg-[#11294F] px-3 py-2">
+          show more...
+        </button>
+      </div>
+      <div class="text-[#EBEBEB] font-montserrat-alternate skillcard-inner-contents">
+        <h2
+          class="skill-name font-bold italic text-sm relative pt-3 after:absolute after:bottom-0 after:left-0 after:right-0 after:m-auto after:bg-color-acc after:h-[3px] after:w-[50px] mb-3 pb-3">
+          {{ skillName }}
+        </h2>
+        <p class="relative skill-description font-light text-xs tracking-wider">
+          {{ skillDescription }}
+        </p>
+        <div class="skill-projects-container z-20">
+          <div class="box skill-projects text-sm translate-y-32 group-hover:translate-y-0  transition">
+            <ul v-if="typeof skillProjectList !== 'undefined'">
+              <li v-for="i in skillProjectList"
+                class="decoration-[none] relative text-base after:bg-gradient-to-r from-orange-400 to-red-500 after:absolute after:bottom-0 after:left-1/2 after:w-0 after:h-[2px] hover:after:left-[30%] hover:after:w-[40%]">
+                {{ i }}
+              </li>
+            </ul>
+            <p v-else>Can't think of anything lol</p>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
 </template>
 
 <script>
 export default {
-    props: {
-        skillName: {
-            type: String,
-            required: true
-        },
-        skillDescription: {
-            type: String,
-            required: false
-        },
-        skillIcon: {
-            type: String
-        },
-        skillProjectList: {
-            type: Array,
-            required: false
-        }
+  props: {
+    skillName: {
+      type: String,
+      required: true
+    },
+    skillDescription: {
+      type: String,
+      required: false
+    },
+    skillIcon: {
+      type: String
+    },
+    skillProjectList: {
+      type: Array,
+      required: false
     }
+  }
 }
 </script>
 
 <style>
-.container {
-    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+.carousel__icon {
+  width: inherit;
+  height: inherit;
+  fill: var(--color-accent);
 }
 
-.container:after {
-    content: "";
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    /* border-radius: 20px 20px 0 0; */
-    opacity: 0.7;
+.carousel__next,
+.carousel__prev {
+  height: fit-content;
+  width: 5rem;
+  margin: 0;
+  display: none;
 }
 
-.card {
-    border-radius: 20px;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.18);
+.carousel__pagination-button::after {
+  border-radius: 0;
+  height: inherit;
+  width: inherit;
+  -webkit-mask-image: url(../assets/paper-plane.svg);
+  mask-image: url(../assets/paper-plane.svg);
+  mask-repeat: no-repeat;
 }
 
-.booking-card {
-    flex: 0 0 290px;
-    background-color: var(--color-background-soft);
+.carousel__pagination {
+  justify-content: space-evenly;
+  width: 100%;
+  margin: 6px 0;
 }
 
-.booking-card::before {
-    content: "";
-    background: rgb(167 90 34 / 2%);
+.carousel__pagination-button {
+  height: 2rem;
+  width: 1.7rem;
+  display: flex;
+  padding: 0;
 }
 
-.content {
-    transform: translateY(-300px);
-    transition: 0.3s;
+@media (min-width: 667px) {
+  @media (min-height: 375px) {
+    .skill-name {
+      font-size: 13px;
+    }
+
+    .skill-description {
+      font-size: 11px;
+    }
+
+    .carousel__pagination-button {
+      width: 9%;
+    }
+
+    .show-more {
+      display: none;
+    }
+
+    .skillcard-contents {
+      min-height: 210px;
+    }
+
+    .carousel {
+      flex-direction: column-reverse !important;
+    }
+
+    .show-more {
+      display: block;
+      font-size: 11px;
+      position: initial;
+      margin: 0 auto;
+      margin-top: 10px;
+      padding: 6px 12px;
+      top: 50px;
+    }
+  }
+
 }
 
-.box ul li {
-    color: #1d2336;
-    padding: 7px 0;
+/* Iphone SE size */
+@media (min-width: 667px) {
+  @media (min-height: 375px) {
+    .skill-name {
+      font-size: 13px;
+    }
+
+    .skill-description {
+      font-size: 11px;
+    }
+
+    .carousel__pagination-button {
+      width: 9%;
+    }
+
+    .show-more {
+      display: none;
+    }
+
+    .skillcard-contents {
+      min-height: calc(28vh - 40px);
+    }
+
+    .carousel {
+      flex-direction: column-reverse !important;
+    }
+
+    .show-more {
+      display: block;
+      font-size: 11px;
+      position: initial;
+      margin: 0 auto;
+      margin-top: 10px;
+      padding: 6px 12px;
+      top: 50px;
+    }
+  }
+
 }
 
-.box ul li:hover::after {
-    left: 30%;
-    width: 40%;
-}
-
-.box ul li::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 0%;
-    height: 2px;
-    transition: 0.3s ease-out;
-}
-
-.btn {
-    border: 3px solid white;
-    padding: 10px 15px;
-}
-
-.btn:hover {
-    background: #e9e9e9;
-    border: 0.45rem solid #e9e9e9;
-    color: #1d2336;
-}
-
-.informations-container {
-    flex: 1 0 auto;
-    padding: 20px;
-    transform: translateY(70px);
-    transition: 0.3s;
-}
-
-.title::after {
-    content: "";
+/* min height based on an iphone SE */
+@media (min-height: 375px) {
+  .skill-projects-container {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    height: 3px;
-    width: 50px;
-    margin: auto;
-    background: var(--color-accent);
+    visibility: hidden;
+    margin-left: auto;
+    margin-right: auto;
+    transition: 0.3s ease-out;
+  }
+
+  .skillcard-contents:hover .skill-projects-container {
+    visibility: visible;
+  }
+
+  .skill-projects {
+    background: #122D57;
+    border-radius: 20px 20px 0px 0;
+    padding: 10px 0;
+  }
 }
 
-.more-information {
-    transition: 0.3s;
+@media (max-width: 560px) {
+  .carousel {
+    flex-direction: column-reverse;
+  }
 }
 
-.box {
-    flex: 1 0;
-}
 
-.booking-card:hover::before {
-    background: rgb(156 181 255 / 31%);
-}
+@media (max-width: 375px) {
+  @media (min-height: 610px) {
+    .skillcard-contents {
+      flex-direction: row !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 12px;
 
-.booking-card:hover .book-container .content {
-    opacity: 1;
-    transform: translateY(-130px);
-}
-
-.booking-card:hover .informations-container {
-    transform: translateY(0px);
-}
-
-.booking-card:hover .informations-container .more-information {
-    opacity: 1;
-}
-
-@media (max-width: 768px) {
-    .booking-card::before {
-        background: rgb(64 109 243 / 13%);
+      padding-bottom: 10px;
     }
 
-    .booking-card .book-container .content {
-        opacity: 1;
-        transform: translateY(-130px);
+    .show-more {
+      width: 7rem
+    }
+  }
+
+  @media (max-height: 667px) {
+    .skill-name {
+      padding: 0 !important;
+      margin-bottom: 0 !important;
     }
 
-    .booking-card .informations-container {
-        transform: translateY(0px);
+    .skill-name::after {
+      display: none !important;
     }
 
-    .booking-card .informations-container .more-information {
-        opacity: 1;
+    .skillcard-contents {
+      padding: 4px 0 !important;
     }
+  }
 }
+
+@media (min-width: 1420px) {
+  .skillcard-contents {
+    height: calc(70vh - 112px);
+  }
+
+  .skill-name {
+    font-size: 20px;
+    flex-grow: 1;
+  }
+
+  .skill-description {
+    font-size: 15px;
+    flex-grow: 2;
+  }
+
+  .skill-projects-container {
+    position: sticky;
+    margin-top: calc(20% + 10vh);
+    flex-grow: 2;
+  }
+
+  .skill-projects {
+    padding: 1rem 0;
+    border-radius: 12px;
+  }
+  .skillcard-inner-contents {
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+}
+
+.box ul li::after {
+  transition: 0.3s ease-out;
+}
+
 </style>

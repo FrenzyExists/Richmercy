@@ -19,8 +19,9 @@
                     <font-awesome-icon class="mr-2 dark:text-dark-yellow text-yellow block h-7 w-auto"
                       icon="fa-solid fa-bolt" />
                   </span>
-                  <h1 class="text-acc dark:text-dark-acc font-extrabold italic tracking-wide text-2xl mr-3 pr-12">
-                    Garcia's</h1>
+                  <h1  class="text-acc dark:text-dark-acc font-extrabold italic tracking-wide text-2xl mr-3 pr-12">
+                   <a href="/">Garcia's</a> 
+                  </h1>
                 </div>
                 <div class="flex space-x-9">
                   <RouterLink v-for="item in FilteredRoutes" :key="item.name" :to="item.path"

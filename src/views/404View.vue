@@ -1,4 +1,7 @@
 <template>
+  <div class="absolute top-3 flex w-full">
+    <toggle/>
+  </div>
   <div
   class="dark:bg-dark-bg-hard bg-bg-hard w-full h-full grid place-items-center overflow-hidden xs:mt-0 mt-12 ">
     <h1 class="font-montserrat-alternate select-none flex flex-col text-center">
@@ -16,6 +19,15 @@
   </h1>
   </div>
 </template>
+
+<script  lang="js">
+import {defineAsyncComponent} from 'vue'
+export default {
+  components: {
+    'toggle': defineAsyncComponent(() => import('@/components/toggletheme.vue')),
+  }
+}
+</script>
 
 <script setup lang="js">
 import { useHead } from '@unhead/vue';

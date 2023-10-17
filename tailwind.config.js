@@ -12,6 +12,7 @@ export const theme = {
     typography: ({ theme }) => ({
       'toy-story': {
         css: {
+          // '--prism-background': '#0c0a29',
           '--tw-prose-body': theme('colors.text'),
           '--tw-prose-headings': theme('colors.acc'),
           '--tw-prose-lead': theme('colors.acc-soft'),
@@ -24,8 +25,8 @@ export const theme = {
           '--tw-prose-quote-borders': theme('colors.acc'),
           '--tw-prose-captions': theme('colors.acc-soft'),
           '--tw-prose-code': theme('colors.acc'),
-          '--tw-prose-pre-code': theme('colors.pink[100]'),
-          '--tw-prose-pre-bg': theme('colors.acc'),
+          // '--tw-prose-pre-code': theme('colors.pink[100]'),
+          // '--tw-prose-pre-bg': theme('colors.acc'),
           '--tw-prose-th-borders': theme('colors.pink[300]'),
           '--tw-prose-td-borders': theme('colors.pink[200]'),
           '--tw-prose-invert-body': theme('colors.dark-text'),
@@ -33,17 +34,17 @@ export const theme = {
           '--tw-prose-invert-lead': theme('colors.dark-text-soft'),
           '--tw-prose-invert-links': theme('colors.white'),
           '--tw-prose-invert-bold': theme('colors.white'),
-          '--tw-prose-invert-counters': theme('colors.pink[400]'),
+          '--tw-prose-invert-counters': theme('colors.dark-acc-soft'),
           '--tw-prose-invert-bullets': theme('colors.dark-acc'),
           '--tw-prose-invert-hr': theme('colors.acc-soft'),
           '--tw-prose-invert-quotes': theme('colors.dark-acc-soft'),
           '--tw-prose-invert-quote-borders': theme('colors.dark-acc'),
           '--tw-prose-invert-captions': theme('colors.pink[400]'),
           '--tw-prose-invert-code': theme('colors.white'),
-          '--tw-prose-invert-pre-code': theme('colors.pink[300]'),
-          '--tw-prose-invert-pre-bg': 'rgb(0 0 0 / 50%)',
-          '--tw-prose-invert-th-borders': theme('colors.pink[600]'),
-          '--tw-prose-invert-td-borders': theme('colors.acc-soft'),
+          // '--tw-prose-invert-pre-code': theme('colors.pink[300]'),
+          // '--tw-prose-invert-pre-bg': 'rgb(0 0 0 / 50%)',
+          '--tw-prose-invert-th-borders': theme('colors.dark-acc'),
+          '--tw-prose-invert-td-borders': theme('colors.dark-acc-soft'),
           h2: {
             fontSize: '2.25rem',
           },
@@ -74,20 +75,24 @@ export const theme = {
       'dark-text': '#d8e2eb',
       'dark-text-soft': '#adbed3',
       'dark-red': '#E84242',
+      'dark-red-soft': '#cd9c9c',
       'dark-blue': '#4270E8',
+      'dark-blue-soft': '#9c9fcd',
       'dark-green': '#65cfa2',
       'dark-yellow': '#d3a62a',
       'dark-border': '#253765',
+      'dark-blog': '#567cb40f',
 
       'bg': '#b8cfd2',
       'bg-hard': '#b6d3d7',
       'bg-super-hard': '#649096',
       'bg-soft': '#bdd8dc',
-      'bg-mute': '#8fb1b7',
+      'bg-mute': '#9fc1c7',
       'bg-super-soft-trans': '#5b8a90ab',
       'bg-super-hard-trans': '#649096ab',
       'bg-harder': '#a0c0c5',
       'text': '#415560',
+      'text-soft': '#617a88',
       'links': '#525166',
       'acc': '#67404a',
       'acc-soft': '#85233c',
@@ -114,24 +119,36 @@ export const theme = {
   },
   
 };
+// #2a3e64 -> --tw-prose-th-borders
+// #22365d --tw-prose-td-borders
+// #0c0a29 -> prism-background
+// #4da883 -> prism-boolean
+// -> prism-string#ffb089
+// rgb(4 35 72 / 53%) inner background
+// --prism-foreground -acc
 export const plugins = [
   require('@tailwindcss/typography'),
   plugin(({ addBase, theme }) => {
     addBase({
       '.scrollbar': {
         overflowY: 'auto',
-        scrollbarColor: `${theme('colors.blue.600')} ${theme('colors.blue.200')}`,
-        scrollbarWidth: 'thin',
       },
       '::-webkit-scrollbar': {
         width: '.55rem',
       },
       '::-webkit-scrollbar-thumb': {
-        backgroundColor: theme('colors.pink[800]'),
+        backgroundColor: theme('colors.acc'),
       },
       '::-webkit-scrollbar-track-piece': {
-        backgroundColor: theme('colors.yellow'),
+        backgroundColor: theme('colors.bg-mute'),
       },
+      '.dark ::-webkit-scrollbar-thumb': {
+        backgroundColor: theme('colors.dark-acc'),
+      },
+      '.dark ::-webkit-scrollbar-track-piece': {
+        backgroundColor: theme('colors.dark-bg-mute'),
+      },
+
       '.dark .tag-btn': {
         color: theme('colors.dark-green'),
         background: theme('colors.dark-bg-mute')
@@ -157,7 +174,7 @@ export const plugins = [
         '-webkit-box-shadow': '1px 5px 5px 0px rgba(0, 0, 0, 0.3)'
       },
       '.dark .main-app:has(.article)': {
-        background: theme('colors.dark-bg-soft'),
+        background: theme('colors.dark-blog'),
       },
       '.main-app:has(.article)': {
         background: theme('colors.bg-soft'),
@@ -174,9 +191,9 @@ export const plugins = [
         width: '103%',
         height: '100%',
         'background-image': `linear-gradient(to right, ${theme('colors.green')}, ${theme('colors.blue')})`,
-        'mask-size': '75px 75px',
+        'mask-size': '54px 54px',
         'mask-image':
-        'linear-gradient(rgba(255, 255, 255, 0.236) 2px, transparent 0), linear-gradient(90deg, rgba(255, 255, 255, 0.315) 2px, transparent 0)',
+        'linear-gradient(rgba(255, 255, 255, 0.136) 1px, transparent 0), linear-gradient(90deg, rgba(255, 255, 255, 0.115) 1px, transparent 0)',
       },
       '.dark .main-app:has(.article)::before': {
         'background-image': `linear-gradient(to right, ${theme('colors.dark-green')}, ${theme('colors.dark-blue')})`,

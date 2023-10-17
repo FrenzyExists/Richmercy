@@ -1,6 +1,6 @@
 <template>
-    <div class="">
-        <!-- <navbar :FilteredRoutes="[{name: 'home', path: '/'}, {name: 'projects', path: '/all-projects'}, {name: 'blog', path: '/blog'}]"/> -->
+    <navbar :FilteredRoutes="[{ name: 'about', path: '/about' }, { name: 'blog', path: '/blog' }]" />
+    <div>
         <router-view  />
     </div>  
 </template>

@@ -23,9 +23,17 @@ export default {
       type: Array
     }
   },
+  data() {
+    return {
+      pageSize: 25 // for pagination
+    }
+  },
   methods: {
     submitComment() {
     }
+  },
+  setup() {
+    const GITHUB_API = 'https://api.github.com/';
   }
 
 }
