@@ -1,5 +1,5 @@
 <template>
-  <div class="px-4 max-w-2xl m-auto mt-10">
+  <div class="px-4 max-w-2xl w-full m-auto mt-10">
     <div class="flex justify-start mb-6">
       <h2 class="text-white text-2xl font-bold">Discussion ()</h2>
     </div>
@@ -12,6 +12,7 @@
 
 <script>
 import { defineAsyncComponent } from 'vue'
+
 export default {
   components: {
     'comment-input': defineAsyncComponent(() => import('@/components/commentinput.vue')),
@@ -25,7 +26,10 @@ export default {
   },
   data() {
     return {
-      pageSize: 25 // for pagination
+      pageSize: {
+        required: false,
+        type: Number
+      } // for pagination
     }
   },
   methods: {

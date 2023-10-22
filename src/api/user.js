@@ -1,5 +1,5 @@
-const db = require("./db")
-const boom = require("@hapi/boom")
+const db = require("./db");
+const boom = require("@hapi/boom");
 
 const User = function (user) {
     this.username = user.username;

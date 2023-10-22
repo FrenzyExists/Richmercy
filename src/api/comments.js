@@ -1,88 +1,211 @@
 const db = require("./db");
 const boom = require("@hapi/boom");
 
-
+/**
+ * 
+ * @param {Object} comment
+ * @param {string} comment.text 
+ * @param {number} comment.user_id
+ * @param {number} comment.parent_id
+ */
 const Comment = function (comment) {
-    this.textComment = comment.textComment;
-    this.userId = comment.userID;
-    this.upvotes = comment.upvotes;
-    this.replies = comment.reply.id;
+  this.text = comment.text;
+  this.user_id = comment.user_id;
+  this.parent_id = comment.parent_id;
 }
 
-Comment.createComment = async (newComment, userID, result) => {
-    try {
+/**
+ * A Thing
+ * @param {Object} newComment - The Comment Object generated from some input
+ * @param {string} newComment.text
+ * @param {number} newComment.user_id
+ * @param {number|undefined} newComment.parent_id
+ * 
+ * @example
+ * ```js
+ * const pool = createClient();
+ * ```
+ * @returns {Promise<Object>} A promise showing the newly created comment
+ */
+Comment.createComment = async (newComment, result) => {
+  try {
+    /**
+     * @constant {QueryResult<QueryResultRow>} res
+     */
+    const res = await db.sql`INSERT INTO comments (text, user_id, parent_id) VALUES (${newComment.text}, ${newComment.user_id}, ${newComment.parent_id}) RETURNING *`;
+    console.log("New Comment got registered: ", json({ res }));
+    return result(json({ res }));
 
-        // const query = db.query
-        // format("INSERT INTO comment SET ?", newComment);
-        // const res = await excecute(query)
-        // result(null, { id: res[0].insertId, ...newUser });
-        // console.log("New User got registered: ", { id: res[0].insertId, email: newUser.email, firstName: newUser.firstName });
-    } catch (err) {
-        console.log("error: ", err);
-        result(boom.internal(err.message), null);
+  } catch (err) {
+    console.log("error: ", err);
+    result(boom.internal(err.message), null);
+  }
+}
+
+/**
+ * 
+ * @param {number} article_id 
+ * @param {number} limit 
+ * @param {number} offset 
+ * @param {Object} result 
+ */
+Comment.getComment = async (article_id, limit = 10, offset = 0, result) => {
+  try {
+    const res = await db.sql`SELECT comment.text, user.id, user.username, comment.id AS comment_id, comment.parent_id FROM comment INNER JOIN user ON user.id = comment.user_id WHERE comment.article_id = ${article_id} LIMIT ${limit} OFFSET ${offset}`;
+    console.log("Got some comemnts!");
+    return result(json({ res }));
+  } catch (error) {
+    console.log("error: ", err);
+    result(boom.internal(err.message), null);
+  }
+}
+
+Comment.getReplies = async (commentId, limit = 5, offset = 0, result) => {
+  try {
+    const res = await db.sql`SELECT comment.id AS comment_id, user.id, user.username FROM comment WHERE comment.parent_id = ${commentId} LIMIT ${limit} OFFSET ${offset}`;
+    return result(json({ res }));
+  } catch (error) {
+    console.log("error: ", err);
+    result(boom.internal(err.message), null);
+  }
+}
+
+/**
+ * 
+ * @param {number} commentId 
+ * @param {string} newComment 
+ * @param {*} result 
+ * @returns 
+ */
+Comment.editComment = async (commentId, newComment, result) => {
+  try {
+    const res = await db.sql`UPDATE comment SET comment.text = ${newComment} WHERE id = ${commentId} `;
+    return result(json({ res }));
+  } catch (error) {
+    console.log("error: ", err);
+    result(boom.internal(err.message), null);
+  }
+}
+
+/**
+ * 
+ * @param {number} commentId 
+ * @param {*} result 
+ */
+Comment.upvote = async (commentId, result) => {
+  try {
+    const res = await db.sql`UPDATE comment SET comment.vote = comment.vote + 1 WHERE comment.id = ${commentId}`;
+    return result(json({ res }));
+  } catch (error) {
+    console.log("error: ", err);
+    result(boom.internal(err.message), null);
+  }
+}
+
+/**
+ * 
+ * @param {number} commentId 
+ * @param {*} result 
+ */
+Comment.downvote = async (commentId, result) => {
+  try {
+    const res = await db.sql`UPDATE comment SET comment.vote = comment.vote - 1 WHERE comment.id = ${commentId}`;
+    return result(json({ res }));
+  } catch (error) {
+    console.log("error: ", err);
+    result(boom.internal(err.message), null);
+  }
+}
+
+/**
+ * 
+ * @param {number} commentId 
+ * @param {*} result 
+ */
+Comment.removeComment = async (commentId, result) => {
+  try {
+    const res = await db.sql`DELETE FROM user WHERE id = ${commentId}`;
+    return result(json({ res }));
+  } catch (err) {
+    console.log("error: ", err);
+    result(boom.internal(err.message), null);
+  }
+}
+
+/**
+ * 
+ * @param {Object} req 
+ * @param {*} res 
+ */
+exports.create = async (req, res) => {
+  // Validate request
+  if (!req.body) {
+    res.status(400).send({
+      message: "Content can not be empty!"
+    });
+  }
+
+  const comment = new Comment({
+    text: req.body.text,
+    parent_id: req.body.parent_id,
+    user_id: req.body.user_id,
+  });
+
+  await Comment.createComment(comment, (err, _data) => {
+    if (err)
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while creating a comment :("
+      });
+    else {
+      console.log("SENDING...");
+      res.send(_data);
     }
-}
+  });
+};
 
-Comment.getCommentByPostId = async (postId, limit = undefined, result) => {
-    try {
-        
-    } catch (err) {
-        console.log("error: ", err);
-        result(boom.internal(err.message), null);
-    }
-}
+/**
+ * 
+ * @param {Object} req
+ * @param {number|10} req.limit
+ * @param {number|0} req.offset
+ * @param {boolean|false} req.includeReplies
+ * @param {number|5} req.repliesLimit
+ * @param {number|0} req.repliesOffset
+ * @param {*} res 
+ */
+exports.find = async (req, res) => {
+  const id = parseInt(req.params.id, 10);
+  await Comment.getComment(id, req.limit, req.offset, (err, _data) => {
+    if (err) {
 
-Comment.getReplies = async (commentId, limit = undefined, result) => {
-    try {
-        // const query
-    } catch (err) {
-        console.log("error: ", err);
-        result(boom.internal(err.message), null);
-    }
-}
+    } else res.send(_data);
+  });
+};
 
-Comment.getNumberOfComments = async (postId, result) => {
-    try {
-        // const query
-    } catch (err) {
-        console.log("error: ", err);
-        result(boom.internal(err.message), null);
-    }
-}
+/**
+ * 
+ * @param {Object} req 
+ * @param {*} res 
+ */
+exports.vote = async (req, res) => {
+  const id = parseInt(req.params.id, 10);
+};
 
-Comment.editComment = (commentId, newComment, result) => {
-    try {
-        // const query
-    } catch (err) {
-        console.log("error: ", err);
-        result(boom.internal(err.message), null);
-    }
-}
+/**
+ * 
+ * @param {Object} req 
+ * @param {*} res 
+ */
+exports.edit = async (req, res) => {
+  const id = parseInt(req.params.id, 10);
+};
 
-Comment.updateVote = (commentId, voterId, vote, result) => {
-    try {
-        // const query
-    } catch (err) {
-        console.log("error: ", err);
-        result(boom.internal(err.message), null);
-    }
-}
-
-Comment.removeComment = (commentId, result) => {
-    try {
-        // format("DELETE FROM comment WHERE id = ?", commentId);
-        // const res = await sql.query(query)
-        // if (res[0].affectedRows === 0) {
-        //   result({ kind: "not_found" }, null);
-        // } else {
-        //   console.log("Deleted id ", id)
-        //   result(null, res[0], ...id)
-        // }  
-
-    } catch (err) {
-        console.log("error: ", err);
-        result(boom.internal(err.message), null);
-    }
-}
-
-module.exports = Comment
+/**
+ * 
+ * @param {Object} req 
+ * @param {*} res 
+ */
+exports.remove = async (req, res) => {
+  const id = parseInt(req.params.id, 10);
+};
