@@ -24,7 +24,7 @@
     "markdown-it-prism": "^2.3.0",
     "vite-express": "^0.10.0",
     "vite-plugin-vue-markdown": "^0.23.8",
-    "vue": "^3.3.4",
+    "vue": "^3.3.6",
     "vue-router": "^4.2.2"
   },
   "devDependencies": {
