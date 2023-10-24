@@ -1,7 +1,16 @@
 <template>
-  <navbar :FilteredRoutes="[{ name: 'about', path: '/about' }, { name: 'blog', path: '/blog' }]" />
-  <div class="flex-final dark:bg-dark-bg-soft bg-bg-soft overflow-hidden lg:mx-36 md:mx-14 pb-10 md:pb-12 pt-16 md:pt-0">
-    <div class="flex font-bold justify-between text-acc-soft dark:text-dark-acc-soft w-full flex-row px-10 pt-4">
+  <navbar
+    :FilteredRoutes="[
+      { name: 'about', path: '/about' },
+      { name: 'blog', path: '/blog' }
+    ]"
+  />
+  <div
+    class="flex-final dark:bg-dark-bg-soft bg-bg-soft overflow-hidden lg:mx-36 md:mx-14 pb-10 md:pb-12 pt-16 md:pt-0"
+  >
+    <div
+      class="flex font-bold justify-between text-acc-soft dark:text-dark-acc-soft w-full flex-row px-10 pt-4"
+    >
       <h2 class="text-xl">On Letter</h2>
       <h2 class="text-2xl">{{ $route.params.letter }}</h2>
     </div>
@@ -14,7 +23,7 @@
     <article-block :articles="filterArticlesBySearch" />
   </div>
 </template>
-  
+
 <script lang="js">
 import { ref, computed, defineAsyncComponent } from 'vue';
 import { useHead } from '@unhead/vue';

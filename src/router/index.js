@@ -3,14 +3,15 @@ import { setupLayouts } from 'virtual:generated-layouts'
 import generatedRoutes from 'virtual:generated-pages'
 
 const routeArray = [
-{
-    path: "/:pathMatch(.*)",
-    name: "404",
-    component: () => import('../views/404View.vue'),
-  }, {
-    path: "/blog/:letter(\[a-z])",
-    name: "blogByLetter",
-    component: () => import('../views/ByListBlogView.vue'),
+  {
+    path: '/:pathMatch(.*)',
+    name: '404',
+    component: () => import('../views/404View.vue')
+  },
+  {
+    path: '/blog/:letter([a-z])',
+    name: 'blogByLetter',
+    component: () => import('../views/ByListBlogView.vue')
   }
 ].concat(setupLayouts(generatedRoutes))
 
@@ -25,7 +26,7 @@ const router = createRouter({
       }
     }
   }
-});
+})
 
 export { routeArray }
 export default router

@@ -3,6 +3,7 @@
     <div class="flex justify-start mb-6">
       <h2 class="text-white text-2xl font-bold">Discussion ()</h2>
     </div>
+    <!-- Retrieve User information -->
     <comment-input @send="(c) => $emit('send', c)" />
 
     <reply-comment comment="Testing the component or something" />
@@ -16,7 +17,7 @@ import { defineAsyncComponent } from 'vue'
 export default {
   components: {
     'comment-input': defineAsyncComponent(() => import('@/components/commentinput.vue')),
-    'reply-comment': defineAsyncComponent(() => import('@/components/reply.vue')),
+    'reply-comment': defineAsyncComponent(() => import('@/components/reply.vue'))
   },
   props: {
     comments: {
@@ -33,13 +34,10 @@ export default {
     }
   },
   methods: {
-    submitComment() {
-    }
+    submitComment() {}
   },
   setup() {
-    const GITHUB_API = 'https://api.github.com/';
+    const GITHUB_API = 'https://api.github.com/'
   }
-
 }
-
 </script>

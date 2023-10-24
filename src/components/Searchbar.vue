@@ -1,6 +1,8 @@
 <template>
-  <div class="search-bar relative flex items-center w-full h-12 rounded dark:bg-dark-bg-mute bg-bg-mute overflow-hidden">
-    <div class="grid place-items-center h-full w-12 dark:text-dark-bg-hard text-bg-hard ">
+  <div
+    class="search-bar relative flex items-center w-full h-12 rounded dark:bg-dark-bg-mute bg-bg-mute overflow-hidden"
+  >
+    <div class="grid place-items-center h-full w-12 dark:text-dark-bg-hard text-bg-hard">
       <font-awesome-icon icon="fa-solid fa-search" class="block h-6 w-6" />
     </div>
     <input
@@ -15,19 +17,19 @@
 </template>
 
 <script>
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   name: 'searchbar',
   setup(props, { emit }) {
-    const query = ref('');
+    const query = ref('')
 
     function emitUpdateQuery() {
-      emit('update:query', query.value);
+      emit('update:query', query.value)
     }
-    return { query, emitUpdateQuery };
+    return { query, emitUpdateQuery }
   }
-};
+}
 </script>
 
 <style>

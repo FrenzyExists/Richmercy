@@ -1,15 +1,23 @@
 <template>
-  <div class="flex flex-col sm:flex-row  px-11 overflow-hidden relative dark:bg-dark-bg-harder py-16 pb-24">
-    <font-awesome-icon class="dark:text-dark-bg-hard !flex absolute z-0 -rotate-12 w-64 !h-64 -mt-24 ml-24"
-      icon="fa-solid fa-envelope" />
+  <div
+    class="flex flex-col sm:flex-row px-11 overflow-hidden relative dark:bg-dark-bg-harder py-16 pb-24"
+  >
+    <font-awesome-icon
+      class="dark:text-dark-bg-hard !flex absolute z-0 -rotate-12 w-64 !h-64 -mt-24 ml-24"
+      icon="fa-solid fa-envelope"
+    />
     <div class="w-3/5 float-left relative inline-block align-middle">
       <h3 class="mb-3 text-3xl font-bold dark:text-dark-green">Join my wacky Newsletter!</h3>
-      <p class="text-lg w-3/4 dark:text-dark-text">Subscribe to stay up to date with the latest tutorials and stories I
-        write :D</p>
+      <p class="text-lg w-3/4 dark:text-dark-text">
+        Subscribe to stay up to date with the latest tutorials and stories I write :D
+      </p>
     </div>
     <div class="inline-block align-middle relative w-2/5">
       <form action="" class="align-middle inline-flex w-full">
-        <input type="text" class=" border-none h-12 rounded-lg max-w-full align-middle sm:w-3/5 w-auto dark:bg-dark-bg">
+        <input
+          type="text"
+          class="border-none h-12 rounded-lg max-w-full align-middle sm:w-3/5 w-auto dark:bg-dark-bg"
+        />
         <button class="bg-dark-acc px-4 py-2 rounded-xl text-xl -ml-4">
           <font-awesome-icon class="" icon="fa-solid fa-paper-plane" />
         </button>
@@ -25,8 +33,6 @@
   overflow: hidden;
   position: relative;
 }
-
-
 
 @media (min-width: 1200px) {
   .container {
@@ -54,10 +60,9 @@
 .container:before,
 .row:after,
 .row:before {
-  content: " ";
+  content: ' ';
   display: table;
 }
-
 
 .newsletter-wrapper .envelope-bg {
   font-size: 180px;
@@ -86,7 +91,7 @@ svg:not(:root) {
   font-size: inherit;
   height: 1em;
   overflow: visible;
-  vertical-align: -.125em;
+  vertical-align: -0.125em;
 }
 
 .newsletter-wrapper .hgroup {
@@ -151,6 +156,6 @@ svg:not(:root) {
   vertical-align: middle;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
-  transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 </style>
