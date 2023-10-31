@@ -31,7 +31,7 @@ export default {
   components: {
     'by-letter': defineAsyncComponent(() => import('@/components/byletter.vue')),
     'article-block': defineAsyncComponent(() => import('@/components/articleblock.vue')),
-    'searchbar': defineAsyncComponent(() => import('@/components/Searchbar.vue')),
+    'searchbar': defineAsyncComponent(() => import('@/components/searchbar.vue')),
     'navbar': defineAsyncComponent(() => import('@/components/navbar.vue'))
   },
   beforeCreate() {
