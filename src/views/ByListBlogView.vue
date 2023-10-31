@@ -18,7 +18,7 @@
       <by-letter routerName="blogByLetter" :existingArticles="articles" />
     </div>
     <div class="px-10 pb-10 justify-center">
-      <searchbar :query.sync="query" @update:query="handleUpdateQuery" />
+      <searchbar v-model:query="query" @update:query="handleUpdateQuery" />
     </div>
     <article-block :articles="filterArticlesBySearch" />
   </div>
@@ -41,7 +41,7 @@ export default {
 
     this.filteredArticlesByLetter.value = this.articles.filter(
       ({ title }) => [title]
-        .some(val => val.toLowerCase()[0].includes(this.$route.params.letter.toLocaleLowerCase()))
+        .some(val => String(val).toLowerCase()[0].includes(this.$route.params.letter.toLocaleLowerCase()))
     );
 
   },
@@ -55,7 +55,7 @@ export default {
 
     const filterArticlesBySearch = computed(() => {
       return filteredArticlesByLetter.value.value.filter(({ title }) =>
-        [title].some(val => val.toLowerCase().includes(query.value.toLocaleLowerCase()))
+        [title].some(val => String(val).toLowerCase().includes(query.value.toLocaleLowerCase()))
       );
     });
 

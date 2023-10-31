@@ -191,8 +191,8 @@ export const plugins = [
         width: '103%',
         height: '100%',
         'background-image': `linear-gradient(to right, ${theme('colors.green')}, ${theme('colors.blue')})`,
-        'mask-size': '54px 54px',
-        'mask-image':
+        '-webkit-mask-size': '54px 54px',
+        '-webkit-mask-image':
         'linear-gradient(rgba(255, 255, 255, 0.136) 1px, transparent 0), linear-gradient(90deg, rgba(255, 255, 255, 0.115) 1px, transparent 0)',
       },
       '.dark .main-app:has(.article)::before': {

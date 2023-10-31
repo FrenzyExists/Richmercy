@@ -5,7 +5,7 @@
     <by-letter routerName="blogByLetter" :existingArticles="articles" />
 
     <div class="p-10 justify-center">
-      <searchbar :query.sync="query" @update:query="handleUpdateQuery" />
+      <searchbar v-model:query="query" @update:query="handleUpdateQuery" />
     </div>
     <article-block :articles="filteredArticles" />
   </div>
@@ -44,9 +44,9 @@ export default {
     const articles = getArticleInfo();
 
     const filteredArticles = computed(() => {
-      return articles.filter(({ title }) =>
-        [title].some(val => val.toLowerCase().includes(query.value.toLocaleLowerCase()))
-      );
+      return articles.filter(({ title }) => {
+        return [title].some(val => String(val).toLowerCase().includes(query.value.toLocaleLowerCase()))
+      });
     });
 
     function handleUpdateQuery(newValue) {

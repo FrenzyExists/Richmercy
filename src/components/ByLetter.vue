@@ -8,8 +8,8 @@
       :key="letter"
       :class="
         existingArticles !== undefined &&
-        !existingArticles.map((e) => e.title[0]).includes(letter.toLocaleUpperCase())
-          ? 'text-bg-mute dark:text-dark-bg-mute pointer-events-none'
+        !existingArticles.map((e) => e.title !== undefined ? e.title[0] : null).includes(letter.toLocaleUpperCase())
+          ? 'text-bg-mute dark:text-dark-bg-mute pointer-events-none'  
           : 'text-acc dark:text-dark-acc hover:text-acc-soft dark:hover:text-dark-acc-soft'
       "
     >
@@ -21,7 +21,6 @@
 <script setup>
 import { RouterLink } from 'vue-router'
 const letters = 'abcdefghijklmnopqrstuvwyz'.split('')
-
 defineProps({
   routerName: {
     type: String,
