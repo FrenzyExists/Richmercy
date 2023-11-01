@@ -23,6 +23,7 @@ useHead({
 			</div>
 			
 		</div>
+	</div>
 </template>
 
 <route lang="yaml">
