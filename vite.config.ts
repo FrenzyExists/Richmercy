@@ -42,7 +42,6 @@ export default defineConfig({
 				// presets
 				'vue',
 				{ '@vue-router': VueRouterExports },
-				'vue-i18n',
 				'@vueuse/core',
 				'@vueuse/head',
 				// custom
