@@ -38,7 +38,9 @@
 		"typed.js": "^2.0.16",
 		"unplugin-vue-markdown": "^0.24.3",
 		"vue": "^3.2.37",
-		"vue-router": "^4.1.2"
+		"vue-router": "^4.1.2",
+		"workbox": "^0.0.0",
+		"workbox-window": "^7.0.0"
 	},
 	"devDependencies": {
 		"@iconify/json": "^2.1.78",
