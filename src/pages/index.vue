@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import VitailseLogo from '@/assets/logo.png';
 useHead({
 	title: 'Detective Eternal 7 Gates of Blue Hell',
 });
