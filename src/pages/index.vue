@@ -6,6 +6,7 @@ useHead({
 
 
 <template>
+	<navbar/>
 	<div class="w-full m-auto dark:bg-dark-background bg-background">
 		<div class="xl:max-w-7xl lg:max-w-5xl lg:p-6 mld:max-w-3xl mld:p-4 m-auto xs:w-full xs:p-4">
 			<div class="xl:py-20 lg:py-28 mld:py-10 xs:py-10">

@@ -10,13 +10,22 @@ import { VitePWA } from 'vite-plugin-pwa';
 import generateSitemap from 'vite-ssg-sitemap';
 import VueRouter from 'unplugin-vue-router/vite';
 import { VueRouterExports } from 'unplugin-vue-router';
+import Markdown from 'unplugin-vue-markdown/vite'
 // https://vitejs.dev/config/
 export default defineConfig({
 	plugins: [
-		vue(),
+		vue({
+			include: [/\.vue$/, /\.md$/],
+		}),
 		VueRouter({
 			dts: true,
 			routesFolder: 'src/pages',
+			
+		}),
+		Markdown({
+			wrapperClasses: 'prose prose-sm m-auto text-left',
+			headEnabled: true,
+
 		}),
 		Components({
 			dts: true,
@@ -25,6 +34,10 @@ export default defineConfig({
 					prefix: 'icon',
 				}),
 			],
+			// allow auto load markdown components under `./src/components/`
+			extensions: ['vue', 'md'],
+			// allow auto import and register components used in markdown
+			include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
 		}),
 		Icons({
 			compiler: 'vue3',
@@ -107,15 +120,10 @@ export default defineConfig({
 		onFinished() {
 			generateSitemap();
 		},
+		crittersOptions: {
+			reduceInlineStyles: false,
+		  },
 		mock: true
-	},
-	// https://github.com/vitest-dev/vitest
-	test: {
-		include: ['src/__test__/**/*.test.ts', 'src/__test__/**/*.spec.ts'],
-		environment: 'jsdom',
-		deps: {
-			inline: ['@vue', '@vueuse', 'vue-demi'],
-		},
 	},
 	ssr: {},
 });
