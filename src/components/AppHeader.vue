@@ -50,7 +50,7 @@
 				<button
 					class="mx-5 cursor-pointer focus:outline-none"
 					@click="toggleDarkMode"
-				>
+				>dadad
 					<icon:bx:bx-moon class="w-6 h-6" v-if="!isDark" />
 					<icon:bx:bxs-moon class="w-6 h-6" v-else />
 				</button>
