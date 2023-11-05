@@ -1,4 +1,7 @@
 <script setup lang="ts">
+useHead({
+	title: 'The sin of Madness',
+});
 </script>
 <template>
     <div
