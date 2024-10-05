@@ -12,11 +12,7 @@ node_modules
 dist
 dist-ssr
 coverage
-.*-debug.log
 *.local
-
-.vercel
-.vite-ssg-temp
 
 /cypress/videos/
 /src/markdown/.obsidian
