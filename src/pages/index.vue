@@ -45,22 +45,7 @@
           </div>
         </div>
         <!-- Companies -->
-        <div class="text-center xl:py-20 lg:py-20 mld:py-10">
-          <p
-            class="sm:text-lg lg:text-xl 2xl:mb-4 xl:mb-2 lg:mb-2 mld:mb-1 xs:mb-1 text-lg 2xl:text-xl font-medium text-bg-super-hard-trans dark:text-dark-bg-super-hard-trans"
-          >
-            The companies and asociations with who I've collaborated with can voice their experience
-          </p>
-          <!-- company logos n frendz -->
-          <div class="m-auto max-w-3xl">
-            <ti
-              class="inline-block xl:h-24 w-fit xl:px-4 xl:py-1 lg:h-20 lg:px-4 lg:py-1 mld:h-20 mld:p-3 xs:h-4 xs:p-2"
-            />
-            <sirkosky
-              class="inline-block xl:h-24 w-fit xl:px-4 xl:py-1 lg:h-20 lg:px-4 lg:py-1 mld:h-20 mld:p-3 xs:h-4 xs:p-2"
-            />
-          </div>
-        </div>
+       
         <!-- A catchy phrase -->
         <div class="text-center xl:py-20 lg:py-20 mld:py-10 xs:py-10">
           <div class="text-center m-auto max-w-4xl">
