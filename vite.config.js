@@ -1,5 +1,5 @@
 import { fileURLToPath, URL } from 'node:url'
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 import Vue from '@vitejs/plugin-vue'
 import Pages from 'vite-plugin-pages'
 import Markdown from 'vite-plugin-vue-markdown'
@@ -8,12 +8,16 @@ import WebfontDownload from 'vite-plugin-webfont-dl'
 import Layouts from 'vite-plugin-vue-layouts'
 import path from 'node:path'
 import { resolve } from 'path'
+import { env } from 'node:process'
 
+
+// const env = loadEnv(mode, process.cwd(), '')
 // https://vitejs.dev/config/
 export default defineConfig({
-  // define: {
-  //   'process.env': process.env
-  // },
+  define: {
+    'process.env': process.env,
+  },
+
   plugins: [
     Vue({
       include: [/\.vue$/, /\.md$/], // <--
