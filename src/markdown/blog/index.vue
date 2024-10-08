@@ -63,5 +63,5 @@ export default {
 
 <route lang="yaml">
 meta:
-  layout: blogger
+  layout: fetching
 </route>

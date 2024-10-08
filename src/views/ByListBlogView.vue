@@ -2,7 +2,8 @@
   <navbar
     :FilteredRoutes="[
       { name: 'about', path: '/about' },
-      { name: 'blog', path: '/blog' }
+      { name: 'blog', path: '/blog' },
+      { name: 'projects', path: '/projects'}
     ]"
   />
   <div

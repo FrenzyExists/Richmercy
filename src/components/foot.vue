@@ -53,7 +53,7 @@
 const socials = [
   {
     icon: 'fa-brands fa-whatsapp',
-    url: 'https://wa.me/1XXXXXXXXXX'
+    url: `https://wa.me/${import.meta.env.VITE_PHONE_NUMBER}`
   },
   {
     icon: 'fa-brands fa-twitter',
@@ -61,7 +61,7 @@ const socials = [
   },
   {
     icon: 'fa-brands fa-github',
-    url: 'https://github.com/FrenzyExists'
+    url: `https://github.com/${import.meta.env.VITE_GITHUB_USER}`
   }
 ]
 

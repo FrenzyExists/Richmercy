@@ -11,6 +11,9 @@ import { resolve } from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  // define: {
+  //   'process.env': process.env
+  // },
   plugins: [
     Vue({
       include: [/\.vue$/, /\.md$/], // <--

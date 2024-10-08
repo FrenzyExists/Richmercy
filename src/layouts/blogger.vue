@@ -3,7 +3,8 @@
     :FilteredRoutes="[
       { name: 'about', path: '/about' },
       { name: 'blog', path: '/blog' },
-      { name: 'tags', path: '/tags' }
+      { name: 'tags', path: '/tags' },
+      { name: 'projects', path: '/projects'}
     ]"
   />
   <div>
