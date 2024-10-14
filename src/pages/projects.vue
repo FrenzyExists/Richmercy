@@ -1,39 +1,48 @@
 <template>
-  <span
-    class="pb-20 rounded-t-xl pt-4 min-h-screen dark:bg-dark-bg-soft prose prose-toy-story dark:prose-invert font-montserrat-alternate max-w-7xl flex flex-col mx-auto px-4"
-  >
+  <span class="pb-20 pt-4">
+    <div class="md:px-8 sm:mt-12 prose prose-toy-story dark:prose-invert max-w-7xl mx-auto">
+      <h2>Projects</h2>
+      <p>Want to see more? Visit my GitHub profile or check out the rest of my projects below!</p>
+    </div>
+
+    <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 my-12">
+      <div
+        class="mx-auto grid grid-cols-1 md:gap-8 md:grid-cols-2 lg:max-w-5xl gap-y-12 lg:grid-cols-3 lg:gap-x-8"
+      >
+      <ProjectCard
+    v-for="p in github_response"
+    :key="p.id"
+    :projectName="p.name"
+    :projectDesc="p.description"
+    :projectStars="p.stars"
+    :projectForks="p.forks"
+    :projectUrl="p.url"
+  />
+      </div>
+    </div>
+
     <!-- <h2>The best of the best</h2>
     <div>
       <h2>🚧 Under Construction 🚧</h2>
     </div> -->
 
-    <!-- Projects Grid -->
-    <h2>Projects</h2>
-    <p>Want to see more? Visit my GitHub profile or check out the rest of my projects below!</p>
-    <div class="mb-32 grid grid-cols-[repeat(auto-fill,_minmax(240px,_1fr))] gap-6 relative">
-      <ProjectCard
-        v-for="p in github_response"
-        :key="p.id"
-        :projectName="p.name"
-        :projectDesc="p.description"
-        :projectStars="p.stars"
-        :p="p"
-      />
-    </div>
-
-    <!-- View More Button -->
-    <button
-      v-if="hasMoreProjects"
-      @click="loadMoreProjects"
-      class="w-fit px-36 mx-auto rounded-full drop-shadow-md my-4 sm:my-0 font-bold text-lg hover:transition duration-300 hover:ease-in-out hover:bg-acc-soft hover:text-bg-soft text-acc-soft dark:hover:text-dark-bg-super-hard dark:bg-dark-bg-super-hard dark:text-dark-acc-soft dark:hover:bg-dark-acc-soft bg-bg-soft p-4 min-w-[10rem]"
+    <div
+      class="pb-20 prose prose-toy-story dark:prose-invert font-montserrat-alternate max-w-7xl mx-auto flex flex-col"
     >
-      View More
-    </button>
+      <!-- View More Button -->
+      <button
+        v-if="hasMoreProjects"
+        @click="loadMoreProjects"
+        class="w-fit px-36 mx-auto rounded-full drop-shadow-md my-4 sm:my-0 font-bold text-lg hover:transition duration-300 hover:ease-in-out hover:bg-acc-soft hover:text-bg-soft text-acc-soft dark:hover:text-dark-bg-super-hard dark:bg-dark-bg-super-hard dark:text-dark-acc-soft dark:hover:bg-dark-acc-soft bg-bg-soft p-4 min-w-[10rem]"
+      >
+        View More
+      </button>
 
-    <!-- End of Projects Message -->
-    <p v-if="!hasMoreProjects && github_response.length > 0" class="text-center mt-4">
-      You've reached the end
-    </p>
+      <!-- End of Projects Message -->
+      <p v-if="!hasMoreProjects && github_response.length > 0" class="text-center mt-4">
+        You've reached the end
+      </p>
+    </div>
   </span>
 </template>
 
@@ -68,7 +77,7 @@ export default {
         while (!gotem) {
           const response = await octokit.request(`GET ${this.nextUrl}`, {
             username: `${import.meta.env.VITE_GITHUB_USER}`,
-            per_page: 50,
+            per_page: 100,
             headers: {
               'X-GitHub-Api-Version': '2022-11-28'
             }
@@ -79,15 +88,18 @@ export default {
             ...response.data
               .filter((repo) => repo.topics && repo.topics.some((tag) => tag === 'good')) // Filter repos with 'good' tag
               .map((repo) => ({
+                url: repo.html_url,
                 id: repo.id,
                 name: repo.name,
                 description: repo.description || 'No description available',
                 icon: 'fa fa-github', // Set a default icon or customize this
                 projects: repo.topics || [],
                 stars: repo.stargazers_count,
-                tags: repo.topics
+                tags: repo.topics,
+                forks: repo.forks
               }))
           ]
+          console.log(filteredProjects)
 
           linkHeader = response.headers.link
           if (linkHeader && linkHeader.includes('rel="next"')) {
@@ -98,14 +110,10 @@ export default {
             // No more pages to load
             this.hasMoreProjects = false
           }
-          console.log(linkHeader)
-          console.log(this.temporary_response)
           // Note, this has a pretty odd bug, remember to test it better
-          if (filteredProjects.length >= 15 || !linkHeader.includes('rel="next"')) {
+          if (filteredProjects.length >= 10 || !linkHeader.includes('rel="next"')) {
             gotem = true
             this.temporary_response = [...this.temporary_response, ...filteredProjects.splice(15)]
-            console.log(this.temporary_response)
-            console.log('DSD')
           }
         }
         this.github_response = [...this.github_response, ...filteredProjects]

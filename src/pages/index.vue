@@ -28,7 +28,7 @@
                 ></path>
               </svg>
               <p>{{ quote.q }}</p>
-              <span class="text-sm font-light">{{ quote.a }}</span>
+              <span class="text-sm font-light">- {{ quote.a }}</span>
             </blockquote>
           </div>
           <!-- image and lower clouds -->
@@ -47,7 +47,7 @@
       <div class="text-center xl:py-20 lg:py-20 mld:py-10 xs:py-10">
         <div class="text-center m-auto max-w-4xl">
           <h2
-            class="font-semibold italic dark:text-dark-bg-super-soft-trans text-bg-super-soft-trans lg:text-5xl mld:text-5xl xs:text-4xl text-3xl after:absolute after:bottom-0 after:left-0 after:right-0 after:m-auto dark:after:bg-dark-acc after:bg-acc after:h-1 after:w-32 relative mb-16 pb-9"
+            class="font-semibold italic dark:text-dark-acc text-acc lg:text-5xl mld:text-5xl xs:text-4xl text-3xl after:absolute after:bottom-0 after:left-0 after:right-0 after:m-auto dark:after:bg-dark-acc after:bg-acc after:h-1 after:w-32 relative mb-16 pb-9"
           >
             Building the future one line of code at a time
           </h2>
@@ -108,37 +108,50 @@
   </div>
 
   <!-- Education and Experience -->
-  <!-- <div
-      class="xs:p-4 mld:p-4 bg-bg-soft dark:bg-dark-bg-soft py-20 lg:py-16 mld:py-10  layout-2col resume has-column-divider">
-      
-      <div class="max-w-screen-xl w-full lg:max-w-4xl md:max-w-2xl sm:max-w-xl mx-auto px-2">
-        
-        <div class="flex flex-wrap ">
-          
-          <div
-            class="pr-2 first:border-r-2 dark:first:border-dark-acc-soft first:border-acc-soft flex flex-grow max-w-full sm:max-w-[50%]">
-            <div>
-              <h3 class="text-3xl font-bold mb-8 text-text-soft dark:text-dark-text-soft">Education</h3>
-              <div v-for="edu in education">
-                <h5 class="text-xl lg:text-lg md:text-base sm:text-base font-bold text-text dark:text-dark-text">
-                  {{ edu.title }}</h5>
-                <p class="text-text-soft dark:text-dark-text-soft mb-6 font-normal ">{{ edu.desc }}</p>
-              </div>
+  <div
+    class="xs:p-4 mld:p-4 bg-bg-soft dark:bg-dark-bg-soft py-20 lg:py-16 mld:py-10 layout-2col resume has-column-divider"
+  >
+    <div class="max-w-screen-xl w-full lg:max-w-4xl md:max-w-2xl sm:max-w-xl mx-auto px-2">
+      <div class="flex flex-wrap">
+        <div
+          class="pr-2 first:border-r-2 dark:first:border-dark-acc-soft first:border-acc-soft flex flex-grow max-w-full sm:max-w-[50%]"
+        >
+          <div>
+            <h3 class="text-3xl font-bold mb-8 text-text-soft dark:text-dark-text-soft">
+              Education
+            </h3>
+            <div v-for="edu in local.education">
+              <h5
+                class="text-xl lg:text-lg md:text-base sm:text-base font-bold text-text dark:text-dark-text"
+              >
+                {{ edu.title }}
+              </h5>
+              <h6 class="text-lg dark:text-dark-acc-soft italic">{{ edu.place }}</h6>
+              <span class="text-xs dark:text-dark-bg-super-hard-trans font-bold">{{edu.finishedAt}}</span>
+              <p class="text-text-soft dark:text-dark-text-soft mb-6 font-normal">{{ edu.desc }}</p>
             </div>
           </div>
-          <div class="pl-[3.5%] flex max-w-half max-w-[50%] relative  col  col-12 col-sm-6">
-            <div>
-              <h3 class="text-3xl font-bold mb-8 text-text-soft dark:text-dark-text-soft">Experience</h3>
-              <div v-for="ex in experience">
-                <h5 class="text-xl lg:text-lg md:text-base sm:text-base font-bold text-text dark:text-dark-text">
-                  {{ ex.title }}</h5>
-                <p class="text-text-soft dark:text-dark-text-soft mb-6 font-normal ">{{ ex.desc }}</p>
-              </div>
+        </div>
+        <div class="pl-[3.5%] flex max-w-half max-w-[50%] relative col col-12 col-sm-6">
+          <div>
+            <h3 class="text-3xl font-bold mb-8 text-text-soft dark:text-dark-text-soft">
+              Experience
+            </h3>
+            <div v-for="ex in local.experience">
+              <h5
+                class="text-xl lg:text-lg md:text-base sm:text-base font-bold text-text dark:text-dark-text"
+              >
+                {{ ex.title }}
+              </h5>
+              <h6 class="text-lg dark:text-dark-acc-soft italic">{{ ex.employer }}</h6>
+              <span class="text-xs dark:text-dark-bg-super-hard-trans font-bold">{{ex.from}} - {{ ex.to }}</span>
+              <p class="text-text-soft dark:text-dark-text-soft mb-6 font-normal">{{ ex.description }}</p>
             </div>
           </div>
         </div>
       </div>
-    </div> -->
+    </div>
+  </div>
 
   <div class="xl:max-w-7xl lg:max-w-5xl lg:p-6 mld:max-w-3xl mld:p-4 m-auto xs:w-full xs:p-4">
     <div class="xl:py-32 lg:py-32 mld:py-10 xs:py-10">
@@ -157,7 +170,7 @@
           </div>
           <div class="flex flex-wrap box-border flex-row">
             <div
-              v-for="item in tech"
+              v-for="item in local.tech"
               class="mb-8 box-border px-4 lg:basis-1/4 md:basis-1/3 basis-1/2"
             >
               <div
@@ -242,6 +255,8 @@
 import { useHead } from '@unhead/vue'
 import { defineAsyncComponent, ref, watchEffect } from 'vue'
 import Typed from 'typed.js'
+import local from '../api/local'
+
 export default {
   setup() {
     useHead({
@@ -256,80 +271,7 @@ export default {
   },
   data() {
     return {
-      education: [
-        {
-          title: 'Highschool life or something',
-          desc: 'Some small description of that boogaloo'
-        },
-        {
-          title: 'My Google Data certification on Data',
-          desc: 'Some small description of that boogaloo'
-        },
-        {
-          title: 'My Meta certification on Fullstack once I complete it',
-          desc: 'Some cool highlights and projects'
-        },
-        {
-          title: 'The Datastructures course I took',
-          desc: 'A description of what i did on the course and whatnot'
-        },
-        {
-          title: 'The Computer Architecture course I also took',
-          desc: 'The odyssey I went through that course'
-        }
-      ],
-      experience: [
-        {
-          title: 'Research',
-          desc: 'Info bout that'
-        },
-        {
-          title: 'CAS Technical Advisor',
-          desc: 'My role in that field'
-        },
-        {
-          title: 'CAS Assistant Webmaster',
-          desc: 'What I worked on'
-        },
-        {
-          title: 'Undergrad Research with TI',
-          desc: 'The app that was being developed'
-        }
-      ],
-      tech: [
-        {
-          name: 'python',
-          url: 'fa-brands fa-python'
-        },
-        {
-          name: 'java',
-          url: 'fa-brands fa-java'
-        },
-        {
-          name: 'wordpress',
-          url: 'fa-brands fa-wordpress'
-        },
-        {
-          name: 'node.js',
-          url: 'fa-brands fa-node-js'
-        },
-        {
-          name: 'vue.js',
-          url: 'fa-brands fa-vuejs'
-        },
-        {
-          name: 'verilog',
-          url: 'fa-solid fa-microchip'
-        },
-        {
-          name: 'react',
-          url: 'fa-brands fa-react'
-        },
-        {
-          name: 'bash/sh',
-          url: 'fa-solid fa-terminal'
-        }
-      ]
+      local
     }
   },
   mounted() {
@@ -343,6 +285,55 @@ export default {
       smartBackspace: true
     }
     const typed = new Typed('#typed', options)
+    const w = this.storeLocalQuotes()
+  },
+  methods: {
+    has12HoursPassed(lastUpdatedTime) {
+      if (isNaN(lastUpdatedTime)) {
+        return true
+      }
+      const now = Math.round(new Date().getTime() / 1000)
+      const twelveHoursInMs = 12 * 60 * 60 // 12 hours in seconds
+      return now - lastUpdatedTime > twelveHoursInMs
+    },
+    async fetchQuotes() {
+      try {
+        const response = await fetch('http://localhost:3001/api/quotes')
+        const quotes = await response.json()
+        localStorage.setItem('quotes', JSON.stringify(quotes)) // Store quotes as a string
+        console.log('Quotes fetched and stored.')
+
+        console.log(quotes)
+        return quotes
+      } catch (error) {
+        // use a better error handling
+        console.log('ERROR', error)
+      }
+    },
+
+    storeLocalQuotes() {
+      let ts = localStorage.getItem('quotesLastUpdated')
+      ts = parseInt(ts)
+      // console.log(ts, 'SA')
+      // console.log(this.has12HoursPassed(ts))
+      if (this.has12HoursPassed(ts)) {
+        console.log('fetching quotes...')
+        const now = Math.round(new Date().getTime() / 1000)
+        localStorage.setItem('quotesLastUpdated', now)
+        this.fetchQuotes()
+      } else {
+        console.log('Using cached quotes...')
+      }
+      const storedQuotes = localStorage.getItem('quotes')
+      this.selectRandomQuote(storedQuotes)
+    },
+
+    selectRandomQuote(quotes) {
+      let qs = JSON.parse(quotes)
+      if (qs) {
+        this.quote = qs[parseInt(Math.random() * (qs.length - 1))]
+      }
+    }
   },
   components: {
     ti: defineAsyncComponent(() => import('@/components/ti.vue')),

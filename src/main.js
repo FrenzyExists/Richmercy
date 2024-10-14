@@ -24,7 +24,9 @@ import {
   faClock,
   faTerminal,
   faCheck,
-  faPaperPlane
+  faPaperPlane,
+  faStar,
+  faCodeFork
 } from '@fortawesome/free-solid-svg-icons'
 import {
   faTwitter,
@@ -73,7 +75,9 @@ library.add(
   faMoon,
   faMicrochip,
   faClock,
-  faEnvelope
+  faEnvelope,
+  faStar,
+  faCodeFork
 )
 app.component('font-awesome-icon', FontAwesomeIcon)
 
