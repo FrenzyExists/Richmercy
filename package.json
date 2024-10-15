@@ -6,7 +6,7 @@
   "scripts": {
     "dev2": "concurrently \"cross-env DEBUG=unplugin-vue-markdown:* vite\" \"nodemon server/main.cjs\"",
     "dev": "cross-env DEBUG=unplugin-vue-markdown:* vite",
-    "build": "concurrently \"cross-env DEBUG=unplugin-vue-markdown:* vite build\" \"nodemon server/main.cjs\"",
+    "build": "concurrently \"cross-env DEBUG=unplugin-vue-markdown:* vite build\" \"node server/main.cjs\"",
     "build2": "cross-env DEBUG=unplugin-vue-markdown:* vite build",
     "preview": "vite preview",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
