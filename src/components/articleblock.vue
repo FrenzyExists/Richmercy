@@ -52,7 +52,7 @@
 </template>
 
 <script lang="js">
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export default {
   props: {
@@ -60,10 +60,6 @@ export default {
       type: Array,
       required: true
     }
-  },
-  setup(props) {
-    const moreTag = ref('...');
-    // console.log(props.articles);
   }
 }
 </script>

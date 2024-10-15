@@ -25,7 +25,7 @@
           <div v-show="selectedTab === 'write'">
             <div class="dark:bg-dark-bg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0 relative rounded-b-md">
               <textarea id="comment" rows="4" v-model="replyComment"
-                class="h-24 min-h-[4rem] text-white dark:bg-dark-bg-harder bg-bg-harder text-sm px-0 border-0 focus:ring-0 w-full"
+                class="h-24 min-h-[4rem] text-white dark:bg-dark-bg bg-bg-harder text-sm px-0 border-0 focus:ring-0 w-full"
                 placeholder="Write a comment..."></textarea>
             </div>
           </div>

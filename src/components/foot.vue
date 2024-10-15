@@ -28,11 +28,11 @@
         © {{ new Date().getFullYear() }}
         Angel Garcia —
         <a
-          href="https://twitter.com/not_pikachu"
+          :href=twitterUrl
           class="dark:text-dark-blue text-blue ml-1"
           rel="noopener noreferrer"
           target="_blank"
-          >@not_pikachu</a
+          >@{{ twitterUser }}</a
         >
       </p>
       <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
@@ -57,7 +57,7 @@ const socials = [
   },
   {
     icon: 'fa-brands fa-twitter',
-    url: ''
+    url: `https://twitter.com/${import.meta.env.VITE_TWITTER}`
   },
   {
     icon: 'fa-brands fa-github',
@@ -69,8 +69,10 @@ export default {
   name: 'foot',
   data() {
     return {
-      socials
+      socials,
+      twitterUser: import.meta.env.VITE_TWITTER,
+      twitterUrl: `https://twitter.com/${import.meta.env.VITE_TWITTER}`
     }
-  }
+  },
 }
 </script>

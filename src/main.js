@@ -26,7 +26,8 @@ import {
   faCheck,
   faPaperPlane,
   faStar,
-  faCodeFork
+  faCodeFork,
+  faSpinner
 } from '@fortawesome/free-solid-svg-icons'
 import {
   faTwitter,
@@ -34,12 +35,17 @@ import {
   faLinkedin,
   faWhatsapp,
   faJava,
+  faCss3,
+  faHtml5,
   faPython,
   faGit,
   faVuejs,
+  faFigma,
   faReact,
   faWordpress,
-  faNodeJs
+  faNodeJs,
+  faAndroid,
+  faJs
 } from '@fortawesome/free-brands-svg-icons'
 
 App.name = "Pikachu's Portfolio"
@@ -48,6 +54,10 @@ const app = createApp(App)
 const head = createHead()
 
 library.add(
+  faJs,
+  faCss3,
+  faHtml5,
+  faAndroid,
   faGithub,
   faCheck,
   faJava,
@@ -61,6 +71,7 @@ library.add(
   faWhatsapp,
   faLinkedin,
   faBurger,
+  faFigma,
   faSearch,
   faChevronRight,
   faEllipsis,
@@ -70,6 +81,7 @@ library.add(
   faLink,
   faCommentDots,
   faLaptopCode,
+  faSpinner,
   faBolt,
   faSun,
   faMoon,

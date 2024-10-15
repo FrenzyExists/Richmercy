@@ -38,10 +38,10 @@ const tech = [
     name: 'java',
     url: 'fa-brands fa-java'
   },
-  {
-    name: 'wordpress',
-    url: 'fa-brands fa-wordpress'
-  },
+  // {
+  //   name: 'wordpress',
+  //   url: 'fa-brands fa-wordpress'
+  // },
   {
     name: 'node.js',
     url: 'fa-brands fa-node-js'
@@ -51,16 +51,36 @@ const tech = [
     url: 'fa-brands fa-vuejs'
   },
   {
-    name: 'verilog',
-    url: 'fa-solid fa-microchip'
-  },
-  {
     name: 'react',
     url: 'fa-brands fa-react'
   },
   {
+    name: 'verilog',
+    url: 'fa-solid fa-microchip'
+  },
+  {
     name: 'bash/sh',
     url: 'fa-solid fa-terminal'
+  },
+  {
+    name: 'html5',
+    url: 'fa-brands fa-html5'
+  },
+  {
+    name: 'css3',
+    url: 'fa-brands fa-css3'
+  },
+  {
+    name: 'javascript',
+    url: 'fa-brands fa-js'
+  },
+  {
+    name: 'android',
+    url: 'fa-brands fa-android'
+  },
+  {
+    name: 'figma',
+    url: 'fa-brands fa-figma'
   }
 ]
 
@@ -79,7 +99,8 @@ const experience = [
     sponsor: null,
     from: 'June 2024',
     to: 'August 2024',
-    description: 'Debugged and fixed multiple issues in the C-based tool, resulting in more accurate test results for Portrait Mobile. Developed Perl scripts for additional testing and created comprehensive documentation using Manpage.'
+    description:
+      'Debugged and fixed multiple issues in the C-based tool, resulting in more accurate test results for Portrait Mobile. Developed Perl scripts for additional testing and created comprehensive documentation using Manpage.'
   },
   {
     title: 'Researcher in Image Restoration using Neural Networks for DLP',
@@ -95,7 +116,8 @@ const experience = [
     sponsor: null,
     from: 'January 2023',
     to: 'May 2023',
-    description: 'Collaborated with a team of other fellow TAs writting rubrics, grading students and programming the base projects given to students written in C++ utilizing the in the course in OpenFrameworks GUI framework.'
+    description:
+      'Collaborated with a team of other fellow TAs writting rubrics, grading students and programming the base projects given to students written in C++ utilizing the in the course in OpenFrameworks GUI framework.'
   },
   {
     title: 'Teaching Assistant for the course Advance Programming (CIIC4010)',
@@ -103,7 +125,8 @@ const experience = [
     sponsor: null,
     from: 'August 2023',
     to: 'May 2024',
-    description: 'Developed a course website for a professor and gave maintanance to the university lab computers, keeping them functional at all times'
+    description:
+      'Developed a course website for a professor and gave maintanance to the university lab computers, keeping them functional at all times'
   }
 ]
 

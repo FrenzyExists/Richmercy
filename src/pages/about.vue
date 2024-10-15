@@ -11,12 +11,12 @@
         Puerto Rico in Mayaguez. I've always been fascinated by the way computers and circuits work
         and how they can be used to solve complex problems. My passion for programming started since
         my days in middle school when playing Flash games like Smash Flash 2. Youtube had lots of
-        tutorials on Game Maker and when I got in highschool I started to "program" with tutorials.
-        Although I was able to make a simple platform game, I still had trouble understanding
-        object-oriented concepts like polyphormism and posponed my hobbie. Several years later I
-        would take the basic courses like Algorithms and Advanced Programming to finally set myself
-        on switching from studying Surveying Engineering to Computer Engineering on my 4th year. And
-        although the change wasn't easy, I don't regret it!
+        tutorials on Game Maker and when I got in highschool I started to code with the help of
+        tutorials. Although I was able to make a simple platform game, I still had trouble
+        understanding object-oriented concepts like polyphormism and posponed my hobbie. Several
+        years later I would take the basic courses like Algorithms and Advanced Programming to
+        finally set myself on switching from studying Surveying Engineering to Computer Engineering
+        on my 4th year. And although the change wasn't easy, I don't regret it!
       </p>
       <p>
         I am currently working on a research project with a professor in the Electrical Engineering
@@ -52,9 +52,8 @@
               />
               <label
                 class="font-bold uppercase pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-xs text-acc dark:text-dark-acc transition-all after:-bottom-1.5 after:block after:w-full after:scale-x-0 after:border-b-2 dark:after:border-dark-acc after:border-acc after:transition-transform after:duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.25] dark:peer-placeholder-shown:text-dark-acc-soft peer-placeholder-shown:text-acc-soft peer-focus:text-xs peer-focus:leading-tight peer-focus:after:scale-x-100 peer-focus:after:border-acc dark:peer-focus:after:border-dark-acc"
+                >Name</label
               >
-                Name
-              </label>
             </div>
             <!-- Name error message -->
             <div class="input-errors" v-for="(error, index) of v$.form.name.$errors" :key="index">

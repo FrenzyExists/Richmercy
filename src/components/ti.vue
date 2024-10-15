@@ -5,6 +5,7 @@
     viewBox="0 0 2530 916"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    class="w-80"
   >
     <path
       fill-rule="evenodd"

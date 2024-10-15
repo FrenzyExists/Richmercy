@@ -16,7 +16,7 @@
       <form action="" class="align-middle inline-flex w-full">
         <input
           type="text"
-          class="border-none h-12 rounded-lg max-w-full align-middle sm:w-3/5 w-auto dark:bg-dark-bg bg-bg-harder"
+          class="peer outline outline-0  border-none h-12 rounded-lg max-w-full align-middle sm:w-3/5 w-auto dark:bg-dark-bg bg-bg-harder dark:text-dark-text pl-2 pr-5"
         />
         <button class="dark:bg-dark-acc bg-acc dark:text-dark-bg-hard text-bg-harder px-4 py-2 rounded-xl text-xl -ml-4">
           <font-awesome-icon class="" icon="fa-solid fa-paper-plane" />

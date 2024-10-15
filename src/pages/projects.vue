@@ -5,31 +5,38 @@
       <p>Want to see more? Visit my GitHub profile or check out the rest of my projects below!</p>
     </div>
 
-    <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 my-12">
+    <div>
+      <!-- Loading animation -->
       <div
-        class="mx-auto grid grid-cols-1 md:gap-8 md:grid-cols-2 lg:max-w-5xl gap-y-12 lg:grid-cols-3 lg:gap-x-8"
+        v-if="loading"
+        class="dark:text-dark-bg-soft text-bg-soft flex justify-center items-center h-screen"
       >
-      <ProjectCard
-    v-for="p in github_response"
-    :key="p.id"
-    :projectName="p.name"
-    :projectDesc="p.description"
-    :projectStars="p.stars"
-    :projectForks="p.forks"
-    :projectUrl="p.url"
-  />
+        <font-awesome-icon icon="fa-solid fa-spinner" spin size="4x" class="text-color-acc" />
+      </div>
+
+      <!-- Display content once loading is complete -->
+      <div v-else>
+        <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 my-12">
+          <div
+            class="mx-auto grid grid-cols-1 md:gap-8 md:grid-cols-2 lg:max-w-5xl gap-y-12 lg:grid-cols-3 lg:gap-x-8"
+          >
+            <ProjectCard
+              v-for="p in github_response"
+              :key="p.id"
+              :projectName="p.name"
+              :projectDesc="p.description"
+              :projectStars="p.stars"
+              :projectForks="p.forks"
+              :projectUrl="p.url"
+            />
+          </div>
+        </div>
       </div>
     </div>
-
-    <!-- <h2>The best of the best</h2>
-    <div>
-      <h2>🚧 Under Construction 🚧</h2>
-    </div> -->
 
     <div
       class="pb-20 prose prose-toy-story dark:prose-invert font-montserrat-alternate max-w-7xl mx-auto flex flex-col"
     >
-      <!-- View More Button -->
       <button
         v-if="hasMoreProjects"
         @click="loadMoreProjects"
@@ -37,8 +44,6 @@
       >
         View More
       </button>
-
-      <!-- End of Projects Message -->
       <p v-if="!hasMoreProjects && github_response.length > 0" class="text-center mt-4">
         You've reached the end
       </p>
@@ -58,12 +63,24 @@ export default {
     temporary_response: [],
     github_response: [],
     nextUrl: '/users/{username}/repos', // Starting endpoint
-    hasMoreProjects: true // Determines if more projects are available to load
+    hasMoreProjects: true, // Determines if more projects are available to load
+    loading: false
   }),
   async created() {
-    await this.loadMoreProjects() // Load initial set of projects on page load
+    await this.fetchData()
   },
   methods: {
+    async fetchData() {
+      try {
+        this.loading = true // Start loading
+        await this.loadMoreProjects()
+      } catch (error) {
+        console.error('Error fetching data:', error)
+      } finally {
+        this.loading = false
+      }
+    },
+
     // Function to fetch paginated data from GitHub API
     async getPaginatedData(url) {
       const octokit = new Octokit({
@@ -78,9 +95,7 @@ export default {
           const response = await octokit.request(`GET ${this.nextUrl}`, {
             username: `${import.meta.env.VITE_GITHUB_USER}`,
             per_page: 100,
-            headers: {
-              'X-GitHub-Api-Version': '2022-11-28'
-            }
+            headers: { 'X-GitHub-Api-Version': '2022-11-28' }
           })
 
           filteredProjects = [
@@ -124,7 +139,6 @@ export default {
       }
     },
 
-    // Load more projects when clicking the "View More" button
     async loadMoreProjects() {
       if (this.hasMoreProjects && this.nextUrl) {
         await this.getPaginatedData(this.nextUrl)
@@ -150,7 +164,6 @@ export default {
   top: 10px;
   right: 10px;
   background-color: #ff5c5c;
-  /* color: white; */
   border: none;
   border-radius: 50%;
   width: 30px;
@@ -164,71 +177,17 @@ export default {
   background-color: #ff3838;
 }
 
-.skill-name {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.skill-description {
-  font-size: 1rem;
-  margin-bottom: 15px;
-}
-
 ul {
   list-style-type: disc;
   padding-left: 20px;
 }
 
-.slide-enter-active,
-.slide-leave-active {
-  transition: 0.6s cubic-bezier(0.68, 0.6, 0.32, 1);
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
-
-.slide-enter-from,
-.slide-leave-to {
-  transform: translateY(-100%);
-}
-
-/* .carousel__slide {
-  padding: 5px;
-}
-
-.carousel__viewport {
-  perspective: 2000px;
-}
-
-.carousel__track {
-  transform-style: preserve-3d;
-}
-
-.carousel__slide--sliding {
-  transition: 0.5s;
-}
-
-.carousel__slide {
-  opacity: 0.9;
-  transform: rotateY(-20deg) scale(0.9);
-}
-
-.carousel__slide--active ~ .carousel__slide {
-  transform: rotateY(20deg) scale(0.9);
-}
-
-.carousel__slide--prev {
-  opacity: 1;
-  transform: rotateY(-10deg) scale(0.95);
-}
-
-.carousel__slide--next {
-  opacity: 1;
-  transform: rotateY(10deg) scale(0.95);
-}
-
-.carousel__slide--active {
-  opacity: 1;
-  transform: rotateY(0) scale(1.1);
-} */
 </style>
 
 <route lang="yaml">

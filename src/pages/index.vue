@@ -17,16 +17,7 @@
             </div>
             <!-- some description or something idk -->
             <blockquote class="text-lg italic font-semibold mt-3 text-gray-900 dark:text-white">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                class="block w-5 h-5 dark:text-dark-acc-soft text-acc-soft mb-4"
-                viewBox="0 0 975.036 975.036"
-              >
-                <path
-                  d="M925.036 57.197h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.399 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l36 76c11.6 24.399 40.3 35.1 65.1 24.399 66.2-28.6 122.101-64.8 167.7-108.8 55.601-53.7 93.7-114.3 114.3-181.9 20.601-67.6 30.9-159.8 30.9-276.8v-239c0-27.599-22.401-50-50-50zM106.036 913.497c65.4-28.5 121-64.699 166.9-108.6 56.1-53.7 94.4-114.1 115-181.2 20.6-67.1 30.899-159.6 30.899-277.5v-239c0-27.6-22.399-50-50-50h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.4 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l35.9 75.8c11.601 24.399 40.501 35.2 65.301 24.399z"
-                ></path>
-              </svg>
+              <quottation />
               <p>{{ quote.q }}</p>
               <span class="text-sm font-light">- {{ quote.a }}</span>
             </blockquote>
@@ -41,7 +32,6 @@
           </div>
         </div>
       </div>
-      <!-- Companies -->
 
       <!-- A catchy phrase -->
       <div class="text-center xl:py-20 lg:py-20 mld:py-10 xs:py-10">
@@ -59,51 +49,6 @@
           </p>
         </div>
       </div>
-
-      <!-- Some Projects of Interest -->
-      <!-- <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 my-12">
-          <div class="mx-auto grid max-w-md grid-cols-1 gap-8 lg:max-w-5xl lg:grid-cols-3 lg:gap-8">
-            <div v-for="i in [1, 2, 3]"
-              class="flex flex-col rounded-3xl bg-bg-soft dark:bg-dark-bg-soft shadow-xl ring-1 ring-blue/10">
-              <div class="p-8 sm:p-10">
-                <h3 class=" text-2xl font-semibold leading-relaxed tracking-wide text-acc-soft dark:text-dark-acc-soft"
-                  id="tier-hobby">
-                  Tiny Pokedex</h3>
-                <div class="mt-4 px-11 flex items-baseline">
-                  <img class="rounded-3xl" src="../assets/tiny-pokedex.jpeg" alt="">
-                </div>
-              </div>
-              <div class="flex flex-1 flex-col p-2">
-                <div class="flex flex-1 flex-col justify-between p-6 sm:p-8">
-                  <ul role="list" class="space-y-6">
-                    <li class="flex items-start">
-                      <div class="flex-shrink-0">
-                        <font-awesome-icon class="dark:text-dark-bg-super-hard text-bg-super-hard" size="lg"
-                          icon="fa-solid fa-check" />
-                      </div>
-                      <p class="ml-3 text-sm leading-6 text-soft dark:text-dark-text-soft">Bookmark Favorites</p>
-                    </li>
-
-                    <li class="flex items-start">
-                      <div class="flex-shrink-0">
-                        <font-awesome-icon class="dark:text-dark-bg-super-hard text-bg-super-hard" size="lg"
-                          icon="fa-solid fa-check" />
-                      </div>
-                      <p class="ml-3 text-sm leading-6 text-soft dark:text-dark-text-soft">Import Bookmarks from Twitter
-                      </p>
-                    </li>
-
-                  </ul>
-                  <div class="relative -bottom-11 left-12 mt-8">
-                    <a href="/login"
-                      class="inline-block w-full rounded-lg dark:hover:ring-dark-bg-soft dark:hover:text-dark-bg-soft dark:bg-dark-bg-mute dark:text-dark-acc-soft dark:hover:bg-dark-acc-soft hover:ring-bg-soft bg-bg-soft hover:bg-acc-soft hover:text-bg-soft text-acc-soft px-4 py-4 text-center text-sm font-semibold leading-5 hover:ring"
-                      aria-describedby="tier-team">Learn More...</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> -->
     </div>
   </div>
 
@@ -127,7 +72,9 @@
                 {{ edu.title }}
               </h5>
               <h6 class="text-lg dark:text-dark-acc-soft italic">{{ edu.place }}</h6>
-              <span class="text-xs dark:text-dark-bg-super-hard-trans font-bold">{{edu.finishedAt}}</span>
+              <span class="text-xs dark:text-dark-bg-super-hard-trans font-bold">{{
+                edu.finishedAt
+              }}</span>
               <p class="text-text-soft dark:text-dark-text-soft mb-6 font-normal">{{ edu.desc }}</p>
             </div>
           </div>
@@ -144,8 +91,12 @@
                 {{ ex.title }}
               </h5>
               <h6 class="text-lg dark:text-dark-acc-soft italic">{{ ex.employer }}</h6>
-              <span class="text-xs dark:text-dark-bg-super-hard-trans font-bold">{{ex.from}} - {{ ex.to }}</span>
-              <p class="text-text-soft dark:text-dark-text-soft mb-6 font-normal">{{ ex.description }}</p>
+              <span class="text-xs dark:text-dark-bg-super-hard-trans font-bold"
+                >{{ ex.from }} - {{ ex.to }}</span
+              >
+              <p class="text-text-soft dark:text-dark-text-soft mb-6 font-normal">
+                {{ ex.description }}
+              </p>
             </div>
           </div>
         </div>
@@ -155,7 +106,6 @@
 
   <div class="xl:max-w-7xl lg:max-w-5xl lg:p-6 mld:max-w-3xl mld:p-4 m-auto xs:w-full xs:p-4">
     <div class="xl:py-32 lg:py-32 mld:py-10 xs:py-10">
-      <!-- Technologies and tools I've used in the past -->
       <section class="wrap-section my-10">
         <div class="w-full mx-auto px-4 container">
           <div class="mb-8 text-center max-w-3xl m-auto text-text dark:text-dark-text">
@@ -164,7 +114,8 @@
             </h3>
             <div class="font-light text-base">
               <p>
-                I've done UI/UX design, software development, data analysis and hardware design.
+                Every engineer is armed with a toolbox, these are my tools. From UI/UX design to
+                software development all the way to data analysis down to hardware design.
               </p>
             </div>
           </div>
@@ -174,7 +125,7 @@
               class="mb-8 box-border px-4 lg:basis-1/4 md:basis-1/3 basis-1/2"
             >
               <div
-                class="stack__content border border-bg-super-soft dark:border-dark-bg-super-soft rounded-lg flex flex-col justify-center items-center justify-self-center h-full py-5 px-2 sm:flex-col md:flex-row"
+                class="cursor-pointer duration-200 hover:-translate-y-1 stack__content border border-bg-super-soft dark:border-dark-bg-super-soft rounded-lg flex flex-col justify-center gap-x-4 items-center justify-self-center h-full py-5 px-2 sm:flex-col md:flex-row"
               >
                 <div class="stack__img">
                   <font-awesome-icon
@@ -182,7 +133,7 @@
                     class="text-bg-super-hard-trans dark:text-dark-bg-super-hard-trans w-16 h-16"
                   />
                 </div>
-                <span class="font-medium text-base text-text dark:text-dark-text md:text-2xl">{{
+                <span class="font-medium text-base text-text dark:text-dark-text md:text-xl">{{
                   item.name
                 }}</span>
               </div>
@@ -253,7 +204,7 @@
 
 <script>
 import { useHead } from '@unhead/vue'
-import { defineAsyncComponent, ref, watchEffect } from 'vue'
+import { defineAsyncComponent, ref } from 'vue'
 import Typed from 'typed.js'
 import local from '../api/local'
 
@@ -263,6 +214,7 @@ export default {
       title: 'Welcome frends'
     })
     const quote = ref(null)
+    // defaults
     quote.value = {
       q: 'Anything that can go wrong will go wrong, and at the worst possible time',
       a: "Murphy's Law"
@@ -285,7 +237,7 @@ export default {
       smartBackspace: true
     }
     const typed = new Typed('#typed', options)
-    const w = this.storeLocalQuotes()
+    this.storeLocalQuotes()
   },
   methods: {
     has12HoursPassed(lastUpdatedTime) {
@@ -310,12 +262,9 @@ export default {
         console.log('ERROR', error)
       }
     },
-
     storeLocalQuotes() {
       let ts = localStorage.getItem('quotesLastUpdated')
       ts = parseInt(ts)
-      // console.log(ts, 'SA')
-      // console.log(this.has12HoursPassed(ts))
       if (this.has12HoursPassed(ts)) {
         console.log('fetching quotes...')
         const now = Math.round(new Date().getTime() / 1000)
@@ -337,7 +286,9 @@ export default {
   },
   components: {
     ti: defineAsyncComponent(() => import('@/components/ti.vue')),
+    gehc: defineAsyncComponent(() => import('@/components/gehc.vue')),
     balloon: defineAsyncComponent(() => import('@/components/balloon.vue')),
+    quottation: defineAsyncComponent(() => import('@/components/quottation.vue')),
     foot: defineAsyncComponent(() => import('@/components/foot.vue')),
     subscribe: defineAsyncComponent(() => import('@/components/subscribe.vue'))
   }
