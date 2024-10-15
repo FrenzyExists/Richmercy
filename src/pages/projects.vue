@@ -1,6 +1,6 @@
 <template>
   <span class="pb-20 pt-4">
-    <div class="md:px-8 sm:mt-12 prose prose-toy-story dark:prose-invert max-w-7xl mx-auto">
+    <div class="md:px-8 mt-12 prose prose-toy-story dark:prose-invert max-w-7xl mx-auto">
       <h2>Projects</h2>
       <p>Want to see more? Visit my GitHub profile or check out the rest of my projects below!</p>
     </div>
