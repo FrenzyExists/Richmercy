@@ -108,11 +108,11 @@
     <div class="xl:py-32 lg:py-32 mld:py-10 xs:py-10">
       <section class="wrap-section my-10">
         <div class="w-full mx-auto px-4 container">
-          <div class="mb-8 text-center max-w-3xl m-auto text-text dark:text-dark-text">
+          <div class="mb-8 text-center max-w-4xl m-auto text-text dark:text-dark-text">
             <h3 class="mb-3 text-3xl md:mb-4 md:text-4xl">
               Some of the Technologies I've worked with
             </h3>
-            <div class="font-light text-base">
+            <div class="font-light text-base md:text-lg">
               <p>
                 Every engineer is armed with a toolbox, these are my tools. From UI/UX design to
                 software development all the way to data analysis down to hardware design.
@@ -124,19 +124,20 @@
               v-for="item in local.tech"
               class="mb-8 box-border px-4 lg:basis-1/4 md:basis-1/3 basis-1/2"
             >
-              <div
-                class="cursor-pointer duration-200 hover:-translate-y-1 stack__content border border-bg-super-soft dark:border-dark-bg-super-soft rounded-lg flex flex-col justify-center gap-x-4 items-center justify-self-center h-full py-5 px-2 sm:flex-col md:flex-row"
+              <a
+                :href="item.href"
+                class=" cursor-pointer duration-200 hover:-translate-y-1 stack__content border border-bg-super-soft dark:bg-dark-text dark:border-dark-bg-super-soft rounded-lg flex flex-col justify-center gap-x-4 items-center justify-self-center h-full py-5 px-2 sm:flex-col md:flex-row"
               >
                 <div class="stack__img">
                   <font-awesome-icon
                     :icon="item.url"
-                    class="text-bg-super-hard-trans dark:text-dark-bg-super-hard-trans w-16 h-16"
+                    class="text-bg-super-hard-trans dark:text-dark-bg w-16 h-16"
                   />
                 </div>
-                <span class="font-medium text-base text-text dark:text-dark-text md:text-xl">{{
+                <span class="font-medium text-base text-text dark:text-dark-bg-super-soft md:text-xl">{{
                   item.name
                 }}</span>
-              </div>
+              </a>
             </div>
           </div>
         </div>

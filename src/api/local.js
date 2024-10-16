@@ -32,11 +32,13 @@ const education = [
 const tech = [
   {
     name: 'python',
-    url: 'fa-brands fa-python'
+    url: 'fa-brands fa-python',
+    href: 'https://www.python.org'
   },
   {
     name: 'java',
-    url: 'fa-brands fa-java'
+    url: 'fa-brands fa-java',
+    href: 'https://www.java.com/en/'
   },
   // {
   //   name: 'wordpress',
@@ -44,23 +46,28 @@ const tech = [
   // },
   {
     name: 'node.js',
-    url: 'fa-brands fa-node-js'
+    url: 'fa-brands fa-node-js',
+    href: 'https://nodejs.org/en'
   },
   {
     name: 'vue.js',
-    url: 'fa-brands fa-vuejs'
+    url: 'fa-brands fa-vuejs',
+    href: 'https://vuejs.org'
   },
   {
     name: 'react',
-    url: 'fa-brands fa-react'
+    url: 'fa-brands fa-react',
+    href: 'https://react.dev'
   },
   {
     name: 'verilog',
-    url: 'fa-solid fa-microchip'
+    url: 'fa-solid fa-microchip',
+    href: 'https://www.amd.com/en/products/software/adaptive-socs-and-fpgas/vivado.html'
   },
   {
     name: 'bash/sh',
-    url: 'fa-solid fa-terminal'
+    url: 'fa-solid fa-terminal',
+    href: 'https://www.gnu.org/software/bash/'
   },
   {
     name: 'html5',
@@ -72,15 +79,18 @@ const tech = [
   },
   {
     name: 'javascript',
-    url: 'fa-brands fa-js'
+    url: 'fa-brands fa-js',
+    href: 'https://262.ecma-international.org'
   },
   {
     name: 'android',
-    url: 'fa-brands fa-android'
+    url: 'fa-brands fa-android',
+    href: 'https://www.android.com'
   },
   {
     name: 'figma',
-    url: 'fa-brands fa-figma'
+    url: 'fa-brands fa-figma',
+    href: 'http://figma.com'
   }
 ]
 
