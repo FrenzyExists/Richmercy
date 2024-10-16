@@ -5,8 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "concurrently \"cross-env DEBUG=unplugin-vue-markdown:* vite\" \"nodemon server/main.cjs\"",
-    "build": "cross-env DEBUG=unplugin-vue-markdown:* vite build && node server/main.cjs &",
-    "build2": "cross-env DEBUG=unplugin-vue-markdown:* vite build",
+    "build2": "cross-env DEBUG=unplugin-vue-markdown:* vite build && node server/main.cjs",
+    "build": "cross-env DEBUG=unplugin-vue-markdown:* vite build",
+    "start": "node server/main.cjs",
     "preview": "vite preview",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
     "format": "prettier --write src/"
