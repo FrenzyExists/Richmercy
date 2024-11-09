@@ -82,7 +82,7 @@
 </template>
 
 <script lang="js">
-import { defineAsyncComponent, ref } from 'vue'
+import { defineAsyncComponent, ref, onMounted } from 'vue'
 
 let articleUUID = 0;
 
@@ -97,7 +97,7 @@ export default {
     this.title = this.$refs.current.frontmatter.title
     this.tags = this.$refs.current.frontmatter.tags
     this.description = this.$refs.current.frontmatter.description
-    this.readtime = this.$refs.current.frontmatter.readtime
+    this.calculateReadtime()  // Calculate readtime on mount
   },
   beforeCreate() {
     this.articleUUID = articleUUID.toString();
@@ -119,5 +119,16 @@ export default {
       current
     }
   },
+  methods: {
+    calculateReadtime() {
+      // Wait for the component to render, then extract its text content
+      this.$nextTick(() => {
+        const textContent = this.$refs.current.$el.textContent || '';
+        const wordCount = textContent.split(/\s+/).length;
+        const wordsPerMinute = 200; // average reading speed
+        this.readtime = `${Math.ceil(wordCount / wordsPerMinute)} min read`;
+      });
+    }
+  }
 }
 </script>
