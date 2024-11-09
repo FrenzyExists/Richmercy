@@ -120,8 +120,11 @@ Bellow is the resulting diagram:
 
 ### Phase 3: Implementing the Pipelined Processing Unit
 
-This phase was the second trickiest one. Here, we had to implement in verilog the pipeline and a a few components such as the Control Unit.
+This phase was the second trickiest one. Here, we had to implement in verilog the pipeline, prove that its capable of correctly decoding instructions and that its capable generating and propagating the appropriate signals thought the execution, memory and write back stages.
+
+![](./verilog-p3.png)
+
 
 ### Phase 4: Implement the Rest of the Architecture
 
-The last phase, finally. The final components like the PSR and branch control were implemented here. Arguably it had the hardest test bench I've ever had to work with.
+The last phase, finally. The final components like the PSR and branch control were implemented here. Arguably it had the hardest test bench I've ever had to work with. I'm taking about building

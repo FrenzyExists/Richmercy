@@ -1,3 +1,14 @@
+---
+title: Yep, this is a Headstarter Post
+status: Blog
+description: Got accepted to a Headstarter program and will write more code, that's it, that's the post
+readTime: 1min
+date: November 8th, 2024
+tags:
+  - Education
+  - Course
+---
+
 I'll be honest, I suck at making blogs. Yeah, insane news. Reality just broke and we're heading into parallel universes. Jokes aside, posting articles about technical experiences or achievement you get is important for people who want develop professionally. So, with that in mind I got accepted to the *Headstarter Accelerator Program*. 
 
 ![](./headstarter.png)
