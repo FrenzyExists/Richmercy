@@ -9,27 +9,23 @@
         Hi! My name is Angel, but is very likely you know me as
         <span class="italic">Pikachu</span> I'm a Computer Engineering student at the University of
         Puerto Rico in Mayaguez. I've always been fascinated by the way computers and circuits work
-        and how they can be used to solve complex problems. My passion for programming started since
-        my days in middle school when playing Flash games like Smash Flash 2. Youtube had lots of
-        tutorials on Game Maker and when I got in highschool I started to code with the help of
-        tutorials. Although I was able to make a simple platform game, I still had trouble
-        understanding object-oriented concepts like polyphormism and posponed my hobbie. Several
-        years later I would take the basic courses like Algorithms and Advanced Programming to
-        finally set myself on switching from studying Surveying Engineering to Computer Engineering
-        on my 4th year. And although the change wasn't easy, I don't regret it!
+        and how they can be used to solve complex problems. I've always been interested in the
+        field of computer science and how it can be used to improve our lives. 
       </p>
       <p>
-        I am currently working on a research project with a professor in the Electrical Engineering
-        department where we are developing a GUI for an existing testing CLI developed by Texas
-        Instruments engineers.
+        I also have my hobbies, like playing video games, building mechanical keyboards, playing with 
+        arduinos, and other technical hobbies. But I also am into outdoors activities, like hiking,
+        and going to rollercoasters in amusement parks, and going to the beach.
       </p>
-
       <p>
-        I also currently develop frontend in my free time and experiment with Arduino and ESP-32
-        boards. I am also an active member of the IEEE Circuits and Systems Asociation as a
-        Webmaster asistant and as Webmaster for the IEEE in my university. I am excited about the
-        future of technology and how it can be used to solve real-world problems. I hope to be part
-        of this change by contributing my skills and knowledge.
+        Did some research for Texas Instruments during my uni since 2022. Previously developed a GUI
+        for where they can visualize the results of a series of tests done in labview. Currently I am
+        now developing a neural network to detect and clean black pepper noise in images.
+      </p>
+      <p>
+        In my free time I sometimes write a short blog or article about what I've been working on.
+        Sometimes I also write code on whatever I'm working on, being an API or a website or even 
+        a tooling script.
       </p>
       <br />
       <div class="text-center mx-auto max-w-4xl px-3">
