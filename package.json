@@ -34,7 +34,7 @@
   "devDependencies": {
     "@hapi/boom": "^10.0.1",
     "@rushstack/eslint-patch": "^1.2.0",
-    "@tailwindcss/typography": "^0.5.9",
+    "@tailwindcss/typography": "^0.5.15",
     "@vitejs/plugin-vue": "^4.2.3",
     "@vue/eslint-config-prettier": "^7.1.0",
     "concurrently": "^9.0.1",
