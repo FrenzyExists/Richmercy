@@ -1,14 +1,14 @@
 <template>
   <div
-    class="flex flex-col sm:flex-row px-11 overflow-hidden relative dark:bg-dark-bg-harder bg-bg-soft py-16 pb-24"
+    class="flex flex-col sm:flex-row px-11 overflow-hidden relative bg-dark-bg-harder py-16 pb-24"
   >
     <font-awesome-icon
-      class="dark:text-dark-bg-hard text-bg-harder !flex absolute z-0 -rotate-12 w-64 !h-64 -mt-24 ml-24"
+      class="text-dark-bg-hard !flex absolute z-0 -rotate-12 w-64 !h-64 -mt-24 ml-24"
       icon="fa-solid fa-envelope"
     />
     <div class="w-3/5 float-left relative inline-block align-middle">
-      <h3 class="mb-3 text-3xl font-bold dark:text-dark-green text-green">Join my wacky Newsletter!</h3>
-      <p class="text-lg w-3/4 dark:text-dark-text text-text">
+      <h3 class="mb-3 text-3xl font-bold text-dark-green">Join my wacky Newsletter!</h3>
+      <p class="text-lg w-3/4 text-dark-text">
         Subscribe to stay up to date with the latest tutorials and stories I write :D
       </p>
     </div>
@@ -16,9 +16,9 @@
       <form action="" class="align-middle inline-flex w-full">
         <input
           type="text"
-          class="peer outline outline-0  border-none h-12 rounded-lg max-w-full align-middle sm:w-3/5 w-auto dark:bg-dark-bg bg-bg-harder dark:text-dark-text pl-2 pr-5"
+          class="peer outline outline-0 border-none h-12 rounded-lg max-w-full align-middle sm:w-3/5 w-auto bg-dark-bg text-dark-text pl-2 pr-5"
         />
-        <button class="dark:bg-dark-acc bg-acc dark:text-dark-bg-hard text-bg-harder px-4 py-2 rounded-xl text-xl -ml-4">
+        <button class="bg-dark-acc text-dark-bg-hard px-4 py-2 rounded-xl text-xl -ml-4">
           <font-awesome-icon class="" icon="fa-solid fa-paper-plane" />
         </button>
       </form>

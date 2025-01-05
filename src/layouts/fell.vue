@@ -6,7 +6,7 @@
       { name: 'projects', path: '/projects' }
     ]"
   />
-  <div class="pt-8 md:pt-10 w-full dark:bg-dark-bg bg-bg m-auto font-montserrat-alternate">
+  <div class="pt-8 md:pt-10 w-full bg-dark-bg m-auto font-montserrat-alternate">
     <router-view />
   </div>
   <foot />

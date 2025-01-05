@@ -7,41 +7,25 @@
 
     <div>
       <!-- Loading animation -->
-      <div
-        v-if="loading"
-        class="dark:text-dark-bg-soft text-bg-soft flex justify-center items-center h-screen"
-      >
+      <div v-if="loading" class="dark:text-dark-bg-soft text-bg-soft flex justify-center items-center h-screen">
         <font-awesome-icon icon="fa-solid fa-spinner" spin size="4x" class="text-color-acc" />
       </div>
 
       <!-- Display content once loading is complete -->
       <div v-else>
         <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 my-12">
-          <div
-            class="mx-auto grid grid-cols-1 md:gap-8 md:grid-cols-2 lg:max-w-5xl gap-y-12 lg:grid-cols-3 lg:gap-x-8"
-          >
-            <ProjectCard
-              v-for="p in github_response"
-              :key="p.id"
-              :projectName="p.name"
-              :projectDesc="p.description"
-              :projectStars="p.stars"
-              :projectForks="p.forks"
-              :projectUrl="p.url"
-            />
+          <div class="mx-auto grid grid-cols-1 md:gap-8 md:grid-cols-2 lg:max-w-5xl gap-y-12 lg:grid-cols-3 lg:gap-x-8">
+            <ProjectCard v-for="p in github_response" :key="p.id" :projectName="p.name" :projectDesc="p.description"
+              :projectStars="p.stars" :projectForks="p.forks" :projectUrl="p.url" />
           </div>
         </div>
       </div>
     </div>
 
     <div
-      class="pb-20 prose prose-toy-story dark:prose-invert font-montserrat-alternate max-w-7xl mx-auto flex flex-col"
-    >
-      <button
-        v-if="hasMoreProjects"
-        @click="loadMoreProjects"
-        class="w-fit px-36 mx-auto rounded-full drop-shadow-md my-4 sm:my-0 font-bold text-lg hover:transition duration-300 hover:ease-in-out hover:bg-acc-soft hover:text-bg-soft text-acc-soft dark:hover:text-dark-bg-super-hard dark:bg-dark-bg-super-hard dark:text-dark-acc-soft dark:hover:bg-dark-acc-soft bg-bg-soft p-4 min-w-[10rem]"
-      >
+      class="pb-20 prose prose-toy-story dark:prose-invert font-montserrat-alternate max-w-7xl mx-auto flex flex-col">
+      <button v-if="hasMoreProjects" @click="loadMoreProjects"
+        class="w-fit px-36 mx-auto rounded-full drop-shadow-md my-4 sm:my-0 font-bold text-lg hover:transition duration-300 hover:ease-in-out hover:text-dark-bg-mute bg-dark-bg-mute text-dark-acc-soft hover:bg-dark-acc-soft p-4 min-w-[10rem]">
         View More
       </button>
       <p v-if="!hasMoreProjects && github_response.length > 0" class="text-center mt-4">
@@ -83,6 +67,7 @@ export default {
 
     // Function to fetch paginated data from GitHub API
     async getPaginatedData(url) {
+      // TODO: Find a better way to manage octokit object so I don't have to make a new object every single darn time
       const octokit = new Octokit({
         auth: `${import.meta.env.VITE_GITHUB_TOKEN}`
       })

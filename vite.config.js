@@ -12,12 +12,10 @@ import { env } from 'node:process'
 
 
 // const env = loadEnv(mode, process.cwd(), '')
-// https://vitejs.dev/config/
 export default defineConfig({
   define: {
     'process.env': process.env,
   },
-
   plugins: [
     Vue({
       include: [/\.vue$/, /\.md$/], // <--
@@ -49,5 +47,22 @@ export default defineConfig({
       'components': path.resolve(__dirname, './src/components'),
     }
   },
-
-})
+  optimizeDeps: {
+    exclude: ['@octokit_core.js']
+  },
+  server: {
+    proxy: {
+      '/login/device/code': {
+        target: 'https://github.com',
+        changeOrigin: true, // Ensure that the origin header is correctly set
+        secure: false, // Allow insecure connections (if necessary)
+        rewrite: (path) => path.replace(/^\/login/, '/login') // Rewrite the path if necessary
+      },
+      '/github-api': {
+        target: 'https://github.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/github-api/, ''),
+      }
+    }
+  }
+});

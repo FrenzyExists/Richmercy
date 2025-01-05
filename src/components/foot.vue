@@ -1,8 +1,8 @@
 <template>
-  <footer class="body-font bg-bg-mute dark:bg-dark-bg-mute -mb-3">
-    <div class="relative bg-bg-mute dark:bg-dark-bg-mute -mb-3">
+  <footer class="body-font bg-dark-bg-mute -mb-3">
+    <div class="relative bg-dark-bg-mute -mb-3">
       <svg
-        class="absolute top-0 w-full h-6 sm:-mt-10 sm:h-16 text-bg-mute dark:text-dark-bg-mute m-auto"
+        class="absolute top-0 w-full h-6 sm:-mt-10 sm:h-16 text-dark-bg-mute m-auto"
         preserveAspectRatio="none"
         viewBox="0 0 1440 54"
       >
@@ -14,22 +14,22 @@
     </div>
     <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col z-10 relative">
       <a
-        class="flex title-font font-medium items-center md:justify-start justify-center text-text dark:text-dark-text-soft"
+        class="flex title-font font-medium items-center md:justify-start justify-center text-dark-text-soft"
       >
         <font-awesome-icon
-          class="mr-2 dark:text-dark-yellow text-yellow block w-8 h-8 p-2 bg-bg-hard dark:bg-dark-bg-hard rounded-full"
+          class="mr-2 text-dark-yellow block w-8 h-8 p-2 bg-dark-bg-hard rounded-full"
           icon="fa-solid fa-bolt"
         />
         <span class="ml-3 text-xl">Garcia's</span>
       </a>
       <p
-        class="text-sm text-text dark:text-dark-text sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4"
+        class="text-sm text-dark-text sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4"
       >
         © {{ new Date().getFullYear() }}
         Angel Garcia —
         <a
           :href=twitterUrl
-          class="dark:text-dark-blue text-blue ml-1"
+          class="text-dark-blue ml-1"
           rel="noopener noreferrer"
           target="_blank"
           >@{{ twitterUser }}</a
@@ -37,7 +37,7 @@
       </p>
       <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
         <a
-          class="ml-3 text-acc-soft dark:text-dark-acc-soft hover:opacity-80"
+          class="ml-3 text-dark-acc-soft hover:opacity-80"
           v-for="social in socials"
           :key="social.icon"
           :href="social.url"

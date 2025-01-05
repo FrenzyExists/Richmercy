@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import { createHead } from '@vueuse/head'
 import './styles/style.css'
+import cors from 'cors'
 import router from './router'
 
 import App from './App.vue'
@@ -27,7 +28,13 @@ import {
   faPaperPlane,
   faStar,
   faCodeFork,
-  faSpinner
+  faSpinner,
+  faBold,
+  faItalic,
+  faCode,
+  faQuoteLeft,
+  faFileCode,
+  faSmile
 } from '@fortawesome/free-solid-svg-icons'
 import {
   faTwitter,
@@ -61,6 +68,7 @@ library.add(
   faGithub,
   faCheck,
   faJava,
+  faSmile,
   faPython,
   faGit,
   faVuejs,
@@ -73,6 +81,11 @@ library.add(
   faBurger,
   faFigma,
   faSearch,
+  faBold,
+  faItalic,
+  faCode,
+  faQuoteLeft,
+  faFileCode,
   faChevronRight,
   faEllipsis,
   faFaceLaugh,
@@ -93,6 +106,11 @@ library.add(
 )
 app.component('font-awesome-icon', FontAwesomeIcon)
 
+// app.use(
+//   cors({
+//     origin: 'http://localhost:5173'
+//   }) 
+// )
 app.use(head)
 app.use(router)
 app.mount('#app')

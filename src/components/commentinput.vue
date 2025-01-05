@@ -1,62 +1,89 @@
 <template>
-  <!-- Textarea -->
   <div class="flex">
-    <form class="w-full mb-6">
-      <!-- Allow user to input some text and format if he's signed in -->
-      <div class="dark:bg-dark-bg bg-bg dark:border-dark-border border rounded-lg w-full mb-4">
-        <div class="px-4 py-2 rounded-t-lg dark:bg-dark-bg-harder bg-bg-harder">
-          <!-- T A B S -->
+    <!-- Modal Component -->
+    <Modal :isOpen="state?.showModal" title="GitHub Authorization" @close="state.showModal = false">
+      <div class="space-y-4">
+        <p class="text-dark-text">Copy the GitHub verification code below:</p>
+        <span class="w-fit flex bg-dark-bg-super-hard text-dark-text pl-4 rounded-l-lg rounded-r-lg m-auto">
+          <p class="m-auto pr-4 cursor-pointer">{{ state?.userCode }}</p>
+          <button class="hover:bg-dark-bg-soft hover:text-dark-text-soft bg-dark-bg-mute p-4 flex rounded-r-lg"
+            @click="copyCodeToClipboard">
+            <font-awesome-icon icon="fa-solid fa-link" />
+          </button>
+        </span>
+        <p class="text-center text-sm text-dark-text-soft mt-2">
+          Verification URL: <span class="text-blue-400 underline cursor-pointer" @click="openVerificationUrl">{{
+            state?.verificationURI }}</span>
+        </p>
+        <p class="text-center text-sm text-dark-text-soft">Expires at: {{
+          (() => {
+            console.log('time', state.expiresIn);
+
+            const timeLeft = getTimeLeft(state.expiresIn);
+            console.log(timeLeft);
+
+            return `${timeLeft.minutes} minutes and ${timeLeft.seconds} seconds`
+          })()
+        }}</p>
+      </div>
+    </Modal>
+
+    <!-- Comment Form -->
+    <form @submit.prevent="handleSubmit" class="w-full mb-6">
+      <div class="bg-dark-bg bg-bg border-dark-border border rounded-lg w-full mb-4">
+        <!-- Tabs -->
+        <div class="px-4 py-2 rounded-t-lg bg-dark-bg-harder">
           <div>
             <ul class="flex">
               <li class="-mb-px mr-2 ml-5 mt-3">
                 <a :class="{
-                  'dark:bg-dark-bg': selectedTab === 'write',
-                  'bg-dark-bg-harder inline-block rounded-t dark:text-dark-text-soft translate-y-1 py-2 px-4 font-semibold': true
-                }" @click="selectedTab = 'write'">Write</a>
+                  'bg-dark-bg': selectedTab === 'write',
+                  'bg-dark-bg-harder inline-block rounded-t text-dark-text-soft translate-y-1 py-2 px-4 font-semibold': true
+                }" @click.prevent="selectedTab = 'write'">
+                  Write
+                </a>
               </li>
               <li class="mr-1 mt-3">
                 <a :class="{
-                  'dark:bg-dark-bg': selectedTab === 'preview',
-                  'bg-dark-bg-harder inline-block rounded-t dark:text-dark-text-soft translate-y-1 py-2 px-4 font-semibold': true
-                }" @click="selectedTab = 'preview'">Preview</a>
+                  'bg-dark-bg': selectedTab === 'preview',
+                  'bg-dark-bg-harder inline-block rounded-t text-dark-text-soft translate-y-1 py-2 px-4 font-semibold': true
+                }" @click.prevent="selectedTab = 'preview'">
+                  Preview
+                </a>
               </li>
             </ul>
           </div>
+          <!-- Tab Content -->
           <div v-show="selectedTab === 'write'">
-            <div class="dark:bg-dark-bg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0 relative rounded-b-md">
-              <textarea id="comment" rows="4" v-model="replyComment"
-                class="h-24 min-h-[4rem] text-white dark:bg-dark-bg bg-bg-harder text-sm px-0 border-0 focus:ring-0 w-full"
-                placeholder="Write a comment..."></textarea>
-            </div>
+            <markdown-editor v-model="replyComment"
+              class="min-h-30 h-full text-white bg-dark-bg-harder bg-bg-harder text-sm px-0 border-0 focus:ring-0 w-full"
+              placeholder="Write a comment..." />
           </div>
-          <div v-show="selectedTab === 'preview'">
-            <textarea readonly :disabled="true" rows="4" v-model="replyComment"></textarea>
+          <div v-show="selectedTab === 'preview'" class="markdown-preview p-4">
+            <markdown-preview :content="replyComment" />
           </div>
-
-          <textarea id="comment" rows="4" v-model="replyComment"
-            class="h-24 min-h-[4rem] text-white dark:bg-dark-bg-harder bg-bg-harder text-sm px-0 border-0 focus:ring-0 w-full"
-            placeholder="Write a comment..."></textarea>
-
         </div>
-        <div class="border-light-border dark:border-dark-bg border-t px-3 py-2 flex justify-between text-center">
-          <div class="text-center flex-wrap flex justify-between w-full">
-            <div class="sm:pr-4 items-center flex">
-              <button type="button"
-                class="text-yellow dark:text-dark-yellow flex p-2 rounded cursor-pointer hover:text-white hover:bg-[#4b5563] Y34SQMYAJVIAdOFKA3gG K1PPCJwslha8GUIvV_Cr YPSoR6AXtPgkmylUmcbT avTmsFU5TwHXQh07Ji35 _xQT_qSXfwWf6ZhwRle4 DpMPWwlSESiYA8EE1xKM eCx_6PNzncAD5yo7Qcic DTyjKhtXBNaebZa5L0l9 xotVay0PVtR3gElm6ql5">
-                <font-awesome-icon class="w-5 h-5" icon="fa-solid fa-face-laugh" />
-              </button>
-            </div>
-            <div class="dark:border-dark-bg-soft border-[#4b5563] sm:border-l pl-4">
-              <button v-if="isUserSignedIn" @click="$emit('send', replyComment)"
-                class="rounded-full py-2 px-3 dark:hover:text-dark-bg-mute dark:text-dark-acc-soft dark:bg-dark-bg-mute dark:hover:bg-dark-acc-soft">
-                Post Comment
-              </button>
-              <button v-else
-                class="flex items-center rounded-full py-2 px-3 dark:hover:text-dark-bg-mute dark:text-dark-acc-soft dark:bg-dark-bg-mute dark:hover:bg-dark-acc-soft"><span
-                  class="mr-2">Sign in Github</span><font-awesome-icon class="w-auto h-6"
-                  icon="fa-brands fa-github" /></button>
-            </div>
-          </div>
+
+        <!-- Footer Buttons -->
+        <div class="text-center py-2 px-4 flex justify-between w-full">
+          <button type="button" @click="toggleEmojis"
+            class="emoji-trigger flex items-center rounded-full bg-dark-bg-mute text-dark-acc-soft h-fit p-4">
+            <font-awesome-icon class="w-auto h-6" icon="face-smile" />
+          </button>
+          <button v-if="isAuthenticated" :disabled="!replyComment.trim() || isLoading" @click="handleSubmit"
+            class="rounded-full py-2 px-3 hover:text-dark-bg-mute text-dark-acc-soft bg-dark-bg-mute hover:bg-dark-acc-soft disabled:opacity-50">
+            {{ isLoading ? 'Posting...' : 'Post Comment' }}
+          </button>
+          <button v-else @click="handleGithubLogin"
+            class="flex items-center rounded-full py-2 px-3 hover:text-dark-bg-mute text-dark-acc-soft bg-dark-bg-mute hover:bg-dark-acc-soft">
+            <span class="mr-2">Sign in with GitHub</span>
+            <font-awesome-icon class="w-auto h-6" icon="fa-brands fa-github" />
+          </button>
+        </div>
+
+        <!-- Emoji Picker -->
+        <div v-show="showEmojis" class="relative m-4">
+          <Picker :data="emojiIndex" set="twitter" @select="addEmoji" />
         </div>
       </div>
     </form>
@@ -64,46 +91,155 @@
 </template>
 
 <script>
+import { useGithubAuth } from '@/composables/usegithubauth';
+import { useComments } from '@/composables/usecomments';
+import MarkdownEditor from '@/components/markdowneditor.vue';
+import MarkdownPreview from '@/components/markdownpreview.vue';
+import 'emoji-mart-vue-fast/css/emoji-mart.css';
+import { Picker, EmojiIndex } from 'emoji-mart-vue-fast/src';
+import data from 'emoji-mart-vue-fast/data/all.json';
+import Modal from '@/components/Modal.vue';
+
+const emojiIndex = new EmojiIndex(data);
+
 export default {
-  name: 'comment-input',
+  name: 'CommentInput',
+  components: {
+    Picker,
+    MarkdownEditor,
+    MarkdownPreview,
+    Modal,
+  },
+  props: {
+    issueNumber: { type: Number, required: true },
+    octo: { required: true },
+  },
   data() {
     return {
       replyComment: '',
-      selectedTab: 'signIn'
-    }
+      selectedTab: 'write',
+      emojiIndex: emojiIndex,
+      showEmojis: false,
+      isLoading: false,
+    };
   },
-  props: {
-    isUserSignedIn: {
-      type: Boolean,
-      default: false
-    }
-  }
-}
+  setup() {
+    const { login, getCode, state, initialize, getTimeLeft } = useGithubAuth();
+    const { postComment } = useComments();
+
+    initialize();
+
+    return { login, getCode, state, postComment, getTimeLeft };
+  },
+  computed: {
+    isAuthenticated() {
+      return this.state.isAuthenticated;
+    },
+  },
+  methods: {
+    toggleEmojis() {
+      this.showEmojis = !this.showEmojis;
+    },
+    addEmoji(emoji) {
+      this.replyComment += emoji.native;
+    },
+    async handleSubmit() {
+      if (!this.replyComment.trim() || this.isLoading) return;
+
+      this.isLoading = true;
+      try {
+        const newComment = await this.postComment(this.octo, this.issueNumber, this.replyComment);
+        if (newComment) {
+          this.replyComment = '';
+          this.$emit('comment-posted', newComment);
+        }
+      } catch (error) {
+        console.error('Error posting comment:', error);
+      } finally {
+        this.isLoading = false;
+      }
+    },
+    async handleGithubLogin() {
+      await this.getCode();
+      console.log(this.state);
+
+    },
+    copyCodeToClipboard() {
+      navigator.clipboard.writeText(this.state.userCode);
+      alert('Code copied to clipboard!');
+      this.openVerificationUrl();
+    },
+    openVerificationUrl() {
+      window.open(this.state.verificationURI, '_blank');
+    },
+  },
+};
 </script>
 
 
+<style>
+.row {
+  display: flex;
+}
 
-<!-- <script>
-import HelloWorld from "./components/HelloWorld.vue";
-  export default {
-    data() {
-      return {
-        listItems: ""
-      }
-    },
-  methods: {
-      async getData() {
-        const res = await fetch("/hello");
-        console.log(res);
-        const finalRes = await res.json();
-        this.listItems = res;
-      }
-    },
-    mounted() {
-      this.getData()
-    },
-    components: {
-      HelloWorld
-    }
-  }
-</script> -->
+.row>* {
+  margin: auto;
+}
+
+.emoji-mart-static {
+  width: 100% !important;
+}
+
+.emoji-mart {
+  background: #1e385f;
+  color: #d8e2eb;
+  border: 1px solid #0b264d;
+}
+
+.emoji-mart-category-label h3 {
+  background-color: #1e385f;
+}
+
+.emoji-mart-anchor-bar {
+  background-color: rgb(229 124 35) !important;
+}
+
+/* emoji-mart-anchor emoji-mart-anchor-selected */
+.emoji-mart-anchor-selected {
+  color: rgb(229 124 35) !important;
+}
+
+.emoji-mart-anchors {
+  color: #d8e2eb;
+}
+
+.emoji-mart-anchor {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.emoji-mart-anchor:hover,
+.emoji-mart-anchor-selected {
+  color: #d3a629;
+}
+
+.emoji-mart-search input {
+  background: #1e385f;
+  border: 1px solid #0b264d;
+}
+
+.emoji-mart-skin-swatches {
+  border: 1px solid #0b264d;
+  background-color: #0b264d;
+}
+
+.emoji-mart-bar {
+  border: 0 solid #0b264d;
+}
+
+.emoji-mart-category .emoji-mart-emoji:hover:before,
+.emoji-mart-emoji-selected:before {
+  background-color: #0b264d;
+}
+</style>

@@ -8,15 +8,15 @@
           <div class="col-span-6">
             <!-- Some catchy intro sillicon valley bots use or whatever -->
             <div>
-              <h5 class="text-2xl uppercase text-text-soft dark:text-dark-text-soft">Hey There!</h5>
-              <h1 class="text-7xl text-text dark:text-dark-text font-bold">I'm Angel</h1>
+              <h5 class="text-2xl uppercase text-dark-text-soft">Hey There!</h5>
+              <h1 class="text-7xl text-dark-text font-bold">I'm Angel</h1>
               <!-- typed.js extravaganza -->
-              <h4 class="text-4xl dark:text-dark-text-soft text-soft">
+              <h4 class="text-4xl text-dark-text-soft">
                 A <span id="typed"></span>
               </h4>
             </div>
             <!-- some description or something idk -->
-            <blockquote class="text-lg italic font-semibold mt-3 text-gray-900 dark:text-white">
+            <blockquote class="text-lg italic font-semibold mt-3 text-dark-text-soft">
               <quottation />
               <p>{{ quote.q }}</p>
               <span class="text-sm font-light">- {{ quote.a }}</span>
@@ -37,11 +37,11 @@
       <div class="text-center xl:py-20 lg:py-20 mld:py-10 xs:py-10">
         <div class="text-center m-auto max-w-4xl">
           <h2
-            class="font-semibold italic dark:text-dark-acc text-acc lg:text-5xl mld:text-5xl xs:text-4xl text-3xl after:absolute after:bottom-0 after:left-0 after:right-0 after:m-auto dark:after:bg-dark-acc after:bg-acc after:h-1 after:w-32 relative mb-16 pb-9"
+            class="font-semibold italic text-dark-acc lg:text-5xl mld:text-5xl xs:text-4xl text-3xl after:absolute after:bottom-0 after:left-0 after:right-0 after:m-auto after:bg-dark-acc after:h-1 after:w-32 relative mb-16 pb-9"
           >
             Building the future one line of code at a time
           </h2>
-          <p class="sm:text-lg lg:text-xl text-text dark:text-dark-text">
+          <p class="sm:text-lg lg:text-xl text-dark-text">
             As a full stack developer, I have experience working with both front-end and back-end
             technologies. I'm also passionate about tinkering with hardware and exploring new
             technologies. Whether you're looking to build a new website or develop an innovative
@@ -54,47 +54,47 @@
 
   <!-- Education and Experience -->
   <div
-    class="xs:p-4 mld:p-4 bg-bg-soft dark:bg-dark-bg-soft py-20 lg:py-16 mld:py-10 layout-2col resume has-column-divider"
+    class="xs:p-4 mld:p-4 bg-dark-bg-soft py-20 lg:py-16 mld:py-10 layout-2col resume has-column-divider"
   >
     <div class="max-w-screen-xl w-full lg:max-w-4xl md:max-w-2xl sm:max-w-xl mx-auto px-2">
       <div class="flex flex-wrap">
         <div
-          class="pr-2 first:border-r-2 dark:first:border-dark-acc-soft first:border-acc-soft flex flex-grow max-w-full sm:max-w-[50%]"
+          class="pr-2 first:border-r-2 first:border-dark-acc-soft flex flex-grow max-w-full sm:max-w-[50%]"
         >
           <div>
-            <h3 class="text-3xl font-bold mb-8 text-text-soft dark:text-dark-text-soft">
+            <h3 class="text-3xl font-bold mb-8 text-dark-text-soft">
               Education
             </h3>
             <div v-for="edu in local.education">
               <h5
-                class="text-xl lg:text-lg md:text-base sm:text-base font-bold text-text dark:text-dark-text"
+                class="text-xl lg:text-lg md:text-base sm:text-base font-bold text-dark-text"
               >
                 {{ edu.title }}
               </h5>
-              <h6 class="text-lg dark:text-dark-acc-soft italic">{{ edu.place }}</h6>
-              <span class="text-xs dark:text-dark-bg-super-hard-trans font-bold">{{
+              <h6 class="text-lg text-dark-acc-soft italic">{{ edu.place }}</h6>
+              <span class="text-xs text-dark-bg-super-hard-trans font-bold">{{
                 edu.finishedAt
               }}</span>
-              <p class="text-text-soft dark:text-dark-text-soft mb-6 font-normal">{{ edu.desc }}</p>
+              <p class="text-dark-text-soft mb-6 font-normal">{{ edu.desc }}</p>
             </div>
           </div>
         </div>
         <div class="pl-[3.5%] flex max-w-half max-w-[50%] relative col col-12 col-sm-6">
           <div>
-            <h3 class="text-3xl font-bold mb-8 text-text-soft dark:text-dark-text-soft">
+            <h3 class="text-3xl font-bold mb-8 text-dark-text-soft">
               Experience
             </h3>
             <div v-for="ex in local.experience">
               <h5
-                class="text-xl lg:text-lg md:text-base sm:text-base font-bold text-text dark:text-dark-text"
+                class="text-xl lg:text-lg md:text-base sm:text-base font-bold  text-dark-text"
               >
                 {{ ex.title }}
               </h5>
-              <h6 class="text-lg dark:text-dark-acc-soft italic">{{ ex.employer }}</h6>
-              <span class="text-xs dark:text-dark-bg-super-hard-trans font-bold"
+              <h6 class="text-lg text-dark-acc-soft italic">{{ ex.employer }}</h6>
+              <span class="text-xs text-dark-bg-super-hard-trans font-bold"
                 >{{ ex.from }} - {{ ex.to }}</span
               >
-              <p class="text-text-soft dark:text-dark-text-soft mb-6 font-normal">
+              <p class="text-dark-text-soft mb-6 font-normal">
                 {{ ex.description }}
               </p>
             </div>
@@ -108,7 +108,7 @@
     <div class="xl:py-32 lg:py-32 mld:py-10 xs:py-10">
       <section class="wrap-section my-10">
         <div class="w-full mx-auto px-4 container">
-          <div class="mb-8 text-center max-w-4xl m-auto text-text dark:text-dark-text">
+          <div class="mb-8 text-center max-w-4xl m-auto text-dark-text">
             <h3 class="mb-3 text-3xl md:mb-4 md:text-4xl">
               Some of the Technologies I've worked with
             </h3>
@@ -126,15 +126,15 @@
             >
               <a
                 :href="item.href"
-                class=" cursor-pointer duration-200 hover:-translate-y-1 stack__content border border-bg-super-soft dark:bg-dark-text dark:border-dark-bg-super-soft rounded-lg flex flex-col justify-center gap-x-4 items-center justify-self-center h-full py-5 px-2 sm:flex-col md:flex-row"
+                class="cursor-pointer duration-200 hover:-translate-y-1 stack__content border bg-dark-text border-dark-bg-super-soft rounded-lg flex flex-col justify-center gap-x-4 items-center justify-self-center h-full py-5 px-2 sm:flex-col md:flex-row w-full"
               >
                 <div class="stack__img">
                   <font-awesome-icon
                     :icon="item.url"
-                    class="text-bg-super-hard-trans dark:text-dark-bg w-16 h-16"
+                    class="text-dark-bg w-16 h-16"
                   />
                 </div>
-                <span class="font-medium text-base text-text dark:text-dark-bg-super-soft md:text-xl">{{
+                <span class="font-medium text-base text-dark-bg-super-soft md:text-xl">{{
                   item.name
                 }}</span>
               </a>

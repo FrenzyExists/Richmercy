@@ -2,7 +2,7 @@
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="currentColor"
-    class="block w-5 h-5 dark:text-dark-acc-soft text-acc-soft mb-4"
+    class="block w-5 h-5 text-dark-acc mb-4"
     viewBox="0 0 975.036 975.036"
   >
     <path
