@@ -78,14 +78,13 @@ export function useComments() {
           'X-GitHub-Api-Version': '2022-11-28',
         },
       });
-      // console.log(response.data, 'data');
+      console.log('data thing', response.data);
       
-  
       // Search for the issue with the matching title
       const issue = response.data.find((issue) => {
         return issue.title === title
       });
-      // console.log(issue, "ISSUE");
+      console.log(issue, "ISSUE");
       
       // Return the issue number if found, otherwise null
       return issue ? issue.number : null;
@@ -102,15 +101,28 @@ export function useComments() {
   const ensureIssueExists = async (octokit, title) => {
     try {      
       const issueNumber = await getIssueNumberByTitle(octokit, title);    
+      console.log(issueNumber, 'issue');
+      if(issueNumber === null) {
+        throw {
+          status: 404
+        }
+      }
       return issueNumber;
     } catch (err) {
+      console.log("E R R O R", err);
       if (err.status === 404) {
+        console.log('Creating issue...');
+        
         // Issue not found, create a new one
-        await octokit.rest.issues.create({
+        const newIssue = await octokit.rest.issues.create({
           owner,
           repo,
           title,
         });
+        console.log(newIssue);
+        
+        // get issue number and return
+        return newIssue.data.number;
       } else {
         throw err; // Re-throw other errors
       }
