@@ -95,10 +95,10 @@ import { useGithubAuth } from '@/composables/usegithubauth';
 import { useComments } from '@/composables/usecomments';
 import MarkdownEditor from '@/components/markdowneditor.vue';
 import MarkdownPreview from '@/components/markdownpreview.vue';
+import Modal from '@/components/modal.vue';
 import 'emoji-mart-vue-fast/css/emoji-mart.css';
 import { Picker, EmojiIndex } from 'emoji-mart-vue-fast/src';
 import data from 'emoji-mart-vue-fast/data/all.json';
-import Modal from '@/components/Modal.vue';
 import { ref, onMounted } from 'vue';
 
 const emojiIndex = new EmojiIndex(data);

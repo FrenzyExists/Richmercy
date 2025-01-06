@@ -27,7 +27,7 @@
           </div>
           <a href="#" class="text-dark-text-soft no-underline font-medium text-sm flex items-center"><font-awesome-icon
               class="mr-2 text-dark-text-soft" icon="fa-solid fa-comment-dots" />
-            {{ this.$data.commentAmount  }} Comments</a>
+            {{ this.$data.commentAmount }} Comments</a>
         </div>
         <div class="flex items-center">
           <aside>
@@ -52,7 +52,8 @@
         </router-view>
       </div>
     </div>
-    <comments-section @comment-amount="handleCommentAmount"  class="relative w-full md:max-w-3xl md:mx-auto lg:max-w-4xl" :title="`${title}`" :octo="octo" />
+    <comments-section @comment-amount="handleCommentAmount" class="relative w-full md:max-w-3xl md:mx-auto lg:max-w-4xl"
+      :title="`${title}`" :octo="octo" />
   </div>
   <foot />
 </template>
