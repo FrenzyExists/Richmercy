@@ -38,7 +38,7 @@ export default {
       required: true,
     },
   },
-  setup(props) {
+  setup(props, {emit}) {
     const { comments, isLoading, error, fetchComments, ensureIssueExists } = useComments();
     const issueNumber = ref(-1);
 
@@ -47,21 +47,21 @@ export default {
         // Ensure the issue exists and fetch its comments
         issueNumber.value = await ensureIssueExists(props.octo, `Blog: ${props.title}`);
         await fetchComments(props.octo, issueNumber.value);
-        console.log(comments);
-
+        emit('comment-amount', comments.value.length); // Emit the updated comment count
       } catch (err) {
         console.error("Error loading comments:", err);
       }
     };
-
+    
     onMounted(loadComments);
-
+    // console.log(comments.value.length, 'fafdaa')
     watch(
       () => props.title,
       async (newTitle) => {
         try {
           issueNumber.value = await ensureIssueExists(props.octo, `Blog: ${newTitle}`);
           await fetchComments(props.octo, issueNumber.value);
+          emit('comment-amount', comments.value.length); // Emit on title change
         } catch (err) {
           console.error("Error fetching comments on title change:", err);
         }
@@ -70,6 +70,7 @@ export default {
 
     const handleCommentPosted = (newComment) => {
       comments.value.push(newComment);
+      emit('comment-amount',comments.value.length);
     };
 
     const handleError = (error) => {
@@ -85,5 +86,6 @@ export default {
       handleError,
     };
   },
+  emits:['comment-amount']
 };
 </script>
