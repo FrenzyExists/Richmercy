@@ -21,7 +21,7 @@
 import { ref, onMounted, watch } from "vue";
 import CommentInput from '@/components/commentinput.vue';
 import CommentItem from '@/components/commentitem.vue';
-import { useComments } from "@/composables/useComments";
+import { useComments } from "@/composables/usecomments";
 
 export default {
   name: "CommentsSection",
