@@ -51,15 +51,12 @@ export function useComments() {
    */
   const postComment = async (octokit, issueNumber, body) => {
     try {
-      console.log("DFDFD");
-      
       const response = await octokit.rest.issues.createComment({
         owner,
         repo,
         issue_number: issueNumber,
         body,
       });
-      console.log("WENDIGOON");
       
       const newComment = response.data;
       comments.value.push(newComment); // Add the new comment to the list
@@ -81,14 +78,14 @@ export function useComments() {
           'X-GitHub-Api-Version': '2022-11-28',
         },
       });
-      console.log(response.data, 'data');
+      // console.log(response.data, 'data');
       
   
       // Search for the issue with the matching title
       const issue = response.data.find((issue) => {
         return issue.title === title
       });
-      console.log(issue, "ISSUE");
+      // console.log(issue, "ISSUE");
       
       // Return the issue number if found, otherwise null
       return issue ? issue.number : null;

@@ -54,15 +54,22 @@ export default defineConfig({
     proxy: {
       '/login/device/code': {
         target: 'https://github.com',
-        changeOrigin: true, // Ensure that the origin header is correctly set
-        secure: false, // Allow insecure connections (if necessary)
-        rewrite: (path) => path.replace(/^\/login/, '/login') // Rewrite the path if necessary
+        changeOrigin: true, // Ensures the origin header is correct
+        secure: false, // Allows insecure connections (if HTTPS is not set up)
+        rewrite: (path) => path.replace(/^\/login/, '/login'), // Rewrite the path for the target
       },
-      '/github-api': {
+      '/login/oauth/access_token': {
         target: 'https://github.com',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/github-api/, ''),
-      }
-    }
-  }
+        secure: false,
+        rewrite: (path) => path.replace(/^\/login\/oauth/, '/login/oauth'), // Rewrite to match the GitHub API path
+      },
+      '/github-api': {
+        target: 'https://api.github.com',
+        changeOrigin: true, // Correctly set the origin header
+        secure: false, // Allow insecure connections (if necessary)
+        rewrite: (path) => path.replace(/^\/github-api/, ''), // Remove '/github-api' prefix
+      },
+    },
+  },
 });

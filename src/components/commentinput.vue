@@ -5,7 +5,7 @@
       <div class="space-y-4">
         <p class="text-dark-text">Copy the GitHub verification code below:</p>
         <span class="w-fit flex bg-dark-bg-super-hard text-dark-text pl-4 rounded-l-lg rounded-r-lg m-auto">
-          <p class="m-auto pr-4 cursor-pointer">{{ state?.userCode }}</p>
+          <p class="m-auto pr-4">{{ state?.userCode }}</p>
           <button class="hover:bg-dark-bg-soft hover:text-dark-text-soft bg-dark-bg-mute p-4 flex rounded-r-lg"
             @click="copyCodeToClipboard">
             <font-awesome-icon icon="fa-solid fa-link" />
@@ -17,10 +17,10 @@
         </p>
         <p class="text-center text-sm text-dark-text-soft">Expires at: {{
           (() => {
-            console.log('time', state.expiresIn);
+            // console.log('time', state.expiresIn);
 
             const timeLeft = getTimeLeft(state.expiresIn);
-            console.log(timeLeft);
+            // console.log(timeLeft);
 
             return `${timeLeft.minutes} minutes and ${timeLeft.seconds} seconds`
           })()
@@ -59,7 +59,7 @@
               class="min-h-30 h-full text-white bg-dark-bg-harder bg-bg-harder text-sm px-0 border-0 focus:ring-0 w-full"
               placeholder="Write a comment..." />
           </div>
-          <div v-show="selectedTab === 'preview'" class="markdown-preview p-4">
+          <div v-show="selectedTab === 'preview'" class="markdown-preview p-4 min-h-[15.5rem]">
             <markdown-preview :content="replyComment" />
           </div>
         </div>
@@ -99,6 +99,7 @@ import 'emoji-mart-vue-fast/css/emoji-mart.css';
 import { Picker, EmojiIndex } from 'emoji-mart-vue-fast/src';
 import data from 'emoji-mart-vue-fast/data/all.json';
 import Modal from '@/components/Modal.vue';
+import { ref, onMounted } from 'vue';
 
 const emojiIndex = new EmojiIndex(data);
 
@@ -112,7 +113,23 @@ export default {
   },
   props: {
     issueNumber: { type: Number, required: true },
-    octo: { required: true },
+    octo: { required: true }, // octocat object to retrieve comments
+  },
+  setup() {
+    const { getCode, state, initialize, getTimeLeft, retrieveToken } = useGithubAuth();
+    const { postComment } = useComments();
+    const octoUser = ref(null);
+
+    // Initialize octoUser on component mount
+    onMounted(async () => {
+      try {
+        octoUser.value = await initialize();
+      } catch (error) {
+        console.error('Error initializing octoUser:', error);
+      }
+    });
+
+    return { getCode, state, postComment, getTimeLeft, retrieveToken, octoUser };
   },
   data() {
     return {
@@ -122,14 +139,6 @@ export default {
       showEmojis: false,
       isLoading: false,
     };
-  },
-  setup() {
-    const { login, getCode, state, initialize, getTimeLeft } = useGithubAuth();
-    const { postComment } = useComments();
-
-    initialize();
-
-    return { login, getCode, state, postComment, getTimeLeft };
   },
   computed: {
     isAuthenticated() {
@@ -148,7 +157,8 @@ export default {
 
       this.isLoading = true;
       try {
-        const newComment = await this.postComment(this.octo, this.issueNumber, this.replyComment);
+        if (!this.octoUser) throw new Error('User is not authenticated.');
+        const newComment = await this.postComment(this.octoUser, this.issueNumber, this.replyComment);
         if (newComment) {
           this.replyComment = '';
           this.$emit('comment-posted', newComment);
@@ -160,14 +170,15 @@ export default {
       }
     },
     async handleGithubLogin() {
+      if (!this.replyComment.trim() || this.isLoading) return;
       await this.getCode();
-      console.log(this.state);
-
+      // console.log(this.state);
     },
-    copyCodeToClipboard() {
+    async copyCodeToClipboard() {
       navigator.clipboard.writeText(this.state.userCode);
       alert('Code copied to clipboard!');
       this.openVerificationUrl();
+      await this.retrieveToken();
     },
     openVerificationUrl() {
       window.open(this.state.verificationURI, '_blank');

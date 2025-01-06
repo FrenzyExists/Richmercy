@@ -10,14 +10,6 @@
         <div class="mt-4">
           <slot></slot>
         </div>
-        <div class="flex justify-end mt-6 space-x-4">
-          <button @click="closeModal" class="px-4 py-2 text-sm bg-dark-bg-soft rounded text-dark-text hover:bg-dark-bg-mute hover:text-dark-text-soft">
-            Cancel
-          </button>
-          <button @click="confirmAction" class="px-4 py-2 text-sm bg-dark-bg-soft text-dark-text rounded hover:bg-dark-bg-mute hover:text-dark-text-soft">
-            Confirm
-          </button>
-        </div>
       </div>
     </div>
   </template>
